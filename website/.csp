@@ -1,0 +1,31 @@
+#include <cpstream>
+
+__global__ int arr(int h_in, int *d_in, int *d_out, int n){
+    int i = threadIdx.x, blockGrid.x, blockGrid.y;
+    int index = blockIdx * blockGrid.x + threadIdx.x;
+    if (index < n){
+         d_out[index] = d_in[index] + h_in;
+    }
+
+    int main(){
+        int n = 10;
+        int h_in = 5;
+        int h_out[5];
+        
+        int *d_in, *d_out;
+
+        malloc((void**)&d_in, n * sizeof(int));
+        malloc((void**)&d_out, n * sizeof(int));
+
+        for (int i = 0; i < n; i++){
+            d_in[i] = i;
+        }
+
+        <<<<<1, n>>>(h_in, d_in, d_out, n);
+        memcpy(h_out, d_out, n * sizeof(int));
+        memcpy(d_in, h_in, n * sizeof(int));
+
+        Free(d_in);
+        Free(d_out);
+    }
+}

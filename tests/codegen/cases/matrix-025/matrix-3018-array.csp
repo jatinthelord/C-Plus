@@ -1,0 +1,18 @@
+// CSP-CODEGEN: name=matrix-3018-array target=riscv64-unknown-linux-gnu kind=array
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+int csp_test_matrix_3018_array(int *output, const int *input, int count) {
+    int checksum = 0;
+    for (int index = 0; index < count; ++index) {
+        int value = input[index] * 3 + 7;
+        output[index] = value;
+        checksum ^= value;
+    }
+    return checksum;
+}
+
+int main() {
+    int input[8] = {1, 2, 3, 4, 5, 6, 7, 8};
+    int output[8] = {0};
+    return csp_test_matrix_3018_array(output, input, 8) == 0;
+}

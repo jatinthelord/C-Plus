@@ -1,0 +1,6 @@
+int main() {
+  auto answer = 42;
+  auto ratio = 2.5;
+  auto enabled = true;
+  return answer == 42 && ratio == 2.5 && enabled ? 0 : 1;
+}

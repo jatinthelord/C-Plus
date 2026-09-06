@@ -1,0 +1,9 @@
+enum class State { idle, running, stopped };
+
+int inspect(State state) {
+  match (state) {
+  case State::idle: return 0;
+  case State::running: return 1;
+  }
+  return 2;
+}

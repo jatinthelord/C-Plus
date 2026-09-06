@@ -1,0 +1,10 @@
+// CSP-CODEGEN: name=cstring-merging target=host kind=string
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+int csp_test_cstring_merging(const char *text) {
+    int checksum = 0;
+    for (int index = 0; text[index] != '\0'; ++index) checksum += text[index];
+    return checksum;
+}
+
+int main() { return csp_test_cstring_merging("CSP-codegen") == 0; }

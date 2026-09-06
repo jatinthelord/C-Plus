@@ -1,0 +1,4 @@
+csp=0.2.0
+source=C:\Users\DeLL\Desktop\C+\main.csp
+compiler-stamp=-4648981811000000000
+command=g++ -std=c++20 -O2 -I"C:\Users\DeLL\AppData\Local\CSP\include"

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSP Package Search</title>
+  <link rel="stylesheet" href="../assets/site.css">
+  <script defer src="../assets/releases.js"></script>
+  <script defer src="../assets/site.js"></script>
+</head>
+<body data-page="packages" data-base="../">
+  <div id="archdev-navbar"><ul>
+    <li><a href="../"><strong>C+</strong> CSP Foundation</a></li>
+    <li><a href="../">Home</a></li>
+    <li><a href="./" aria-current="page">Packages</a></li>
+    <li><a href="../libraries/">Libraries</a></li>
+    <li><a href="../benchmarks/">Benchmarks</a></li>
+    <li><a href="../source/">Source</a></li>
+    <li><a href="../releases/">Releases</a></li>
+    <li><a href="../../README.md">Documentation</a></li>
+    <li><a href="../download/">Download</a></li>
+  </ul></div>
+
+  <main id="content">
+    <section id="pkgsearch" class="box">
+      <h1>Package Search</h1>
+      <form action="./" method="get">
+        <fieldset>
+          <label for="arch-filter">Arch<select id="arch-filter"><option value="all">any</option><option>x86_64</option><option>any</option></select></label>
+          <label for="repo-filter">Repository<select id="repo-filter"><option value="all">All</option><option>Core</option><option>Extra</option></select></label>
+          <label for="package-search">Keywords<input id="package-search" name="q" type="search" autofocus placeholder="package, library, or feature"></label>
+          <button type="submit">Search</button>
+        </fieldset>
+      </form>
+    </section>
+
+    <section id="pkglist-results">
+      <div class="pkglist-nav"><a class="prev" href="#">&lt; Prev</a><a class="next" href="#">Next &gt;</a></div>
+      <p class="pkglist-stats" id="package-count">Loading package results.</p>
+      <table class="results">
+        <thead><tr><th>Arch</th><th>Repo</th><th>Name</th><th>Version</th><th>Description</th><th>Last Updated</th></tr></thead>
+        <tbody id="package-table"></tbody>
+      </table>
+      <p>Select a package name to view dependencies, files, downloads, and checksums.</p>
+    </section>
+  </main>
+
+  <div id="footer"><p>CSP Foundation · <a href="../../LICENSE">MIT licensed</a> · <a href="../">CSP Foundation home</a></p></div>
+</body>
+</html>

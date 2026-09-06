@@ -1,0 +1,47 @@
+[
+  {
+    "title": "A json file contains all post",
+    "author": "Jatin kaushik",
+    "category": "Discussion",
+    "body": "the json file will be so massive after this website will be Popular.",
+    "created": "2026-09-05T05:01:05+00:00"
+  },
+  {
+    "title": "JGP exam's has been released",
+    "author": "BOT",
+    "category": "Discussion",
+    "body": "JGP exams are officially released by Jatin Kaushik",
+    "created": "2026-09-05T04:57:43+00:00"
+  },
+  {
+    "title": "how fast C+ is?",
+    "author": "Csp foundation",
+    "category": "FAQ",
+    "body": "you can see the benchmark in the website the C+ has better Library's",
+    "created": "2026-09-05T04:53:49+00:00"
+  },
+  {
+    "title": "how i made C+ language",
+    "author": "Jatin kaushik",
+    "category": "Discussion",
+    "body": "I am working on a software called NovaGit it's inspired from Git, I got Idea What if i Make my own Programming Language, So i work on this Language like 1 month to 3 months, i keep Upgrading It's Library, I add Features like it has it's own built in library to Make An Ai Model It uses cuda , If you don't know what cuda is an Programming That made Model's Fast Cuda speed up them, So after this i build this website for my foundation, this website is for my actual C+ language Story based On C",
+    "created": "2026-09-05T04:49:23+00:00"
+  },
+  {
+    "title": "Welcome to the C+ Wiki",
+    "author": "CSP Foundation",
+    "category": "Project",
+    "body": "This wiki collects practical C+ documentation, library notes, package recipes, and community guides.",
+    "created": "2026-09-04T12:00:00Z"
+  },
+  {
+    "title": "How do I install a C+ package?",
+    "author": "Jatin Kaushik",
+    "tags": [
+      "Jatin"
+    ],
+    "category": "FAQ",
+    "body": "Use CSX to list packages, then install a package and its dependencies with: csx --prefix .csx install cp-system",
+    "created": "2026-09-04T12:05:00Z"
+  }
+]

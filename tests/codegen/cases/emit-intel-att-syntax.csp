@@ -1,0 +1,11 @@
+// CSP-CODEGEN: name=emit-intel-att-syntax target=host kind=integer
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+unsigned long long csp_test_emit_intel_att_syntax(unsigned long long value) {
+    value ^= value >> 7;
+    value *= 0xff51afd7ed558ccdULL;
+    value ^= value >> 19;
+    return value;
+}
+
+int main() { return csp_test_emit_intel_att_syntax(0x12345678ULL) == 0; }

@@ -1,0 +1,25 @@
+#pragma once
+#ifndef CSP_CPSTREAM_DEFINED
+#define CSP_CPSTREAM_DEFINED
+#include <cstdio>
+#include <string>
+#include <string_view>
+
+namespace cp {
+template <class... Args> int print(const char *format, Args... arguments) {
+  return std::printf(format, arguments...);
+}
+inline int print(std::string_view value) {
+  return std::printf("%.*s", static_cast<int>(value.size()), value.data());
+}
+template <class... Args> int println(const char *format, Args... arguments) {
+  int written = std::printf(format, arguments...);
+  std::putchar('\n');
+  return written + 1;
+}
+} // namespace cp
+
+template <class... Args> int printc(const char *format, Args... arguments) {
+  return cp::print(format, arguments...);
+}
+#endif

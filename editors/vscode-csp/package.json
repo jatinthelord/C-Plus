@@ -1,0 +1,27 @@
+{
+  "name": "csp-language",
+  "displayName": "C+ Language Support",
+  "description": "Syntax highlighting for C+ (.csp) files",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": ["Programming Languages"],
+  "contributes": {
+    "languages": [
+      {
+        "id": "csp",
+        "aliases": ["C+", "csp"],
+        "extensions": [".csp"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "csp",
+        "scopeName": "source.csp",
+        "path": "./syntaxes/csp.tmLanguage.json"
+      }
+    ]
+  }
+}

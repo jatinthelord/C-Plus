@@ -1,0 +1,13 @@
+// CSP-CODEGEN: name=matrix-0254-structure target=wasm32-unknown-unknown kind=structure
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+struct csp_test_matrix_0254_structure_pair { double left; double right; };
+
+csp_test_matrix_0254_structure_pair csp_test_matrix_0254_structure(csp_test_matrix_0254_structure_pair value) {
+    return {value.right + 1.0, value.left - 1.0};
+}
+
+int main() {
+    csp_test_matrix_0254_structure_pair value = csp_test_matrix_0254_structure({4.0, 9.0});
+    return value.left > value.right ? 0 : 1;
+}

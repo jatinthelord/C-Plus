@@ -1,0 +1,11 @@
+// CSP-CODEGEN: name=matrix-1645-integer target=powerpc64le-unknown-linux-gnu kind=integer
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+unsigned long long csp_test_matrix_1645_integer(unsigned long long value) {
+    value ^= value >> 17;
+    value *= 0xff51afd7ed558ccdULL;
+    value ^= value >> 19;
+    return value;
+}
+
+int main() { return csp_test_matrix_1645_integer(0x12345678ULL) == 0; }

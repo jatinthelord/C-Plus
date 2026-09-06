@@ -1,0 +1,10 @@
+// CSP-CODEGEN: name=matrix-2320-floating target=aarch64-none-elf kind=floating
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+double csp_test_matrix_2320_floating(double value, double low, double high) {
+    if (value < low) return low;
+    if (value > high) return high;
+    return value * 4.0;
+}
+
+int main() { return csp_test_matrix_2320_floating(4.0, 0.0, 10.0) > 0.0 ? 0 : 1; }

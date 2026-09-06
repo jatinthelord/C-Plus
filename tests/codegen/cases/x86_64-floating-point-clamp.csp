@@ -1,0 +1,10 @@
+// CSP-CODEGEN: name=x86_64-floating-point-clamp target=host kind=floating
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+double csp_test_x86_64_floating_point_clamp(double value, double low, double high) {
+    if (value < low) return low;
+    if (value > high) return high;
+    return value * 2.0;
+}
+
+int main() { return csp_test_x86_64_floating_point_clamp(4.0, 0.0, 10.0) > 0.0 ? 0 : 1; }

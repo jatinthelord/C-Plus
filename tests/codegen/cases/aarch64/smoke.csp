@@ -1,0 +1,11 @@
+// CSP-CODEGEN: name=category-aarch64 target=host kind=integer
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+unsigned long long csp_test_category_aarch64(unsigned long long value) {
+    value ^= value >> 15;
+    value *= 0xff51afd7ed558ccdULL;
+    value ^= value >> 20;
+    return value;
+}
+
+int main() { return csp_test_category_aarch64(0x12345678ULL) == 0; }

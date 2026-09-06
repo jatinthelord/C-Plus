@@ -1,0 +1,10 @@
+// CSP-CODEGEN: name=x86-return-float target=host kind=floating
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+double csp_test_x86_return_float(double value, double low, double high) {
+    if (value < low) return low;
+    if (value > high) return high;
+    return value * 2.0;
+}
+
+int main() { return csp_test_x86_return_float(4.0, 0.0, 10.0) > 0.0 ? 0 : 1; }

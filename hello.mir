@@ -1,0 +1,14 @@
+mir.module "hello.csp"
+  function "int main" {
+    bb0.entry:
+      declare int num = 2 at 4:5
+      %t0 = eval CallExpression at 5:5
+      jump bb1 at 7:5
+    bb1.loop.header:
+      branch_if loop.condition bb2 bb3 at 7:5
+    bb2.loop.body:
+      %t1 = eval CallExpression at 8:9
+      jump bb1 at 7:5
+    bb3.loop.exit:
+      return 0 at 10:5
+  }

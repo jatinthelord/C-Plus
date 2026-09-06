@@ -1,0 +1,10 @@
+// CSP-CODEGEN: name=riscv-soft-abi-with-float-features target=riscv64-unknown-linux-gnu kind=floating
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+double csp_test_riscv_soft_abi_with_float_features(double value, double low, double high) {
+    if (value < low) return low;
+    if (value > high) return high;
+    return value * 2.0;
+}
+
+int main() { return csp_test_riscv_soft_abi_with_float_features(4.0, 0.0, 10.0) > 0.0 ? 0 : 1; }

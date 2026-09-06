@@ -1,0 +1,11 @@
+// CSP-CODEGEN: name=bpf-more-than-five-args target=bpfel-unknown-none kind=integer
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+unsigned long long csp_test_bpf_more_than_five_args(unsigned long long value) {
+    value ^= value >> 7;
+    value *= 0xff51afd7ed558ccdULL;
+    value ^= value >> 19;
+    return value;
+}
+
+int main() { return csp_test_bpf_more_than_five_args(0x12345678ULL) == 0; }

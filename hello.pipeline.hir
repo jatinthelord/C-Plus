@@ -1,0 +1,19 @@
+hir.module "hello.csp" nodes 18
+  %0 = directive "#include <cpstream>" at 1:1
+  %1 = function "int main" at 3:1
+    %2 = block at 3:11
+      %3 = declare "int num = 2" at 4:5
+      %4 = expression at 5:5
+        %5 = expression "CallExpression" at 5:11
+          %6 = expression "printc" at 5:5
+          %7 = expression ""hello from C+; num = %d\n"" at 5:12
+          %8 = expression "num" at 5:39
+      %9 = loop "int i < 3 , i ++" at 7:5
+        %10 = block at 7:25
+          %11 = expression at 8:9
+            %12 = expression "CallExpression" at 8:15
+              %13 = expression "printc" at 8:9
+              %14 = expression ""iteration %d\n"" at 8:16
+              %15 = expression "i" at 8:32
+      %16 = return at 10:5
+        %17 = expression "0" at 10:12

@@ -1,0 +1,11 @@
+// CSP-CODEGEN: name=matrix-1519-integer target=mips64-unknown-linux-gnuabi64 kind=integer
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+unsigned long long csp_test_matrix_1519_integer(unsigned long long value) {
+    value ^= value >> 10;
+    value *= 0xff51afd7ed558ccdULL;
+    value ^= value >> 31;
+    return value;
+}
+
+int main() { return csp_test_matrix_1519_integer(0x12345678ULL) == 0; }

@@ -1,0 +1,11 @@
+// CSP-CODEGEN: name=panic-no-unwind-no-uwtable target=host kind=integer
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+unsigned long long csp_test_panic_no_unwind_no_uwtable(unsigned long long value) {
+    value ^= value >> 7;
+    value *= 0xff51afd7ed558ccdULL;
+    value ^= value >> 19;
+    return value;
+}
+
+int main() { return csp_test_panic_no_unwind_no_uwtable(0x12345678ULL) == 0; }

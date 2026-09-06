@@ -1,0 +1,116 @@
+[
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -Wall -Wextra -Wpedantic -o CMakeFiles\\cspc.dir\\cspc.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\cspc.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/cspc.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/cspc.dir/cspc.cpp.obj"
+},
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -Wall -Wextra -Wpedantic -o CMakeFiles\\cspc.dir\\src\\ir.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\src\\ir.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/src/ir.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/cspc.dir/src/ir.cpp.obj"
+},
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -Wall -Wextra -Wpedantic -o CMakeFiles\\cspc.dir\\src\\thir.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\src\\thir.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/src/thir.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/cspc.dir/src/thir.cpp.obj"
+},
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -Wall -Wextra -Wpedantic -o CMakeFiles\\cspc.dir\\src\\tooling.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\src\\tooling.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/src/tooling.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/cspc.dir/src/tooling.cpp.obj"
+},
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -Wall -Wextra -Wpedantic -o CMakeFiles\\cspc.dir\\src\\lexer.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\src\\lexer.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/src/lexer.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/cspc.dir/src/lexer.cpp.obj"
+},
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -Wall -Wextra -Wpedantic -o CMakeFiles\\cspc.dir\\src\\lowering.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\src\\lowering.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/src/lowering.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/cspc.dir/src/lowering.cpp.obj"
+},
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -Wall -Wextra -Wpedantic -o CMakeFiles\\cspc.dir\\src\\parser.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\src\\parser.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/src/parser.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/cspc.dir/src/parser.cpp.obj"
+},
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -Wall -Wextra -Wpedantic -o CMakeFiles\\cspc.dir\\src\\semantic.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\src\\semantic.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/src/semantic.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/cspc.dir/src/semantic.cpp.obj"
+},
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -Wall -Wextra -Wpedantic -o CMakeFiles\\cspc.dir\\src\\transpiler.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\src\\transpiler.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/src/transpiler.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/cspc.dir/src/transpiler.cpp.obj"
+},
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -o CMakeFiles\\csp_frontend_tests.dir\\tests\\frontend_tests.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\tests\\frontend_tests.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/tests/frontend_tests.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/csp_frontend_tests.dir/tests/frontend_tests.cpp.obj"
+},
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -o CMakeFiles\\csp_frontend_tests.dir\\src\\ir.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\src\\ir.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/src/ir.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/csp_frontend_tests.dir/src/ir.cpp.obj"
+},
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -o CMakeFiles\\csp_frontend_tests.dir\\src\\thir.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\src\\thir.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/src/thir.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/csp_frontend_tests.dir/src/thir.cpp.obj"
+},
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -o CMakeFiles\\csp_frontend_tests.dir\\src\\tooling.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\src\\tooling.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/src/tooling.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/csp_frontend_tests.dir/src/tooling.cpp.obj"
+},
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -o CMakeFiles\\csp_frontend_tests.dir\\src\\lexer.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\src\\lexer.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/src/lexer.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/csp_frontend_tests.dir/src/lexer.cpp.obj"
+},
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -o CMakeFiles\\csp_frontend_tests.dir\\src\\lowering.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\src\\lowering.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/src/lowering.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/csp_frontend_tests.dir/src/lowering.cpp.obj"
+},
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -o CMakeFiles\\csp_frontend_tests.dir\\src\\parser.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\src\\parser.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/src/parser.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/csp_frontend_tests.dir/src/parser.cpp.obj"
+},
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -o CMakeFiles\\csp_frontend_tests.dir\\src\\semantic.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\src\\semantic.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/src/semantic.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/csp_frontend_tests.dir/src/semantic.cpp.obj"
+},
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -o CMakeFiles\\csp_frontend_tests.dir\\src\\transpiler.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\src\\transpiler.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/src/transpiler.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/csp_frontend_tests.dir/src/transpiler.cpp.obj"
+},
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/include -g -o CMakeFiles\\csp_header_smoke.dir\\tests\\header_smoke.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\tests\\header_smoke.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/tests/header_smoke.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/csp_header_smoke.dir/tests/header_smoke.cpp.obj"
+}
+]

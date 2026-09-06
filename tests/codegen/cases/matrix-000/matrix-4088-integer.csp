@@ -1,0 +1,11 @@
+// CSP-CODEGEN: name=matrix-4088-integer target=aarch64-none-elf kind=integer
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+unsigned long long csp_test_matrix_4088_integer(unsigned long long value) {
+    value ^= value >> 12;
+    value *= 0xff51afd7ed558ccdULL;
+    value ^= value >> 24;
+    return value;
+}
+
+int main() { return csp_test_matrix_4088_integer(0x12345678ULL) == 0; }

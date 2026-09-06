@@ -1,0 +1,9 @@
+// CSP-CODEGEN: name=tail-call-indirect target=host kind=recursion
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+int csp_test_tail_call_indirect(int value, int accumulator) {
+    if (value <= 0) return accumulator;
+    return csp_test_tail_call_indirect(value - 1, accumulator + value);
+}
+
+int main() { return csp_test_tail_call_indirect(10, 0) == 55 ? 0 : 1; }

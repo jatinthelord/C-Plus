@@ -1,0 +1,11 @@
+// CSP-CODEGEN: name=wasm_exceptions target=wasm32-unknown-unknown kind=integer
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+unsigned long long csp_test_wasm_exceptions(unsigned long long value) {
+    value ^= value >> 7;
+    value *= 0xff51afd7ed558ccdULL;
+    value ^= value >> 19;
+    return value;
+}
+
+int main() { return csp_test_wasm_exceptions(0x12345678ULL) == 0; }

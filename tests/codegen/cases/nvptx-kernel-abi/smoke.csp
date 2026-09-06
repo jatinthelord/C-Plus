@@ -1,0 +1,11 @@
+// CSP-CODEGEN: name=category-nvptx-kernel-abi target=host kind=integer
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+unsigned long long csp_test_category_nvptx_kernel_abi(unsigned long long value) {
+    value ^= value >> 22;
+    value *= 0xff51afd7ed558ccdULL;
+    value ^= value >> 27;
+    return value;
+}
+
+int main() { return csp_test_category_nvptx_kernel_abi(0x12345678ULL) == 0; }

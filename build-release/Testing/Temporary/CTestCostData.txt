@@ -1,0 +1,18 @@
+csp.frontend 20 0.0561675
+csp.headers 19 0.000568137
+csp.semantic.valid-overloads 20 0.0717964
+csp.semantic.reject-cross-function-goto 20 0.000582285
+csp.semantic.reject-duplicate-default 20 0.000578225
+csp.semantic.reject-duplicate-case 19 0.000681079
+csp.codegen.manifest 16 0.0438385
+csp.semantic.valid-bugemoan 16 0.0355985
+csp.semantic.valid-hopa 12 0.0492964
+csp.semantic.valid-match 8 0.0758436
+csp.semantic.reject-non-exhaustive-match 9 0.00165184
+csp.semantic.valid-ctfe 9 0.0634276
+csp.semantic.reject-ctfe 9 0.00160019
+csp.features.zero-cost 7 0.0929553
+csp.features.safe-defaults 2 0.235808
+csp.semantic.reject-optional-dereference 2 0.00519395
+csp.semantic.reject-immutable-assignment 2 0.239956
+---

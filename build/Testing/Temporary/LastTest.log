@@ -1,0 +1,282 @@
+Start testing: Sep 06 13:40 India Standard Time
+----------------------------------------------------------
+1/17 Testing: csp.frontend
+1/17 Test: csp.frontend
+Command: "C:/Users/DeLL/Desktop/C+/build/csp_frontend_tests.exe"
+Directory: C:/Users/DeLL/Desktop/C+/build
+"csp.frontend" start time: Sep 06 13:40 India Standard Time
+Output:
+----------------------------------------------------------
+all C+ frontend tests passed
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"csp.frontend" end time: Sep 06 13:40 India Standard Time
+"csp.frontend" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/17 Testing: csp.headers
+2/17 Test: csp.headers
+Command: "C:/Users/DeLL/Desktop/C+/build/csp_header_smoke.exe"
+Directory: C:/Users/DeLL/Desktop/C+/build
+"csp.headers" start time: Sep 06 13:40 India Standard Time
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"csp.headers" end time: Sep 06 13:40 India Standard Time
+"csp.headers" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/17 Testing: csp.codegen.manifest
+3/17 Test: csp.codegen.manifest
+Command: "C:/Users/DeLL/Desktop/C+/build/csp-codegen.exe" "--validate-only"
+Directory: C:/Users/DeLL/Desktop/C+/build
+"csp.codegen.manifest" start time: Sep 06 13:40 India Standard Time
+Output:
+----------------------------------------------------------
+validated 5094 CSP code-generation cases across 85 case folders
+<end of output>
+Test time =   2.42 sec
+----------------------------------------------------------
+Test Passed.
+"csp.codegen.manifest" end time: Sep 06 13:40 India Standard Time
+"csp.codegen.manifest" time elapsed: 00:00:02
+----------------------------------------------------------
+
+4/17 Testing: csp.semantic.valid-overloads
+4/17 Test: csp.semantic.valid-overloads
+Command: "C:/Users/DeLL/Desktop/C+/build/cspc.exe" "C:/Users/DeLL/Desktop/C+/tests/semantic/valid_overloads.csp" "--check"
+Directory: C:/Users/DeLL/Desktop/C+/build
+"csp.semantic.valid-overloads" start time: Sep 06 13:40 India Standard Time
+Output:
+----------------------------------------------------------
+C+ syntax, semantics, THIR, HIR, and MIR checks passed
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"csp.semantic.valid-overloads" end time: Sep 06 13:40 India Standard Time
+"csp.semantic.valid-overloads" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/17 Testing: csp.semantic.valid-bugemoan
+5/17 Test: csp.semantic.valid-bugemoan
+Command: "C:/Users/DeLL/Desktop/C+/build/cspc.exe" "C:/Users/DeLL/Desktop/C+/tests/semantic/valid_bugemoan.csp" "--check"
+Directory: C:/Users/DeLL/Desktop/C+/build
+"csp.semantic.valid-bugemoan" start time: Sep 06 13:40 India Standard Time
+Output:
+----------------------------------------------------------
+C+ syntax and semantic checks passed
+<end of output>
+Test time =   0.95 sec
+----------------------------------------------------------
+Test Passed.
+"csp.semantic.valid-bugemoan" end time: Sep 06 13:40 India Standard Time
+"csp.semantic.valid-bugemoan" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/17 Testing: csp.semantic.valid-hopa
+6/17 Test: csp.semantic.valid-hopa
+Command: "C:/Users/DeLL/Desktop/C+/build/cspc.exe" "C:/Users/DeLL/Desktop/C+/tests/semantic/valid_hopa.csp" "--check"
+Directory: C:/Users/DeLL/Desktop/C+/build
+"csp.semantic.valid-hopa" start time: Sep 06 13:40 India Standard Time
+Output:
+----------------------------------------------------------
+C+ syntax, semantics, THIR, HIR, and MIR checks passed
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"csp.semantic.valid-hopa" end time: Sep 06 13:40 India Standard Time
+"csp.semantic.valid-hopa" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/17 Testing: csp.semantic.valid-match
+7/17 Test: csp.semantic.valid-match
+Command: "C:/Users/DeLL/Desktop/C+/build/cspc.exe" "C:/Users/DeLL/Desktop/C+/tests/semantic/valid_match.csp" "--check"
+Directory: C:/Users/DeLL/Desktop/C+/build
+"csp.semantic.valid-match" start time: Sep 06 13:40 India Standard Time
+Output:
+----------------------------------------------------------
+C+ syntax, semantics, THIR, HIR, and MIR checks passed
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"csp.semantic.valid-match" end time: Sep 06 13:40 India Standard Time
+"csp.semantic.valid-match" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/17 Testing: csp.semantic.reject-non-exhaustive-match
+8/17 Test: csp.semantic.reject-non-exhaustive-match
+Command: "C:/Users/DeLL/Desktop/C+/build/cspc.exe" "C:/Users/DeLL/Desktop/C+/tests/semantic/invalid_non_exhaustive_match.csp" "--check"
+Directory: C:/Users/DeLL/Desktop/C+/build
+"csp.semantic.reject-non-exhaustive-match" start time: Sep 06 13:40 India Standard Time
+Output:
+----------------------------------------------------------
+C:/Users/DeLL/Desktop/C+/tests/semantic/invalid_non_exhaustive_match.csp:4:3: error: non-exhaustive match for 'State'; missing stopped
+cspc: error: semantic analysis failed
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"csp.semantic.reject-non-exhaustive-match" end time: Sep 06 13:40 India Standard Time
+"csp.semantic.reject-non-exhaustive-match" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/17 Testing: csp.semantic.valid-ctfe
+9/17 Test: csp.semantic.valid-ctfe
+Command: "C:/Users/DeLL/Desktop/C+/build/cspc.exe" "C:/Users/DeLL/Desktop/C+/tests/semantic/valid_ctfe.csp" "--check"
+Directory: C:/Users/DeLL/Desktop/C+/build
+"csp.semantic.valid-ctfe" start time: Sep 06 13:40 India Standard Time
+Output:
+----------------------------------------------------------
+C+ syntax, semantics, THIR, HIR, and MIR checks passed
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"csp.semantic.valid-ctfe" end time: Sep 06 13:40 India Standard Time
+"csp.semantic.valid-ctfe" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/17 Testing: csp.semantic.reject-ctfe
+10/17 Test: csp.semantic.reject-ctfe
+Command: "C:/Users/DeLL/Desktop/C+/build/cspc.exe" "C:/Users/DeLL/Desktop/C+/tests/semantic/invalid_ctfe.csp" "--check"
+Directory: C:/Users/DeLL/Desktop/C+/build
+"csp.semantic.reject-ctfe" start time: Sep 06 13:40 India Standard Time
+Output:
+----------------------------------------------------------
+C:/Users/DeLL/Desktop/C+/tests/semantic/invalid_ctfe.csp:2:1: error: compile-time assertion failed: "arithmetic must remain correct"
+cspc: error: semantic analysis failed
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"csp.semantic.reject-ctfe" end time: Sep 06 13:40 India Standard Time
+"csp.semantic.reject-ctfe" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/17 Testing: csp.features.zero-cost
+11/17 Test: csp.features.zero-cost
+Command: "C:/Users/DeLL/Desktop/C+/build/cspc.exe" "C:/Users/DeLL/Desktop/C+/tests/features/zero_cost.csp" "--check"
+Directory: C:/Users/DeLL/Desktop/C+/build
+"csp.features.zero-cost" start time: Sep 06 13:40 India Standard Time
+Output:
+----------------------------------------------------------
+C+ syntax and semantic checks passed
+<end of output>
+Test time =   1.89 sec
+----------------------------------------------------------
+Test Passed.
+"csp.features.zero-cost" end time: Sep 06 13:40 India Standard Time
+"csp.features.zero-cost" time elapsed: 00:00:01
+----------------------------------------------------------
+
+12/17 Testing: csp.features.safe-defaults
+12/17 Test: csp.features.safe-defaults
+Command: "C:/Users/DeLL/Desktop/C+/build/cspc.exe" "C:/Users/DeLL/Desktop/C+/tests/features/safe_defaults.csp" "--check"
+Directory: C:/Users/DeLL/Desktop/C+/build
+"csp.features.safe-defaults" start time: Sep 06 13:40 India Standard Time
+Output:
+----------------------------------------------------------
+C+ syntax, semantics, THIR, HIR, and MIR checks passed
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"csp.features.safe-defaults" end time: Sep 06 13:40 India Standard Time
+"csp.features.safe-defaults" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/17 Testing: csp.semantic.reject-optional-dereference
+13/17 Test: csp.semantic.reject-optional-dereference
+Command: "C:/Users/DeLL/Desktop/C+/build/cspc.exe" "C:/Users/DeLL/Desktop/C+/tests/semantic/invalid_optional_dereference.csp" "--check"
+Directory: C:/Users/DeLL/Desktop/C+/build
+"csp.semantic.reject-optional-dereference" start time: Sep 06 13:40 India Standard Time
+Output:
+----------------------------------------------------------
+C:/Users/DeLL/Desktop/C+/tests/semantic/invalid_optional_dereference.csp:3:10: error: optional value requires an explicit presence check and .value() access
+cspc: error: semantic analysis failed
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"csp.semantic.reject-optional-dereference" end time: Sep 06 13:40 India Standard Time
+"csp.semantic.reject-optional-dereference" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/17 Testing: csp.semantic.reject-immutable-assignment
+14/17 Test: csp.semantic.reject-immutable-assignment
+Command: "C:/Users/DeLL/Desktop/C+/build/cspc.exe" "C:/Users/DeLL/Desktop/C+/tests/semantic/invalid_immutable_assignment.csp" "--check"
+Directory: C:/Users/DeLL/Desktop/C+/build
+"csp.semantic.reject-immutable-assignment" start time: Sep 06 13:40 India Standard Time
+Output:
+----------------------------------------------------------
+C:/Users/DeLL/Desktop/C+/tests/semantic/invalid_immutable_assignment.csp:3:10: error: cannot assign to immutable binding 'answer'
+cspc: error: semantic analysis failed
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"csp.semantic.reject-immutable-assignment" end time: Sep 06 13:40 India Standard Time
+"csp.semantic.reject-immutable-assignment" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/17 Testing: csp.semantic.reject-cross-function-goto
+15/17 Test: csp.semantic.reject-cross-function-goto
+Command: "C:/Users/DeLL/Desktop/C+/build/cspc.exe" "C:/Users/DeLL/Desktop/C+/tests/semantic/invalid_cross_function_goto.csp" "--check"
+Directory: C:/Users/DeLL/Desktop/C+/build
+"csp.semantic.reject-cross-function-goto" start time: Sep 06 13:40 India Standard Time
+Output:
+----------------------------------------------------------
+C:/Users/DeLL/Desktop/C+/tests/semantic/invalid_cross_function_goto.csp:2:5: error: goto targets unknown label 'finished'
+cspc: error: semantic analysis failed
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"csp.semantic.reject-cross-function-goto" end time: Sep 06 13:40 India Standard Time
+"csp.semantic.reject-cross-function-goto" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/17 Testing: csp.semantic.reject-duplicate-default
+16/17 Test: csp.semantic.reject-duplicate-default
+Command: "C:/Users/DeLL/Desktop/C+/build/cspc.exe" "C:/Users/DeLL/Desktop/C+/tests/semantic/invalid_duplicate_default.csp" "--check"
+Directory: C:/Users/DeLL/Desktop/C+/build
+"csp.semantic.reject-duplicate-default" start time: Sep 06 13:40 India Standard Time
+Output:
+----------------------------------------------------------
+C:/Users/DeLL/Desktop/C+/tests/semantic/invalid_duplicate_default.csp:6:5: error: switch cannot contain more than one default label
+cspc: error: semantic analysis failed
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"csp.semantic.reject-duplicate-default" end time: Sep 06 13:40 India Standard Time
+"csp.semantic.reject-duplicate-default" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/17 Testing: csp.semantic.reject-duplicate-case
+17/17 Test: csp.semantic.reject-duplicate-case
+Command: "C:/Users/DeLL/Desktop/C+/build/cspc.exe" "C:/Users/DeLL/Desktop/C+/tests/semantic/invalid_duplicate_case.csp" "--check"
+Directory: C:/Users/DeLL/Desktop/C+/build
+"csp.semantic.reject-duplicate-case" start time: Sep 06 13:40 India Standard Time
+Output:
+----------------------------------------------------------
+C:/Users/DeLL/Desktop/C+/tests/semantic/invalid_duplicate_case.csp:6:5: error: duplicate case value '7'
+  note: previous case is at line 4
+cspc: error: semantic analysis failed
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"csp.semantic.reject-duplicate-case" end time: Sep 06 13:40 India Standard Time
+"csp.semantic.reject-duplicate-case" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Sep 06 13:40 India Standard Time

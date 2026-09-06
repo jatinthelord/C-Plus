@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1793d1">
+  <meta name="description" content="C+ compiler, packages, libraries and documentation.">
+  <title>CSP Foundation</title>
+  <link rel="alternate" href="wiki/" title="CSP Wiki">
+  <link rel="stylesheet" href="assets/site.css?v=clean-0">
+  <script defer src="assets/releases.js"></script>
+  <script defer src="assets/site.js"></script>
+  <script defer src="assets/homepage.js"></script>
+</head>
+<body data-page="home" data-base="">
+  <div id="archdev-navbar">
+    <ul>
+      <li><a href="index.html"><strong>C+</strong> CSP Foundation</a></li>
+      <li><a href="packages/">Packages</a></li>
+      <li><a href="libraries/">Libraries</a></li>
+      <li><a href="benchmarks/">Benchmarks</a></li>
+      <li><a href="source/">Source</a></li>
+      <li><a href="wiki/">Wiki</a></li>
+      <li><a href="releases/">Releases</a></li>
+      <li><a href="../README.md">Documentation</a></li>
+      <li><a href="download/">Download</a></li>
+    </ul>
+  </div>
+
+  <div id="content" class="home-columns">
+    <div id="content-left-wrapper" class="home-columns">
+      <div id="content-left">
+        <section id="intro">
+          <h1>CSP Foundation</h1>
+          <p>C+ uses <code>.csp</code> source files and can build native programs with the bundled compiler and standard headers.</p>
+          <p class="readmore"><a href="../README.md">Read the documentation »</a></p>
+        </section>
+
+        <section id="news">
+          <h2>News</h2>
+          <div>
+            <h3><a href="releases/">CSP 0.2.0 bootstrap and package repository</a></h3>
+            <p><strong>2026-09-04</strong></p>
+            <p>Compile a program with <code>cspc hello.csp -o hello.exe</code>, or use <code>--check</code> to run syntax and semantic checks without producing a binary.</p>
+          </div>
+          <div>
+            <h3><a href="libraries/">Standard library repository opens</a></h3>
+            <p><strong>2026-09-04</strong></p>
+            <p>Install <code>cp-core</code>, <code>cp-platform</code>, or <code>cp-network</code> with CSX and add the selected prefix to your include path.</p>
+          </div>
+        </section>
+
+        <section id="pkg-updates">
+          <h2>Featured packages</h2>
+          <table class="results">
+            <thead><tr><th>Name</th><th>Version</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td class="pkg-name"><a href="packages/package.html?name=csp">csp</a></td><td>0.2.0-1</td><td class="wrap">Compiler and complete toolchain</td></tr>
+              <tr><td class="pkg-name"><a href="packages/package.html?name=cp-core">cp-core</a></td><td>0.3.0-1</td><td class="wrap">Types, memory, math and algorithms</td></tr>
+              <tr><td class="pkg-name"><a href="packages/package.html?name=cp-network">cp-network</a></td><td>0.3.0-1</td><td class="wrap">Socket, HTTP and site primitives</td></tr>
+              <tr><td class="pkg-name"><a href="packages/package.html?name=cp-platform">cp-platform</a></td><td>0.3.0-1</td><td class="wrap">Kernel, Linux and GNU helpers</td></tr>
+            </tbody>
+          </table>
+          <p class="readmore"><a href="packages/">View the complete package repository »</a></p>
+        </section>
+      </div>
+    </div>
+
+    <div id="content-right">
+      <section id="pkgsearch" class="box">
+        <h2>Package Search</h2>
+        <form id="pkgsearch-form" action="packages/" method="get">
+          <label for="home-q">Search CSP packages</label>
+          <input id="home-q" name="q" type="search" placeholder="package or feature">
+          <button type="submit">Search</button>
+        </form>
+      </section>
+
+      <section id="nav-sidebar" class="box">
+        <h3>CSP resources</h3>
+        <ul>
+          <li><a href="../README.md">Installation guide</a></li>
+          <li><a href="../syntax.md">Language syntax</a></li>
+          <li><a href="libraries/">Standard library</a></li>
+          <li><a href="benchmarks/">Honest benchmarks</a></li>
+          <li><a href="source/">Browse source</a></li>
+          <li><a href="wiki/">CSP Wiki</a></li>
+          <li><a href="releases/">Release notes</a></li>
+        </ul>
+      </section>
+
+      <section class="box">
+        <h3>Get started</h3>
+        <pre><code>csx list
+csx --prefix .csx install cp-network
+cspc hello.csp -o hello.exe</code></pre>
+        <p><a href="download/">Download CSP <span data-current-version>0.2.0</span></a></p>
+      </section>
+    </div>
+  </div>
+
+  <div id="footer">
+    <p>CSP Foundation · <a href="../LICENSE">MIT licensed</a> · <a href="../README.md">Source and documentation</a></p>
+  </div>
+</body>
+</html>

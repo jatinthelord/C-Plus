@@ -1,0 +1,18 @@
+// CSP-CODEGEN: name=matrix-3522-array target=mips64-unknown-linux-gnuabi64 kind=array
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+int csp_test_matrix_3522_array(int *output, const int *input, int count) {
+    int checksum = 0;
+    for (int index = 0; index < count; ++index) {
+        int value = input[index] * 13 + 1;
+        output[index] = value;
+        checksum ^= value;
+    }
+    return checksum;
+}
+
+int main() {
+    int input[8] = {1, 2, 3, 4, 5, 6, 7, 8};
+    int output[8] = {0};
+    return csp_test_matrix_3522_array(output, input, 8) == 0;
+}

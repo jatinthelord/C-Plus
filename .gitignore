@@ -1,0 +1,14 @@
+#build
+*.o
+*.exe
+*.dll
+
+# IDE
+*.tmp
+
+# WAS
+*.http
+
+# TEST
+*.s
+*.ll

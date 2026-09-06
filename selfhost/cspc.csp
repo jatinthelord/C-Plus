@@ -1,0 +1,13 @@
+// C+ self-hosting amalgamation.
+// Stage 1 compiles this C+ translation unit to produce the stage-2 compiler.
+// __hopa__ functions inside a native implementation mark bootstrap hooks;
+// this amalgamation includes the complete compiler entry point below.
+#include <src/lexer.cpp>
+#include <src/thir.cpp>
+#include <src/ir.cpp>
+#include <src/tooling.cpp>
+#include <src/lowering.cpp>
+#include <src/parser.cpp>
+#include <src/semantic.cpp>
+#include <src/transpiler.cpp>
+#include <cspc.cpp>

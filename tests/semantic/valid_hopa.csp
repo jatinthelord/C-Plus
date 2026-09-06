@@ -1,0 +1,8 @@
+__hopa__ int bootstrap_step(int parser, int *binary) {
+  return binary ? parser : 0;
+}
+
+int main() {
+  int output = 1;
+  return bootstrap_step(0, &output);
+}

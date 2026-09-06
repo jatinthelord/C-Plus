@@ -1,0 +1,12 @@
+int convert(int value) { return value; }
+double convert(double value) { return value; }
+
+struct counter {
+    int read() { return 1; }
+    int read() const { return 2; }
+};
+
+int declared(int value);
+int declared(int value) { return value; }
+
+int main() { return convert(3) == 3 ? 0 : 1; }

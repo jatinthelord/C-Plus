@@ -1,0 +1,9 @@
+int first() {
+    goto finished;
+    return 1;
+}
+
+int second() {
+finished:
+    return 2;
+}
