@@ -18,6 +18,7 @@ const secureContext = location.protocol === 'https:' || ['localhost', '127.0.0.1
 
 const reserved = new Set(['admin','administrator','moderator','staff','support','root','system','security','csp','cspfoundation','csp_foundation','official']);
 const normalizedUsername = value => value.trim().toLowerCase();
+signup.elements.birth_date.max = new Date().toISOString().slice(0, 10);
 const message = (node, text, kind = '') => {
   node.textContent = text;
   node.className = `auth-status ${kind}`.trim();
@@ -92,10 +93,11 @@ signin.addEventListener('submit', async event => {
 
 signup.addEventListener('submit', async event => {
   event.preventDefault();
-  if (!schemaReady || !config.turnstileSiteKey) return message(status, 'Secure registration is not configured yet.', 'error');
+  if (!secureContext || !schemaReady || !config.turnstileSiteKey) return message(status, 'Secure registration is not configured yet.', 'error');
   const values = Object.fromEntries(new FormData(signup));
   const username = normalizedUsername(values.username);
   if (values.password !== values.confirm_password) return message(status, 'Passwords do not match.', 'error');
+  if (!values.birth_date || values.birth_date > new Date().toISOString().slice(0, 10)) return message(status, 'Enter a valid birth date.', 'error');
   if (!/^[a-z0-9_]{3,30}$/.test(username) || reserved.has(username)) return message(status, 'Choose a valid, non-reserved username.', 'error');
   if (!captchaToken) return message(status, 'Complete the security challenge.', 'error');
   message(status, 'Checking username…');
@@ -116,6 +118,7 @@ signup.addEventListener('submit', async event => {
 });
 
 $('#forgot-password').addEventListener('click', async () => {
+  if (!secureContext) return message(status, 'Password recovery requires HTTPS.', 'error');
   const email = signin.elements.email.value.trim();
   if (!email) return message(status, 'Enter your email address first.', 'error');
   const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: `${location.origin}/account/` });
@@ -123,6 +126,7 @@ $('#forgot-password').addEventListener('click', async () => {
 });
 
 document.querySelectorAll('[data-provider]').forEach(button => button.addEventListener('click', async () => {
+  if (!secureContext) return message(status, 'Social sign-in requires HTTPS.', 'error');
   const { error } = await supabase.auth.signInWithOAuth({ provider: button.dataset.provider, options: { redirectTo: `${location.origin}/account/` } });
   if (error) message(status, error.message, 'error');
 }));

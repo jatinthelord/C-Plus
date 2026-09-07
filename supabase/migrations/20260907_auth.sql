@@ -120,6 +120,23 @@ begin
 end;
 $$;
 
+create or replace function public.validate_public_profile()
+returns trigger
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  new.username := lower(trim(new.username));
+  if new.username !~ '^[a-z0-9_]{3,30}$'
+     or exists (select 1 from public.reserved_usernames r where r.username = new.username)
+     or exists (select 1 from public.profiles p where p.username = new.username and p.id <> new.id) then
+    raise exception 'Username is invalid, reserved, or already in use';
+  end if;
+  return new;
+end;
+$$;
+
 create or replace function public.handle_new_user()
 returns trigger
 language plpgsql
@@ -164,6 +181,10 @@ $$;
 drop trigger if exists profiles_set_updated_at on public.profiles;
 create trigger profiles_set_updated_at before update on public.profiles
 for each row execute function public.set_updated_at();
+
+drop trigger if exists profiles_validate on public.profiles;
+create trigger profiles_validate before insert or update on public.profiles
+for each row execute function public.validate_public_profile();
 
 drop trigger if exists account_private_set_updated_at on public.account_private;
 create trigger account_private_set_updated_at before update on public.account_private
