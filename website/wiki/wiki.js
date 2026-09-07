@@ -2,31 +2,23 @@
 
 (() => {
   const posts = document.querySelector("#wiki-posts");
-  const form = document.querySelector("#post-form");
-  const status = document.querySelector("#post-status");
   const search = document.querySelector("#wiki-search");
-  if (!posts || !form) return;
-
-  const escape = value => String(value).replace(/[&<>"']/g, character => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
-  }[character]));
+  if (!posts || !search) return;
+  const escape = value => String(value).replace(/[&<>"']/g, character => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[character]));
   let allPosts = [];
 
   const render = () => {
-    const needle = (search?.value || "").trim().toLowerCase();
+    const needle = search.value.trim().toLowerCase();
+    document.querySelectorAll(".docs-card, .docs-faq details").forEach(item => {
+      item.hidden = Boolean(needle) && !item.textContent.toLowerCase().includes(needle);
+    });
     const visible = allPosts.filter(post => `${post.title} ${post.category} ${post.body}`.toLowerCase().includes(needle));
-    posts.innerHTML = visible.length ? visible.map(post => `<article class="wiki-post"><h3>${escape(post.title)}</h3><small>${escape(post.category)} · ${escape(post.author)} · ${escape(post.created)}</small><p>${escape(post.body)}</p></article>`).join("") : "<p>No wiki posts match this search.</p>";
+    posts.innerHTML = visible.length ? visible.map(post => `<article class="docs-post"><h3>${escape(post.title)}</h3><small>${escape(post.category)} · ${escape(post.author)} · ${escape(post.created)}</small><p>${escape(post.body)}</p></article>`).join("") : `<p>${needle ? "No project updates match this search." : "No project updates published yet."}</p>`;
   };
 
-  const load = () => fetch("/api/wiki/posts").then(response => response.json()).then(data => { allPosts = data.posts || []; render(); });
-  search?.addEventListener("input", render);
-  form.addEventListener("submit", event => {
-    event.preventDefault();
-    status.textContent = "Publishing...";
-    fetch("/api/wiki/posts", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(Object.fromEntries(new FormData(form))) })
-      .then(response => response.json().then(data => ({ ok: response.ok, data })))
-      .then(({ ok, data }) => { if (!ok) throw new Error(data.error || "Unable to publish"); form.reset(); status.textContent = "Post published."; allPosts.unshift(data.post); render(); })
-      .catch(error => { status.textContent = error.message; });
+  search.addEventListener("input", render);
+  document.addEventListener("keydown", event => {
+    if (event.key === "/" && document.activeElement !== search) { event.preventDefault(); search.focus(); }
   });
-  load().catch(() => { posts.innerHTML = "<p>Wiki posts are temporarily unavailable.</p>"; });
+  fetch("posts.json").then(response => response.json()).then(data => { allPosts = data.posts || data || []; render(); }).catch(() => { posts.innerHTML = "<p>Project updates are temporarily unavailable.</p>"; });
 })();

@@ -49,14 +49,14 @@ if(GO_EXECUTABLE)
 else()
   message(WARNING "Go was not found: the csx package-manager target is unavailable")
 endif()
-add_executable(cspc cspc.cpp src/ir.cpp src/thir.cpp src/tooling.cpp src/lexer.cpp src/lowering.cpp src/parser.cpp src/semantic.cpp src/transpiler.cpp
+add_executable(cspc cspc.cpp src/cpasm.cpp src/ir.cpp src/thir.cpp src/tooling.cpp src/lexer.cpp src/lowering.cpp src/parser.cpp src/semantic.cpp src/transpiler.cpp
   include/cp/networking.h)
 target_compile_features(cspc PRIVATE cxx_std_20)
 target_include_directories(cspc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 include(CTest)
 if(BUILD_TESTING)
-  add_executable(csp_frontend_tests tests/frontend_tests.cpp src/ir.cpp src/thir.cpp src/tooling.cpp src/lexer.cpp src/lowering.cpp src/parser.cpp src/semantic.cpp src/transpiler.cpp)
+  add_executable(csp_frontend_tests tests/frontend_tests.cpp src/cpasm.cpp src/ir.cpp src/thir.cpp src/tooling.cpp src/lexer.cpp src/lowering.cpp src/parser.cpp src/semantic.cpp src/transpiler.cpp)
   target_compile_features(csp_frontend_tests PRIVATE cxx_std_20)
   target_include_directories(csp_frontend_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
   add_test(NAME csp.frontend COMMAND csp_frontend_tests)
@@ -87,6 +87,8 @@ if(BUILD_TESTING)
     COMMAND cspc ${CMAKE_CURRENT_SOURCE_DIR}/tests/features/zero_cost.csp --check)
   add_test(NAME csp.features.safe-defaults
     COMMAND cspc ${CMAKE_CURRENT_SOURCE_DIR}/tests/features/safe_defaults.csp --check)
+  add_test(NAME csp.features.low-level
+    COMMAND cspc ${CMAKE_CURRENT_SOURCE_DIR}/tests/features/low_level.csp --check)
   add_test(NAME csp.semantic.reject-optional-dereference
     COMMAND cspc ${CMAKE_CURRENT_SOURCE_DIR}/tests/semantic/invalid_optional_dereference.csp --check)
   set_tests_properties(csp.semantic.reject-optional-dereference PROPERTIES WILL_FAIL TRUE)

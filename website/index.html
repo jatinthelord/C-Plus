@@ -40,11 +40,11 @@
         <div class="hero-code" aria-label="C+ code example">
           <div class="terminal-bar"><i></i><i></i><i></i></div>
           <pre><code><span class="token-muted">// hello.csp</span>
-include <span class="token-green">&lt;cpstream&gt;</span>
+#include <span class="token-green">&lt;cpstream&gt;</span>
 
-fn main() -> i32 {
-    printc(<span class="token-blue">cyan</span>, <span class="token-green">"Hello from C+"</span>)
-    return 0
+int main(void) {
+    printc(<span class="token-green">"Hello from C+\n"</span>);
+    return 0;
 }
 
 <span class="token-muted">$ cspc hello.csp -o hello</span></code></pre>
@@ -65,7 +65,7 @@ fn main() -> i32 {
         <article class="feature-card"><div class="feature-icon">01</div><h3>Compiler & toolchain</h3><p>Parse, check, compile, inspect generated output, and work across supported targets.</p><a href="releases/">Release history →</a></article>
         <article class="feature-card"><div class="feature-icon">02</div><h3>Package repository</h3><p>Search packages, inspect dependencies and files, and verify download hashes.</p><a href="packages/">Browse packages →</a></article>
         <article class="feature-card"><div class="feature-icon">03</div><h3>Standard library</h3><p>Containers, memory, networking, HTTP, platform support, GUI, and low-level tools.</p><a href="libraries/">Explore libraries →</a></article>
-        <article class="feature-card"><div class="feature-icon">04</div><h3>Public source</h3><p>Inspect the frontend, intermediate representations, backends, libraries, and tooling.</p><a href="source/">Browse source →</a></article>
+        <article class="feature-card"><div class="feature-icon">04</div><h3>CP ASM</h3><p>Write validated <code>.cpsm</code> assembly with a dedicated lexer, parser, AST, and native emitter.</p><a href="wiki/#cpasm">Learn CP ASM →</a></article>
         <article class="feature-card"><div class="feature-icon">05</div><h3>Measured performance</h3><p>See reproducible results, machine details, commands, and limits—without fake claims.</p><a href="benchmarks/">View benchmarks →</a></article>
         <article class="feature-card"><div class="feature-icon">06</div><h3>Language reference</h3><p>Learn syntax, compiler workflows, libraries, packaging, and project structure.</p><a href="wiki/">Open the wiki →</a></article>
       </div>

@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <chrono>
 #include <cstdlib>
 #include <filesystem>
@@ -12,6 +13,7 @@
 #include <cuda_runtime.h>
 #endif
 #include "src/diagnostic.hpp"
+#include "src/cpasm.hpp"
 #include "src/ir.hpp"
 #include "src/lexer.hpp"
 #include "src/lowering.hpp"
@@ -113,9 +115,9 @@ static std::string quote(const fs::path &value) {
 static void usage() {
   std::cout
       << "C+ native compiler " << VERSION << "\n"
-      << "Usage: cspc [command] <source.csp> [options]\n\n"
+      << "Usage: cspc [command] <source.csp|source.cpsm> [options]\n\n"
       << "Commands:\n"
-      << "  build run hopa check fmt lint reflect lex parse stats thir hir mir "
+      << "  build run hopa check fmt lint reflect lex parse stats cpasm thir hir mir "
          "lower cpp c rust llvm asm object\n"
       << "  cuda debug release fast performance vectorized safe sanitize warnings freestanding\n"
       << "  targets features doctor env commands version help\n\n"
@@ -147,7 +149,7 @@ static bool informational_command(const std::string &command) {
   } else if (command == "features") {
     std::cout
         << "THIR type inference\nHIR and verified CFG MIR\n"
-           "C++20 backend\nC/Rust transpilers\nLLVM IR\nassembly/object "
+           "C++20 backend\nC/Rust transpilers\nLLVM IR\nCP ASM (.cpsm) frontend\nassembly/object "
            "emission\n"
            "CUDA mode\nfreestanding mode\nsemantic analysis\nrecovery parser\n"
            "AST JSON\nCTFE\nexhaustive match\nC ABI\nLTO/vectorization\n"
@@ -177,13 +179,16 @@ static bool informational_command(const std::string &command) {
 }
 
 static fs::path discover_source() {
-  for (const fs::path &candidate :
-       {fs::path("main.csp"), fs::path("src/main.csp")})
+  for (const fs::path &candidate : {fs::path("main.csp"),
+                                    fs::path("main.cpsm"),
+                                    fs::path("src/main.csp"),
+                                    fs::path("src/main.cpsm")})
     if (fs::is_regular_file(candidate))
       return candidate;
   std::vector<fs::path> sources;
   for (const auto &entry : fs::directory_iterator(fs::current_path()))
-    if (entry.is_regular_file() && entry.path().extension() == ".csp")
+    if (entry.is_regular_file() && (entry.path().extension() == ".csp" ||
+                                    entry.path().extension() == ".cpsm"))
       sources.push_back(entry.path());
   return sources.size() == 1 ? sources.front() : fs::path{};
 }
@@ -227,7 +232,7 @@ int main(int argc, char **argv) {
       return 0;
     const std::vector<std::string> compiler_commands = {
         "build", "run",      "hopa",     "check",        "fmt",
-        "lint",  "reflect",  "lex",      "parse",        "stats",
+        "lint",  "reflect",  "lex",      "parse",        "stats", "cpasm",
         "thir",  "hir",      "mir",      "lower",        "cpp",
         "c",     "rust",     "llvm",     "asm",          "object",
         "cuda",  "debug",    "release",  "fast",         "performance",
@@ -410,10 +415,10 @@ int main(int argc, char **argv) {
     if (source.empty())
       source = discover_source();
     if (source.empty())
-      throw std::runtime_error("a .csp source file is required (or create "
-                               "main.csp for automatic discovery)");
-    if (source.extension() != ".csp")
-      throw std::runtime_error("source files must use .csp");
+      throw std::runtime_error("a .csp or .cpsm source file is required");
+    const bool cp_assembly = source.extension() == ".cpsm";
+    if (source.extension() != ".csp" && !cp_assembly)
+      throw std::runtime_error("source files must use .csp or .cpsm");
     if (output.empty()) {
       output = source;
       if (output_mode == OutputMode::LlvmIr)
@@ -450,6 +455,65 @@ int main(int argc, char **argv) {
     }
 
     std::string source_text = read_file(source);
+    if (cp_assembly) {
+      if (output_mode != OutputMode::Executable &&
+          output_mode != OutputMode::Object &&
+          output_mode != OutputMode::Assembly &&
+          output_mode != OutputMode::SyntaxOnly)
+        throw std::runtime_error(
+            "CP ASM supports build, run, check, asm, and object modes");
+      csp::cpasm::Lexer assembly_lexer(source_text, source.string());
+      auto assembly_tokens = assembly_lexer.tokenize();
+      csp::cpasm::Parser assembly_parser(std::move(assembly_tokens));
+      auto assembly_program = assembly_parser.parse();
+      const std::string assembly =
+          csp::cpasm::Emitter::emit_gnu(assembly_program);
+      if (output_mode == OutputMode::SyntaxOnly) {
+        std::cout << "CP ASM syntax check passed ("
+                  << csp::cpasm::architecture_name(
+                         assembly_program.architecture)
+                  << ")\n";
+        return 0;
+      }
+      if (output_mode == OutputMode::Assembly) {
+        write_file(output, assembly);
+        std::cout << "Emitted CP ASM " << output.string() << "\n";
+        return 0;
+      }
+      auto stamp =
+          std::chrono::high_resolution_clock::now().time_since_epoch().count();
+      const fs::path temporary = fs::temp_directory_path() /
+                                 ("cpasm-" + std::to_string(stamp) + ".s");
+      write_file(temporary, assembly);
+      if (compiler.empty())
+        compiler = "g++";
+      std::string command = compiler;
+      if (output_mode == OutputMode::Object)
+        command += " -c";
+      if (!target_triple.empty())
+        command += " --target=" + target_triple;
+      for (const auto &flag : native_flags)
+        command += " " + flag;
+      command += " " + quote(temporary) + " -o " + quote(fs::absolute(output));
+      const int result = std::system(command.c_str());
+      std::error_code ignored;
+      fs::remove(temporary, ignored);
+      if (result != 0)
+        throw std::runtime_error("CP ASM assembly or linking failed");
+      std::cout << "Built CP ASM " << output.string() << "\n";
+      if (run)
+        return std::system(quote(fs::absolute(output)).c_str());
+      return 0;
+    }
+#ifdef _WIN32
+    if (source_text.find("<cspWindow>") != std::string::npos ||
+        source_text.find("<cp/window.h>") != std::string::npos) {
+      for (const std::string library : {"-luser32", "-lgdi32", "-lcomctl32"})
+        if (std::find(native_flags.begin(), native_flags.end(), library) ==
+            native_flags.end())
+          native_flags.push_back(library);
+    }
+#endif
     if (output_mode == OutputMode::Formatter) {
       const std::string formatted = csp::format_source(source_text);
       if (format_check) {
@@ -681,7 +745,8 @@ int main(int argc, char **argv) {
       if (fs::exists(standard_include))
         command += " -I" + quote(standard_include);
     for (const auto &flag : native_flags)
-      command += " " + flag;
+      if (flag.rfind("-l", 0) != 0)
+        command += " " + flag;
     const bool incremental_candidate =
         output_mode == OutputMode::Executable && emit_cpp.empty() &&
         emit_thir.empty() && emit_hir.empty() && emit_mir.empty() && !hopa;
@@ -720,6 +785,11 @@ int main(int argc, char **argv) {
       }
     }
     command += " " + quote(temporary);
+    // Link libraries must follow the translation unit for linkers that resolve
+    // archives from left to right (GNU ld, MinGW, and compatible drivers).
+    for (const auto &flag : native_flags)
+      if (flag.rfind("-l", 0) == 0)
+        command += " " + flag;
     if (output_mode != OutputMode::SyntaxOnly)
       command += " -o " + quote(fs::absolute(output));
     int result = std::system(command.c_str());

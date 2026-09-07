@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011">
+  <Metadata>
+    <Identity Language="en-US" Id="csp-language" Version="0.2.0" Publisher="csp-foundation" />
+    <DisplayName>C+ Language Support</DisplayName>
+    <Description xml:space="preserve">Language support, diagnostics, formatting, build and run tools for C+ (.csp)</Description>
+    <Tags>C+,CSP,programming language</Tags>
+    <Categories>Programming Languages,Linters,Formatters</Categories>
+    <Properties>
+      <Property Id="Microsoft.VisualStudio.Code.Engine" Value="^1.70.0" />
+    </Properties>
+  </Metadata>
+  <Installation><InstallationTarget Id="Microsoft.VisualStudio.Code" /></Installation>
+  <Dependencies />
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.Code.Manifest" Path="extension/package.json" Addressable="true" />
+  </Assets>
+</PackageManifest>

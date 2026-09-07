@@ -1,0 +1,7 @@
+; CP ASM example for x86-64
+.target x86_64
+
+.proc main
+    xor eax, eax
+    ret
+.end

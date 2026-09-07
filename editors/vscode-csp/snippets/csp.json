@@ -1,0 +1,7 @@
+{
+  "C+ main function": {"prefix": "main", "body": ["int main() {", "    ${1}", "    return 0;", "}"], "description": "C+ program entry point"},
+  "Immutable binding": {"prefix": "let", "body": ["let ${1:name} = ${2:value};"], "description": "Immutable C+ binding"},
+  "Mutable binding": {"prefix": "letmut", "body": ["let mut ${1:name} = ${2:value};"], "description": "Mutable C+ binding"},
+  "Exhaustive match": {"prefix": "match", "body": ["match (${1:value}) {", "case ${2:Type::item}: ${3:return 0;}", "}"], "description": "Exhaustive enum match"},
+  "C+ GUI window": {"prefix": "window", "body": ["#include <cspWindow>", "", "using namespace csp::ui;", "", "int main() {", "    application app;", "    window view({.title = \"${1:C+ App}\", .width = ${2:900}, .height = ${3:600}});", "    view.show();", "    return app.run();", "}"], "description": "Native C+ desktop window"}
+}

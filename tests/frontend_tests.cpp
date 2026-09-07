@@ -1,4 +1,5 @@
 #include "../src/diagnostic.hpp"
+#include "../src/cpasm.hpp"
 #include "../src/lexer.hpp"
 #include "../src/lowering.hpp"
 #include "../src/ir.hpp"
@@ -68,6 +69,14 @@ static void test_all_assignment_operators() {
   const auto assignments = tree->find_all(csp::NodeKind::AssignmentExpression);
   expect(assignments.size() == 10,
          "parser accepts the complete compound-assignment family");
+}
+
+static void test_function_pointer_declaration() {
+  auto tree = parse("int add(int a, int b); int (*callback)(int, int);");
+  const auto declarations = tree->find_all(csp::NodeKind::Declaration);
+  expect(declarations.size() == 1 &&
+             declarations[0]->value.find("* callback") != std::string::npos,
+         "function pointer is represented as a declaration");
 }
 
 static void test_csp_print_arguments() {
@@ -375,12 +384,42 @@ static void test_hir_and_mir_pipeline() {
   expect(has_branch, "MIR contains a conditional branch terminator");
 }
 
+static void test_cpasm_frontend() {
+  const std::string source = R"(
+    ; CP ASM accepts comments and explicit targets
+    .target x86_64
+    .const answer, 42
+    .proc main
+      mov eax, answer
+      xor eax, eax
+      ret
+    .end
+  )";
+  csp::cpasm::Lexer lexer(source, "hello.cpsm");
+  auto tokens = lexer.tokenize();
+  expect(tokens.size() > 10, "CP ASM lexer produces structured tokens");
+  csp::cpasm::Parser parser(std::move(tokens));
+  auto program = parser.parse();
+  expect(program.architecture == csp::cpasm::Architecture::X86_64,
+         "CP ASM parser records the target architecture");
+  expect(program.statements.size() == 7,
+         "CP ASM parser builds a statement AST");
+  const auto assembly = csp::cpasm::Emitter::emit_gnu(program);
+  expect(assembly.find(".intel_syntax noprefix") != std::string::npos,
+         "CP ASM x86-64 output uses explicit Intel syntax");
+  expect(assembly.find(".globl main\nmain:") != std::string::npos,
+         "CP ASM procedure becomes a global native symbol");
+  expect(assembly.find("mov eax, answer") != std::string::npos,
+         "CP ASM instructions preserve typed operands");
+}
+
 int main() {
   try {
     test_numeric_lexing();
     test_literals_and_comments();
     test_expression_precedence();
     test_all_assignment_operators();
+    test_function_pointer_declaration();
     test_csp_print_arguments();
     test_control_flow();
     test_kernel_launch();
@@ -396,6 +435,7 @@ int main() {
     test_token_aware_lowering();
     test_c_and_rust_transpilers();
     test_hir_and_mir_pipeline();
+    test_cpasm_frontend();
     std::cout << "all C+ frontend tests passed\n";
     return 0;
   } catch (const std::exception &error) {

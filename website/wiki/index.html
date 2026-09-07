@@ -1,37 +1,39 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080d12">
-  <title>Config-Programming Wiki</title>
-  <link rel="icon" type="image/svg+xml" href="../assets/csp-logo.svg">
-  <link rel="stylesheet" href="wiki.css">
-  <script defer src="wiki.js"></script>
-</head>
-<body>
-  <header class="wiki-top"><nav class="wiki-nav">
-    <a class="wiki-brand" href="../"><span class="wiki-name">Config-<strong>Programming</strong><small>TM</small></span><img src="../assets/csp-logo.svg" alt=""><span class="wiki-subtitle">CSP Foundation Wiki</span></a>
-    <div class="wiki-nav-links"><a href="../">Home</a><a href="../packages/">Packages</a><a href="../libraries/">Libraries</a><a href="../source/">Source</a><a href="../releases/">Releases</a><a href="../README.md">Docs</a></div>
-  </nav></header>
-  <main class="wiki-shell">
-    <div class="wiki-tools"><span class="wiki-menu">☰</span><form class="wiki-search" onsubmit="return false"><input id="wiki-search" type="search" placeholder="Search CSP Wiki"><button type="submit">Search</button></form></div>
-    <div class="wiki-layout">
-      <article class="wiki-main">
-        <header class="wiki-page-head"><div><h1>Main page</h1><p>Config-Programming <small>TM</small></p></div><a href="../README.md">32 language and library topics</a></header>
-        <nav class="wiki-tabs"><a class="active" href="./">Read</a><a href="../source/">View source</a><a href="../releases/">History</a></nav>
-        <p><strong>Welcome to the CSP Wiki</strong>, the practical reference for C+ language development, libraries, packages, and compiler workflows.</p>
-        <p>Use the sections below to learn the language, install dependencies with CSX, and explore the compiler source.</p>
-        <section class="wiki-section"><h2>The language</h2><div class="wiki-grid"><div class="wiki-card"><h3><a href="../README.md">C+ language guide</a></h3><p>Source files, compiler commands, output targets, and project structure.</p></div><div class="wiki-card"><h3><a href="https://github.com/jatinthelord/C-Plus/blob/main/syntax.md">Syntax reference</a></h3><p>Declarations, loops, expressions, functions, pointers, and C+ shorthand.</p></div><div class="wiki-card"><h3><a href="../source/">Compiler source</a></h3><p>Browse the lexer, parser, semantic analyzer, and transpiler.</p></div><div class="wiki-card"><h3><a href="../libraries/">Standard library</a></h3><p>Filesystem, networking, time, serialization, Linux, HTTP, and CUDA APIs.</p></div></div></section>
-        <section class="wiki-section"><h2>Frequently asked questions</h2><div class="wiki-grid"><div class="wiki-card"><h3>How do I compile a program?</h3><p>Run <code>cspc hello.csp -o hello.exe</code> from the project root.</p></div><div class="wiki-card"><h3>How do I install libraries?</h3><p>Use <code>csx --prefix .csx install cp-system</code>.</p></div><div class="wiki-card"><h3>Can I inspect generated output?</h3><p>Use <code>--emit-cpp</code>, <code>--emit-c</code>, <code>--emit-rust</code>, or <code>--emit-llvm</code>.</p></div><div class="wiki-card"><h3>Where are errors reported?</h3><p>The compiler reports source locations and the website has linked error pages.</p></div></div></section>
-        <section class="wiki-section"><h2>Community posts</h2><div id="wiki-posts"><p>Loading posts...</p></div></section>
-      </article>
-      <aside class="wiki-aside">
-        <section class="wiki-panel"><h2>Wiki navigation</h2><ul><li><a href="../README.md">Getting started</a></li><li><a href="../packages/">Package index</a></li><li><a href="../libraries/">Library index</a></li><li><a href="../source/">Source browser</a></li><li><a href="../errors/404.html">Error reference</a></li></ul></section>
-        <section class="wiki-panel"><h2>Post to the wiki</h2><form id="post-form" class="post-form"><label for="post-title">Title</label><input id="post-title" name="title" required maxlength="120"><label for="post-author">Name</label><input id="post-author" name="author" required maxlength="80"><label for="post-category">Category</label><select id="post-category" name="category"><option>Discussion</option><option>Guide</option><option>FAQ</option><option>Library</option></select><label for="post-body">Post</label><textarea id="post-body" name="body" required maxlength="5000"></textarea><button type="submit">Publish post</button><p id="post-status" class="post-status" aria-live="polite"></p></form></section>
-        <section class="wiki-panel"><h2>Project status</h2><p>CSP compiler and CSX registry are maintained in this repository.</p><a href="../releases/">Release archive</a></section>
-      </aside>
-    </div>
-  </main>
-</body>
-</html>
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Documentation for the C+ language, compiler, standard library, and CSX package manager.">
+<link rel="icon" type="image/svg+xml" href="../assets/csp-logo.svg"><title>Documentation — CSP Foundation</title><link rel="stylesheet" href="../assets/site.css?v=2026-09-07"><link rel="stylesheet" href="wiki.css?v=2026-09-07"><script defer src="../assets/site.js"></script><script defer src="wiki.js"></script>
+</head><body data-page="wiki" data-base="../"><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><nav class="nav shell" aria-label="Main navigation"><a class="brand" href="../"><span class="brand-mark">C<span>+</span></span><span><strong>CSP</strong><small>Foundation</small></span></a><button class="menu-button" aria-expanded="false" aria-controls="nav-links">Menu</button><div class="nav-links" id="nav-links"><a href="../">Home</a><a href="../packages/">Packages</a><a href="../libraries/">Libraries</a><a href="../source/">Source</a><a href="../benchmarks/">Benchmarks</a><a href="./" aria-current="page">Wiki</a><a href="../releases/">Releases</a><a class="nav-download" href="../download/">Download</a></div></nav></header>
+<main class="docs-page shell" id="main">
+  <header class="docs-hero"><div><p class="eyebrow">C+ documentation</p><h1>Build with confidence.</h1><p>Language fundamentals, compiler workflows, libraries, and package management in one practical reference.</p></div><label class="docs-search" for="wiki-search"><span>Search documentation</span><input id="wiki-search" type="search" placeholder="Try “pointers” or “packages”" autocomplete="off"><kbd>/</kbd></label></header>
+  <div class="docs-layout">
+    <aside class="docs-sidebar"><nav aria-label="Documentation sections"><p>Getting started</p><a href="#start">Quick start</a><a href="https://github.com/jatinthelord/C-Plus/blob/main/syntax.md">Syntax reference</a><p>Toolchain</p><a href="#compiler">Compiler</a><a href="#packages">CSX packages</a><a href="../releases/">Release notes</a><p>Platform</p><a href="../libraries/">Standard library</a><a href="../source/">Source tree</a><a href="../benchmarks/">Benchmarks</a></nav></aside>
+    <article class="docs-content">
+      <section class="docs-intro" id="start"><span class="docs-label">Overview</span><h2>Start here</h2><p>C+ source files use the <code>.csp</code> extension. The compiler checks the program, lowers it through the compiler pipeline, and creates the requested output.</p><pre><code><span class="token-muted"># compile a program</span>
+cspc hello.csp -O2 -o hello
+
+<span class="token-muted"># check without producing an executable</span>
+cspc hello.csp --check</code></pre></section>
+      <section class="docs-section" id="compiler"><div class="docs-section-head"><div><span class="docs-label">Toolchain</span><h2>Compiler workflows</h2></div><a href="../source/">Browse source →</a></div><div class="docs-cards">
+        <a class="docs-card" href="https://github.com/jatinthelord/C-Plus/blob/main/syntax.md"><small>Language</small><h3>Syntax reference</h3><p>Declarations, functions, control flow, classes, structs, enums, pointers, and low-level forms.</p></a>
+        <a class="docs-card" href="../releases/"><small>Compiler</small><h3>Targets and releases</h3><p>Version history, output targets, bootstrap milestones, and release integrity.</p></a>
+        <a class="docs-card" href="../benchmarks/"><small>Performance</small><h3>Reproduce benchmarks</h3><p>Review methodology, raw measurements, commands, and honest limitations.</p></a>
+      </div></section>
+      <section class="docs-section" id="cpasm"><div class="docs-section-head"><div><span class="docs-label">Low-level programming</span><h2>CP ASM</h2></div><a href="https://github.com/jatinthelord/C-Plus/blob/main/examples/hello.cpsm">Example source →</a></div><p>CP ASM uses <code>.cpsm</code> files and has its own lexer, parser, AST, validated directives, and native assembler emission.</p><pre><code>.target x86_64
+.proc main
+    xor eax, eax
+    ret
+.end</code></pre></section>
+      <section class="docs-section" id="packages"><div class="docs-section-head"><div><span class="docs-label">Dependencies</span><h2>CSX package manager</h2></div><a href="../packages/">Package index →</a></div><p>Install dependencies into a project-local prefix so builds remain explicit and reproducible.</p><pre><code>csx list
+csx --prefix .csx install cp-network
+csx --prefix .csx install cp-containers</code></pre></section>
+      <section class="docs-section"><div class="docs-section-head"><div><span class="docs-label">Reference</span><h2>Common questions</h2></div></div><div class="docs-faq">
+        <details open><summary>How do I print colored terminal text?</summary><p>Include <code>&lt;cpstream&gt;</code> and use <code>printc</code> with a supported color value.</p></details>
+        <details><summary>Where are the standard headers?</summary><p>The library index documents each public header and links it to the owning CSX package.</p></details>
+        <details><summary>Can I inspect generated output?</summary><p>Use the compiler’s emit commands for the supported intermediate or target representation.</p></details>
+      </div></section>
+      <section class="docs-section" id="community-rules"><div class="docs-section-head"><div><span class="docs-label">Community safety</span><h2>Identity and conduct rules</h2></div></div><div class="rules-grid"><article><strong>No impersonation</strong><p>Do not claim to be another person, company, maintainer, government body, or the CSP Foundation. Official and confusingly similar names are reserved.</p></article><article><strong>No harmful accusations</strong><p>Do not post threats, harassment, private information, fabricated evidence, or allegations presented as verified fact. Report serious matters through appropriate legal channels.</p></article><article><strong>Identity is not verified by a name</strong><p>A display name or username never proves someone’s legal identity. Verified status requires a separate, documented review.</p></article><article><strong>Fair moderation</strong><p>Automated systems may flag suspicious activity, but account restrictions require recorded reasons, human review, and an appeal path.</p></article></div></section>
+      <section class="docs-section"><div class="docs-section-head"><div><span class="docs-label">Community notes</span><h2>Project updates</h2></div></div><div id="wiki-posts" class="docs-posts"><p>Loading updates…</p></div></section>
+    </article>
+  </div>
+</main><footer class="footer"><div class="footer-grid shell"><div><strong>CSP Documentation</strong><p>Practical reference for the C+ toolchain.</p></div><nav class="footer-links"><a href="../packages/">Packages</a><a href="../source/">Source</a><a href="https://github.com/jatinthelord/C-Plus">GitHub</a></nav></div></footer>
+</body></html>

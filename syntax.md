@@ -4,7 +4,7 @@ print
 
 #include <cpstream>
 
-int main(){
+int main(void){
     printc("hello world");
     return 0;
 
@@ -14,7 +14,7 @@ variable
 
 #include <cpstream>
 
-int main(){
+int main(void){
     int num = 2;
     printc("hi %d"num);
     return 0;
@@ -25,7 +25,7 @@ arrays
 
 #include <cpstream>
 
-int main(){
+int main(void){
     int num[3] = 1, 3, 7;
     printc("hi %d"num);
     return 0;
@@ -41,7 +41,7 @@ float variable example
 
 #include <cpstream>
 
-int main(){
+int main(void){
     float num = 2.01;
     printc("hi %d"num);
     return 0;
@@ -52,7 +52,7 @@ for loops
 
 #include <cpstream>
 
-int main(){
+int main(void){
     for(int i < 50, i++;){
         printc("hello world");
     }
@@ -62,7 +62,7 @@ while loops
 
 #include <cpstream>
 
-int main(){
+int main(void){
     bool walk = false;
     while(bool walk == false){
         printc("you can't walk because the bool value is false");
@@ -74,7 +74,7 @@ goto loops
 
 #include <cpstream>
 
-int main(){
+int main(void){
     Goto Label:
     printc("hello world");
     Goto Stop[label]
@@ -85,7 +85,7 @@ vectors
 
 #include <cpstream>
 
-int main(){
+int main(void){
     int vec = {1.0f, 1.5f, 2.0f};
     printc("vector is %d");
     return 0;
@@ -95,7 +95,7 @@ pointers
 
 #include <cpstream>
 
-int main(){
+int main(void){
     int ptr;
     int a = 2;
     ptr = a;
@@ -114,7 +114,7 @@ void pointers, arrays GPU, loops in GPU, launch kernel you can learn from this, 
             int == num;
         }
     }
-  int main(){
+  int main(void){
     int *arr
     int n = 5;
     size_t bytes = n * sizeof(int);
@@ -172,7 +172,7 @@ hash table, and `cp::multimap` permits duplicate keys.
 #include <map.h>
 #include <cpstream>
 
-int main() {
+int main(void) {
     cp::map<int, int> scores{{1, 40}, {2, 60}};
     scores[3] = 90;
 
@@ -203,7 +203,7 @@ Sets contain unique values. A multiset permits duplicates.
 ```c++
 #include <set.h>
 
-int main() {
+int main(void) {
     cp::set<int> left{1, 2, 3};
     cp::set<int> right{3, 4, 5};
 
@@ -226,7 +226,7 @@ linked list.
 ```c++
 #include <list.h>
 
-int main() {
+int main(void) {
     cp::list<int> history{2, 3};
     cp::prepend(history, 1);
     cp::append(history, 4);
@@ -247,7 +247,7 @@ The size of a `cp::array` is part of its type and is known during compilation.
 ```c++
 #include <array.h>
 
-int main() {
+int main(void) {
     cp::array<int, 3> numbers{2, 4, 8};
     auto generated = cp::make_array(1, 3, 7, 15);
     auto zeros = cp::filled_array<int, 8>(0);
@@ -269,7 +269,7 @@ observe a shared object without extending its lifetime.
 ```c++
 #include <memory.h>
 
-int main() {
+int main(void) {
     cp::owner<int> unique = cp::make_owner<int>(42);
     cp::shared_owner<int> shared = cp::make_shared_owner<int>(100);
     cp::weak_owner<int> weak = shared;
@@ -297,7 +297,7 @@ struct point {
     int y;
 };
 
-int main() {
+int main(void) {
     cp::arena temporary(8192);
     point *position = temporary.create<point>(point{4, 9});
     int answer = position->x + position->y;
@@ -318,7 +318,7 @@ arguments that tooling can inspect or execute.
 ```c++
 #include <csxStudio.h>
 
-int main() {
+int main(void) {
     csx::studio::project app{"server"};
     app.entry = "src/server.csp";
     app.output = "server.exe";
@@ -367,7 +367,7 @@ csx --prefix .csx installed
 ```c++
 #include <cp/stdlib.h>
 
-int main() {
+int main(void) {
     printc(cp::color::decorate("server ready\n", cp::color::basic::green));
     cp::http::request request{"GET", "/health", "example.com", ""};
     cp::db::memory_table services;
@@ -394,7 +394,7 @@ operations explicit.
 ```c++
 #include <buge.h>
 
-int main() {
+int main(void) {
     bugemoan {
         auto access = bugemoan::enter_nightmare();
         auto memory = bugemoan::void_pointer::allocate(
@@ -595,3 +595,132 @@ float sum(const float *CP_RESTRICT input, unsigned count) {
 `CP_UNLIKELY` annotate branches, and the prefetch macros provide cache hints.
 Breaking a restrict, alignment, or `CP_ASSUME` promise is undefined behavior;
 these tools are for measured hot paths, not ordinary application code.
+
+## cspWindow desktop GUI
+
+Windows applications include `<cspWindow>` and use the `csp::ui` namespace.
+The framework provides an event loop, DPI-aware resizable windows, UTF-8 text,
+labels, buttons, text boxes, check boxes, progress bars, dialogs, keyboard
+events, close events, responsive bounds, and customizable colors.
+
+```c++
+#include <cspWindow>
+using namespace csp::ui;
+
+int main(void) {
+    application app;
+    window view({.title = "My C+ App", .width = 900, .height = 600});
+    widget greeting = view.label("Hello from C+", {24, 24, 300, 40});
+    view.button("Continue", {24, 88, 140, 38}, [&] {
+        greeting.set_text("Button clicked");
+    });
+    view.show();
+    return app.run();
+}
+```
+
+Build with the Windows system libraries:
+
+```powershell
+cspc build main.csp -o app.exe
+```
+
+The compiler recognizes the GUI header and automatically links the required
+Windows system libraries.
+
+## Low-level data and callable primitives
+
+`<lowlevel.h>` provides zero-overhead bit flags, typed function pointers,
+compile-time lookup tables, bounded character arrays, string literals, tagged
+unions, binary-size number literals, and C-compatible variadic access.
+
+```c++
+#include <lowlevel.h>
+#include <cpstream>
+
+#define DOUBLE(value) ((value) * 2)
+enum class permission : unsigned { read = 1, write = 2, execute = 4 };
+
+struct packet {
+    unsigned kind : 3;       // native bitfield
+    unsigned urgent : 1;
+};
+
+int add(int left, int right) { return left + right; }
+
+int main(void) {
+    using namespace cp::literals;
+    cp::bit_flags<permission> flags(permission::read);
+    flags.set(permission::write);
+    cp::function_pointer<int(int, int)> callback = &add;
+    constexpr cp::lookup_table<int, 4> square{0, 1, 4, 9};
+    constexpr cp::string_literal title("C+");
+    cp::char_array<32> text(title.view());
+    cp::tagged_union<int, const char *> value =
+        cp::tagged_union<int, const char *>::first(21);
+    auto memory = 4_KiB;
+    printc("%s %d %llu\n", text.c_str(), DOUBLE(value.first()),
+           static_cast<unsigned long long>(memory));
+    return callback(2, 3) == 5 && square[3] == 9 ? 0 : 1;
+}
+```
+
+Traditional variadic functions use `CSP_VA_LIST`, `CSP_VA_START`,
+`CSP_VA_ARG`, and `CSP_VA_END`. Ordinary formatted output should prefer
+`printc`, whose typed template arguments avoid manual `va_list` handling.
+Number tokens support decimal, hexadecimal, binary, octal, separators,
+floating-point exponents, and suffixes. String, raw-string, and character
+literals are recognized by the lexer rather than treated as unparsed text.
+
+## CP ASM (`.cpsm`)
+
+CP ASM is the low-level assembly language shipped with C+. It uses `.cpsm`
+source files and is handled by a dedicated lexer, parser, statement AST, and
+validated GNU-assembler emitter. It is not treated as C+ or copied blindly to
+the platform assembler.
+
+```asm
+; hello.cpsm
+.target x86_64
+
+.proc main
+    xor eax, eax
+    ret
+.end
+```
+
+Compile, check, emit native assembly, or create an object file:
+
+```powershell
+cspc check examples/hello.cpsm
+cspc asm examples/hello.cpsm -o hello.s
+cspc object examples/hello.cpsm -o hello.o
+cspc build examples/hello.cpsm -o hello.exe
+```
+
+CP ASM accepts `;` and `//` comments, labels such as `loop:`, bracketed memory
+operands, quoted strings, decimal/hexadecimal/binary integers, and native
+instruction operands. The core directives are:
+
+| Directive | Purpose |
+| --- | --- |
+| `.target x86_64` / `.target aarch64` | Select the instruction architecture |
+| `.proc name` / `.end` | Define a global procedure |
+| `.section text|data|rodata` | Select a section |
+| `.global name` / `.extern name` | Declare symbol visibility |
+| `.const name, value` | Define an assembler constant |
+| `.align n` | Request alignment |
+| `.byte`, `.word`, `.dword`, `.qword` | Emit fixed-width data |
+| `.ascii`, `.asciz` | Emit string data |
+
+x86-64 CP ASM uses Intel operand order and register spelling. AArch64 uses its
+native register and operand conventions. Cross-architecture builds require a
+backend assembler that supports the requested `--target`.
+
+The canonical C+ program entry point remains C-style:
+
+```c++
+int main(void) {
+    return 0;
+}
+```

@@ -125,7 +125,7 @@
         },
         {
           "name": "storage.type.cpp.csp",
-          "match": "\\b(cp::[a-zA-Z_][a-zA-Z0-9_]*)\\b"
+          "match": "\\b(cp::[a-zA-Z_][a-zA-Z0-9_]*|csp::ui::[a-zA-Z_][a-zA-Z0-9_]*|application|window|widget|check_box|progress_bar|window_config|palette|color|rect)\\b"
         },
         {
           "name": "storage.type.user.csp",
@@ -234,7 +234,7 @@
         },
         {
           "name": "support.function.builtin.csp",
-          "match": "\\b(printc|printf|scanf|fopen|fclose|fread|fwrite|malloc|free|memcpy|memset|strlen|strcpy|strcat|strcmp)\\b"
+          "match": "\\b(printc|printf|scanf|fopen|fclose|fread|fwrite|malloc|free|memcpy|memset|strlen|strcpy|strcat|strcmp|show|run|button|label|text_box|checkbox|progress|on_resize|on_close|on_key|message|set_text|bounds|checked)\\b"
         },
         {
           "name": "support.function.cuda.csp",
@@ -328,7 +328,7 @@
       "patterns": [
         {
           "name": "keyword.other.attribute.csp",
-          "match": "\\b(CSP_FORCE_INLINE|CSP_ALIGN|CSP_PACKED|CSP_EXTERN_C|CSP_RESTRICT|CP_LIKELY|CP_UNLIKELY|CP_ASSUME|__hopa__)\\b"
+          "match": "\\b(CSP_FORCE_INLINE|CSP_ALIGN|CSP_PACKED|CSP_EXTERN_C|CSP_RESTRICT|CSP_BITFIELD|CSP_VA_LIST|CSP_VA_START|CSP_VA_ARG|CSP_VA_END|CP_LIKELY|CP_UNLIKELY|CP_ASSUME|__hopa__)\\b"
         },
         {
           "name": "keyword.other.decorator.csp",
