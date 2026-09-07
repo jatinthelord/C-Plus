@@ -37,6 +37,13 @@
       "depends": ["cp-core"]
     },
     {
+      "name": "cp-lowlevel",
+      "version": "0.1.0",
+      "description": "Bit flags, function pointers, lookup tables, fixed strings, tagged unions, literals and C variadics",
+      "headers": ["cp/lowlevel.h", "lowlevel.h"],
+      "depends": ["cp-core"]
+    },
+    {
       "name": "cp-platform",
       "version": "0.3.0",
       "description": "Kernel, Linux and GNU platform primitives",
@@ -67,6 +74,13 @@
       "version": "0.1.0",
       "description": "ANSI, 16-color, true-color RGB, decoration and CSP palettes",
       "headers": ["cp/color.h", "color.h"],
+      "depends": ["cp-core"]
+    },
+    {
+      "name": "csp-window",
+      "version": "0.1.0",
+      "description": "Native Windows GUI framework with controls, events, responsive layout and UTF-8 text",
+      "headers": ["cp/window.h", "cspWindow"],
       "depends": ["cp-core"]
     },
     {

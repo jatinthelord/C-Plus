@@ -27,7 +27,7 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "C:/msys64/ucrt64/bin/cmake.exe" "C:/Users/DeLL/Desktop/C+"
+ConfigureCommand: "C:/msys64/mingw64/bin/cmake.exe" "C:/Users/DeLL/Desktop/C+"
 MakeCommand: C:\msys64\mingw64\bin\cmake.exe --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 

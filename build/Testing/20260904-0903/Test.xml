@@ -25,40 +25,11 @@
 	ProcessorClockFrequency="2592.000000"
 	>
 	<Testing>
-		<StartDateTime>Sep 06 13:08 India Standard Time</StartDateTime>
-		<StartTestTime>1788680290</StartTestTime>
-		<TestList>
-			<Test>./csp.headers</Test>
-		</TestList>
-		<Test Status="passed">
-			<Name>csp.headers</Name>
-			<Path>.</Path>
-			<FullName>./csp.headers</FullName>
-			<FullCommandLine>C:\Users\DeLL\Desktop\C+\build\csp_header_smoke.exe</FullCommandLine>
-			<StartTestTime>1788680290.085358</StartTestTime>
-			<Results>
-				<NamedMeasurement type="numeric/double" name="Execution Time">
-					<Value>0.029233</Value>
-				</NamedMeasurement>
-				<NamedMeasurement type="numeric/double" name="Processors">
-					<Value>1</Value>
-				</NamedMeasurement>
-				<NamedMeasurement type="text/string" name="Completion Status">
-					<Value>Completed</Value>
-				</NamedMeasurement>
-				<NamedMeasurement type="text/string" name="Command Line">
-					<Value>C:\Users\DeLL\Desktop\C+\build\csp_header_smoke.exe</Value>
-				</NamedMeasurement>
-				<NamedMeasurement type="text/string" name="Environment">
-					<Value>#CTEST_RESOURCE_GROUP_COUNT=</Value>
-				</NamedMeasurement>
-				<Measurement>
-					<Value></Value>
-				</Measurement>
-			</Results>
-		</Test>
-		<EndDateTime>Sep 06 13:08 India Standard Time</EndDateTime>
-		<EndTestTime>1788680290</EndTestTime>
+		<StartDateTime>Sep 07 18:42 India Standard Time</StartDateTime>
+		<StartTestTime>1788786748</StartTestTime>
+		<TestList/>
+		<EndDateTime>Sep 07 18:42 India Standard Time</EndDateTime>
+		<EndTestTime>1788786748</EndTestTime>
 		<ElapsedMinutes>0</ElapsedMinutes>
 	</Testing>
 </Site>

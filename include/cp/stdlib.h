@@ -13,6 +13,7 @@
 #include <cp/kernel.h>
 #include <cp/linux.h>
 #include <cp/list.h>
+#include <cp/lowlevel.h>
 #include <cp/map.h>
 #include <cp/math.h>
 #include <cp/memory.h>

@@ -1,0 +1,45 @@
+#include <lowlevel.h>
+#include <cpstream>
+
+#define DOUBLE(value) ((value) * 2)
+
+enum class permission : unsigned { read = 1, write = 2, execute = 4 };
+
+struct packet_bits {
+    unsigned kind : 3;
+    unsigned urgent : 1;
+    unsigned length : 12;
+};
+
+int add(int left, int right) { return left + right; }
+
+int variadic_sum(int count, ...) {
+    CSP_VA_LIST(arguments);
+    CSP_VA_START(arguments, count);
+    int result = 0;
+    for (int index = 0; index < count; ++index)
+        result += CSP_VA_ARG(arguments, int);
+    CSP_VA_END(arguments);
+    return result;
+}
+
+int main() {
+    using namespace cp::literals;
+    cp::bit_flags<permission> access(permission::read);
+    access.set(permission::write);
+    cp::function_pointer<int(int, int)> operation = &add;
+    constexpr cp::lookup_table<int, 4> squares{0, 1, 4, 9};
+    constexpr cp::string_literal title("C+ low level");
+    cp::char_array<32> message(title.view());
+    cp::tagged_union<int, const char *> result =
+        cp::tagged_union<int, const char *>::first(21);
+    packet_bits packet{5, 1, 64};
+    auto bytes = 4_KiB;
+    int value = DOUBLE(result.first());
+    printc("%s: %d %llu\n", message.c_str(), value,
+           static_cast<unsigned long long>(bytes));
+    return access.has(permission::write) && operation(2, 3) == 5 &&
+                   squares[3] == 9 && packet.kind == 5 &&
+                   variadic_sum(3, 1, 2, 3) == 6 && value == 42
+               ? 0 : 1;
+}

@@ -12,8 +12,14 @@
 #include <memory.h>
 #include <new.h>
 #include <set.h>
+#ifdef _WIN32
+#include <cspWindow>
+#endif
 
 int main() {
+#ifdef _WIN32
+  static_assert(csp::ui::color{23, 147, 209}.native() == RGB(23, 147, 209));
+#endif
   struct CSP_ALIGN(64) cache_line { int value; };
   static_assert(alignof(cache_line) == 64);
   static_assert(cp::abi::c_compatible_layout<cache_line>);

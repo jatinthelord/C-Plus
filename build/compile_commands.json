@@ -7,6 +7,12 @@
 },
 {
   "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -Wall -Wextra -Wpedantic -o CMakeFiles\\cspc.dir\\src\\cpasm.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\src\\cpasm.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/src/cpasm.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/cspc.dir/src/cpasm.cpp.obj"
+},
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -Wall -Wextra -Wpedantic -o CMakeFiles\\cspc.dir\\src\\ir.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\src\\ir.cpp",
   "file": "C:/Users/DeLL/Desktop/C+/src/ir.cpp",
   "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/cspc.dir/src/ir.cpp.obj"
@@ -58,6 +64,12 @@
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -o CMakeFiles\\csp_frontend_tests.dir\\tests\\frontend_tests.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\tests\\frontend_tests.cpp",
   "file": "C:/Users/DeLL/Desktop/C+/tests/frontend_tests.cpp",
   "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/csp_frontend_tests.dir/tests/frontend_tests.cpp.obj"
+},
+{
+  "directory": "C:/Users/DeLL/Desktop/C+/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/DeLL/Desktop/C+/src -g -o CMakeFiles\\csp_frontend_tests.dir\\src\\cpasm.cpp.obj -c C:\\Users\\DeLL\\Desktop\\C+\\src\\cpasm.cpp",
+  "file": "C:/Users/DeLL/Desktop/C+/src/cpasm.cpp",
+  "output": "C:/Users/DeLL/Desktop/C+/build/CMakeFiles/csp_frontend_tests.dir/src/cpasm.cpp.obj"
 },
 {
   "directory": "C:/Users/DeLL/Desktop/C+/build",

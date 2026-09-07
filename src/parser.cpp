@@ -820,6 +820,15 @@ std::unique_ptr<Node> Parser::parse_external_declaration() {
   if (accept(";"))
     return std::make_unique<Node>(NodeKind::Declaration, at, prefix);
 
+  // A parenthesized pointer name is a variable declaration, not a function:
+  // `int (*callback)(int)`. Keep its complete declarator in the AST.
+  if (peek().text == "(" && peek(1).text == "*") {
+    if (!prefix.empty())
+      prefix += ' ';
+    prefix += collect_until(";");
+    return std::make_unique<Node>(NodeKind::Declaration, at, prefix);
+  }
+
   if (accept("=")) {
     auto declaration =
         std::make_unique<Node>(NodeKind::Declaration, at, prefix);
