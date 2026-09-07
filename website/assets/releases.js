@@ -4,7 +4,8 @@ window.CSP_RELEASE_DATA = {
     {name:"CSP compiler",version:"0.2.0",platform:"windows",platformLabel:"Windows x86-64 · standalone",bytes:3738049,sha256:"65e0ea1f259bfe8c8b11bb17fc9dd46c552a584f4270031b31d267582abecb4f",url:"downloads/cspc-0.2.0-windows-x86_64.exe"},
     {name:"CSP source release",version:"0.2.0",platform:"source",platformLabel:"Portable source",bytes:357434,sha256:"43d48e22f57c77cc4fbe8aca124e376b0718c203f57bcc58cb7f9b96f253b440",url:"downloads/csp-0.2.0-source.tar.gz"},
     {name:"CSP standard libraries",version:"0.2.0",platform:"source",platformLabel:"Header archive",bytes:16798,sha256:"49d912a4ea55c928fca45e90a7a6d56180fe06e7205114d740179dd7093ae6e8",url:"downloads/csp-libraries-0.2.0.zip"},
-    {name:"Arch Linux package bundle",version:"0.2.0",platform:"arch",platformLabel:"PKGBUILD + source",bytes:284123,sha256:"f7c8940cda7041250105276e08e5d73fbe583dc645500a0e5052e4ddfd7a167e",url:"downloads/csp-0.2.0-arch-package.zip"}
+    {name:"Arch Linux package bundle",version:"0.2.0",platform:"arch",platformLabel:"PKGBUILD + source",bytes:284123,sha256:"f7c8940cda7041250105276e08e5d73fbe583dc645500a0e5052e4ddfd7a167e",url:"downloads/csp-0.2.0-arch-package.zip"},
+    {name:"C+ VS Code extension",version:"0.2.0",platform:"editor",platformLabel:"VS Code / Cursor",bytes:8376,sha256:"cfb10f2e2ea3accb6a915630d40f03e7977f0930b7f55a0ebf036b7f2047aa94",url:"downloads/csp-language-0.2.0.vsix"}
   ],
   packages: [
     {name:"csp",version:"0.2.0-1",arch:"x86_64",repository:"Core",description:"Configuration Senior Programming compiler and complete standard library",updated:"2026-09-04",license:"MIT",installedSize:"3.7 MiB",maintainer:"CSP Foundation",dependencies:["gcc-libs"],provides:"cspc=0.2.0",artifacts:["CSP compiler","CSP source release","Arch Linux package bundle"],files:["usr/bin/cspc","usr/include/cpstream","usr/include/vectors.h","usr/include/cp/*.h","usr/share/doc/csp/*"]},
@@ -19,6 +20,8 @@ window.CSP_RELEASE_DATA = {
     ,{name:"cp-containers",version:"0.5.0-1",arch:"any",repository:"Extra",description:"Ordered and hashed maps, sets, lists, and fixed arrays",updated:"2026-09-04",license:"MIT",installedSize:"16 KiB",maintainer:"CSP Foundation",dependencies:["cp-core"],provides:"cp-containers",artifacts:["CSP standard libraries"],files:["usr/include/cp/array.h","usr/include/cp/list.h","usr/include/cp/map.h","usr/include/cp/set.h"]}
     ,{name:"csp-stdlib",version:"0.5.0-1",arch:"any",repository:"Core",description:"Complete aggregate CSP standard library",updated:"2026-09-04",license:"MIT",installedSize:"2 KiB",maintainer:"CSP Foundation",dependencies:["cp-core","cp-containers","cp-platform","cp-network","cp-system"],provides:"cp-stdlib",artifacts:["CSP standard libraries"],files:["usr/include/cp/stdlib.h"]}
     ,{name:"csx-studio",version:"0.5.0-1",arch:"any",repository:"Extra",description:"Project models, build targets and command generation for CSP tooling",updated:"2026-09-04",license:"MIT",installedSize:"8 KiB",maintainer:"CSP Foundation",dependencies:["csp-stdlib"],provides:"csxStudio.h",artifacts:["CSP standard libraries"],files:["usr/include/csxStudio.h"]}
+    ,{name:"csp-window",version:"0.1.0-1",arch:"x86_64",repository:"Extra",description:"Native Windows GUI framework with controls, events, responsive layout and UTF-8 text",updated:"2026-09-06",license:"MIT",installedSize:"20 KiB",maintainer:"CSP Foundation",dependencies:["cp-core","user32","gdi32","comctl32"],provides:"cspWindow",artifacts:["CSP standard libraries"],files:["usr/include/cspWindow","usr/include/cp/window.h"]}
+    ,{name:"cp-lowlevel",version:"0.1.0-1",arch:"any",repository:"Core",description:"Bit flags, function pointers, lookup tables, fixed strings, tagged unions, literals and variadics",updated:"2026-09-07",license:"MIT",installedSize:"12 KiB",maintainer:"CSP Foundation",dependencies:["cp-core"],provides:"lowlevel.h",artifacts:["CSP standard libraries"],files:["usr/include/lowlevel.h","usr/include/cp/lowlevel.h"]}
   ],
   libraries: [
     {name:"<cpstream>",package:"cpstream",description:"Formatted printing with printc, print, and println."},
@@ -45,6 +48,8 @@ window.CSP_RELEASE_DATA = {
     ,{name:"<cp/list.h>",package:"cp-containers",description:"Linked and forward lists with insertion helpers."}
     ,{name:"<cp/new.h>",package:"cp-core",description:"Placement construction and monotonic arena allocation."}
     ,{name:"<csxStudio.h>",package:"csx-studio",description:"IDE projects, build targets, diagnostics, and compiler commands."}
+    ,{name:"<cspWindow>",package:"csp-window",description:"Native windows, widgets, input events, responsive layout, themes, and dialogs."}
+    ,{name:"<lowlevel.h>",package:"cp-lowlevel",description:"Bit flags, function pointers, lookup tables, fixed strings, tagged unions, number literals, and variadics."}
   ],
   releases: [
     {version:"0.2.0",date:"2026-09-04",channel:"current",summary:"Self-hosting bootstrap, native/C/Rust/LLVM/assembly targets, CUDA parsing, semantic analysis, and standard-library foundation."},
