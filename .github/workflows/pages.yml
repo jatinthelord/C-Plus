@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "website/**"
+      - "packages/csx/index.json"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -30,10 +31,15 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true
+      - name: Prepare website and package registry
+        run: |
+          mkdir -p _site/data
+          cp -a website/. _site/
+          cp packages/csx/index.json _site/data/csx-index.json
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
-          path: website
+          path: _site
       - name: Deploy website
         id: deployment
         uses: actions/deploy-pages@v4

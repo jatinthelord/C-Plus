@@ -1,10 +1,36 @@
 "use strict";
 
-(() => {
+(async () => {
   const data = window.CSP_RELEASE_DATA || { current: "", artifacts: [], packages: [], libraries: [], releases: [] };
   const body = document.body;
   const base = body.dataset.base || "";
   const page = body.dataset.page || "home";
+  try {
+    const response = await fetch(`${base}data/csx-index.json`, { cache: 'no-cache' });
+    if (response.ok) {
+      const registry = await response.json();
+      const previous = new Map(data.packages.map(item => [item.name, item]));
+      data.packages = registry.packages.map(item => {
+        const saved = previous.get(item.name) || {};
+        return {
+          arch: 'any', repository: 'Extra', license: 'MIT', installedSize: 'Source package',
+          maintainer: 'CSP Foundation', updated: '2026-09-08', artifacts: [],
+          ...saved,
+          name: item.name,
+          version: saved.version || `${item.version}-1`,
+          description: item.description,
+          dependencies: item.depends || [],
+          provides: (item.headers || []).join(', ') || saved.provides || item.name,
+          files: (item.headers || []).map(header => `usr/include/${header}`)
+        };
+      });
+      const headers = new Map();
+      registry.packages.forEach(item => (item.headers || []).forEach(header => {
+        if (!headers.has(header)) headers.set(header, { name: `<${header}>`, package: item.name, description: item.description });
+      }));
+      data.libraries = [...headers.values()];
+    }
+  } catch { /* Keep the embedded release data as an offline fallback. */ }
   const $ = selector => document.querySelector(selector);
   const $$ = selector => [...document.querySelectorAll(selector)];
   const escape = value => String(value).replace(/[&<>"']/g, character => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[character]));

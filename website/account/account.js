@@ -42,15 +42,16 @@ function identicon(target, seed) {
 async function inspectBackend() {
   const { error } = await supabase.from('profiles').select('id', { head: true, count: 'exact' }).limit(1);
   schemaReady = !error;
-  const missing = [];
-  if (!secureContext) missing.push('HTTPS');
-  if (!schemaReady) missing.push('database migration');
-  if (!config.turnstileSiteKey) missing.push('Turnstile site key');
-  if (missing.length) {
+  const blocking = [];
+  if (!secureContext) blocking.push('HTTPS');
+  if (!schemaReady) blocking.push('database migration');
+  if (blocking.length || !config.turnstileSiteKey) {
     configNotice.hidden = false;
-    configNotice.className = 'auth-notice error';
-    configNotice.textContent = `Registration setup required: ${missing.join(', ')}.`;
-    signup.querySelector('.auth-submit').disabled = true;
+    configNotice.className = `auth-notice ${blocking.length ? 'error' : 'warning'}`;
+    configNotice.textContent = blocking.length
+      ? `Registration setup required: ${blocking.join(', ')}.`
+      : 'Email verification is active. Automated CAPTCHA will activate when its public site key is configured.';
+    signup.querySelector('.auth-submit').disabled = blocking.length > 0;
   }
   try {
     const response = await fetch(`${config.supabaseUrl}/auth/v1/settings`, { headers: { apikey: config.supabaseKey } });
@@ -93,19 +94,19 @@ signin.addEventListener('submit', async event => {
 
 signup.addEventListener('submit', async event => {
   event.preventDefault();
-  if (!secureContext || !schemaReady || !config.turnstileSiteKey) return message(status, 'Secure registration is not configured yet.', 'error');
+  if (!secureContext || !schemaReady) return message(status, 'Secure registration is not configured yet.', 'error');
   const values = Object.fromEntries(new FormData(signup));
   const username = normalizedUsername(values.username);
   if (values.password !== values.confirm_password) return message(status, 'Passwords do not match.', 'error');
   if (!values.birth_date || values.birth_date > new Date().toISOString().slice(0, 10)) return message(status, 'Enter a valid birth date.', 'error');
   if (!/^[a-z0-9_]{3,30}$/.test(username) || reserved.has(username)) return message(status, 'Choose a valid, non-reserved username.', 'error');
-  if (!captchaToken) return message(status, 'Complete the security challenge.', 'error');
+  if (config.turnstileSiteKey && !captchaToken) return message(status, 'Complete the security challenge.', 'error');
   message(status, 'Checking username…');
   const { data: available, error: usernameError } = await supabase.rpc('username_available', { candidate: username });
   if (usernameError || !available) return message(status, usernameError ? 'Unable to verify that username.' : 'That username is unavailable.', 'error');
   const { error } = await supabase.auth.signUp({
     email: values.email.trim(), password: values.password,
-    options: { captchaToken, emailRedirectTo: `${location.origin}/account/`, data: {
+    options: { ...(captchaToken ? { captchaToken } : {}), emailRedirectTo: `${location.origin}/account/`, data: {
       username, first_name: values.first_name.trim(), last_name: values.last_name.trim(),
       birth_date: values.birth_date, bio: values.bio.trim()
     }}

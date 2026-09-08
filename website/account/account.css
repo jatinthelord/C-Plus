@@ -32,6 +32,7 @@
 .oauth-grid button:disabled { cursor: not-allowed; color: #9aa6ae; background: var(--soft); }
 .auth-status { min-height: 22px; margin: 18px 0 0; color: #4e5d68; font-size: 13px; text-align: center; }
 .auth-status.error,.auth-notice.error { color: #a52c35; }
+.auth-notice.warning { color: #74530a; }
 .auth-status.success { color: var(--green); }
 .auth-notice { margin-bottom: 18px; padding: 11px 13px; background: #fff6df; border: 1px solid #edd18a; border-radius: 6px; font-size: 12px; }
 .turnstile-slot { min-height: 0; margin: 15px 0; }

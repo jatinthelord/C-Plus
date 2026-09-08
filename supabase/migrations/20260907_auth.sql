@@ -1,5 +1,6 @@
 -- CSP Foundation authentication schema for Supabase.
 -- Run this in the SQL editor for project zaanoqtzttbbtjgbwhch.
+-- Copyright (c) 2025 CSP Foundation. All rights reserved.
 
 create table if not exists public.reserved_usernames (
   username text primary key,
@@ -76,6 +77,69 @@ create table if not exists public.moderation_events (
   notes text not null default '',
   created_at timestamptz not null default now()
 );
+
+alter table public.moderation_cases add column if not exists content_type text;
+alter table public.moderation_cases add column if not exists content_id uuid;
+
+create table if not exists public.wiki_posts (
+  id uuid primary key default gen_random_uuid(),
+  author_id uuid not null references public.profiles(id) on delete cascade,
+  title text not null,
+  category text not null,
+  body text not null,
+  status text not null default 'pending',
+  risk_flags text[] not null default '{}',
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  constraint wiki_title_length check (char_length(title) between 5 and 120),
+  constraint wiki_body_length check (char_length(body) between 20 and 10000),
+  constraint wiki_category check (category in ('question', 'tutorial', 'project', 'release', 'discussion')),
+  constraint wiki_status check (status in ('pending', 'published', 'rejected'))
+);
+
+create or replace function public.screen_wiki_post()
+returns trigger
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  content text := lower(new.title || ' ' || new.body);
+  flags text[] := '{}';
+  recent_count integer;
+begin
+  if not exists (
+    select 1 from public.profiles p
+    where p.id = new.author_id and p.moderation_status = 'active'
+  ) then
+    raise exception 'This account cannot publish posts';
+  end if;
+
+  select count(*) into recent_count from public.wiki_posts p
+  where p.author_id = new.author_id and p.created_at > now() - interval '1 hour';
+  if recent_count >= 5 then
+    raise exception 'Post rate limit reached; try again later';
+  end if;
+
+  if content ~ '\m(hack|hacking|exploit|exploiting|malware|ransomware|ddos|credential theft|steal passwords)\M' then
+    flags := array_append(flags, 'security_or_exploitation');
+  end if;
+  if content ~ '\m(idiot|moron|stupid|hate|abuse|harass|kill you)\M' then
+    flags := array_append(flags, 'abuse_or_disrespect');
+  end if;
+  if content ~ '\m(blame|accuse|fraud|criminal|scammer)\M' then
+    flags := array_append(flags, 'accusation_or_blame');
+  end if;
+
+  new.risk_flags := flags;
+  new.status := case when cardinality(flags) = 0 then 'published' else 'pending' end;
+  if cardinality(flags) > 0 then
+    insert into public.moderation_cases (subject_user_id, risk_score, reason, content_type, content_id)
+    values (new.author_id, 0.75, 'Wiki screening: ' || array_to_string(flags, ', '), 'wiki_post', new.id);
+  end if;
+  return new;
+end;
+$$;
 
 create or replace function public.username_available(candidate text)
 returns boolean
@@ -194,6 +258,14 @@ drop trigger if exists account_private_validate on public.account_private;
 create trigger account_private_validate before insert or update on public.account_private
 for each row execute function public.validate_private_account();
 
+drop trigger if exists wiki_posts_set_updated_at on public.wiki_posts;
+create trigger wiki_posts_set_updated_at before update on public.wiki_posts
+for each row execute function public.set_updated_at();
+
+drop trigger if exists wiki_posts_screen on public.wiki_posts;
+create trigger wiki_posts_screen before insert on public.wiki_posts
+for each row execute function public.screen_wiki_post();
+
 drop trigger if exists on_auth_user_created on auth.users;
 create trigger on_auth_user_created after insert on auth.users
 for each row execute function public.handle_new_user();
@@ -213,6 +285,7 @@ alter table public.account_private enable row level security;
 alter table public.reports enable row level security;
 alter table public.moderation_cases enable row level security;
 alter table public.moderation_events enable row level security;
+alter table public.wiki_posts enable row level security;
 
 drop policy if exists "Public active profiles are readable" on public.profiles;
 create policy "Public active profiles are readable" on public.profiles for select
@@ -238,6 +311,17 @@ drop policy if exists "Users read their reports" on public.reports;
 create policy "Users read their reports" on public.reports for select
 using (reporter_id = auth.uid());
 
+drop policy if exists "Published and owned wiki posts are readable" on public.wiki_posts;
+create policy "Published and owned wiki posts are readable" on public.wiki_posts for select
+using (status = 'published' or author_id = auth.uid());
+
+drop policy if exists "Active users submit wiki posts" on public.wiki_posts;
+create policy "Active users submit wiki posts" on public.wiki_posts for insert
+with check (
+  author_id = auth.uid()
+  and exists (select 1 from public.profiles p where p.id = auth.uid() and p.moderation_status = 'active')
+);
+
 revoke all on table public.reserved_usernames, public.profiles, public.account_private,
   public.reports, public.moderation_cases, public.moderation_events from anon, authenticated;
 grant select on table public.profiles to anon, authenticated;
@@ -246,6 +330,9 @@ grant select on table public.account_private to authenticated;
 grant update (first_name, last_name, birth_date, updated_at) on public.account_private to authenticated;
 grant select, insert on table public.reports to authenticated;
 grant execute on function public.username_available(text) to anon, authenticated;
+revoke all on table public.wiki_posts from anon, authenticated;
+grant select on table public.wiki_posts to anon, authenticated;
+grant insert (author_id, title, category, body) on public.wiki_posts to authenticated;
 
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
 values ('avatars', 'avatars', true, 2097152, array['image/jpeg', 'image/png', 'image/webp'])

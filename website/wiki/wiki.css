@@ -41,5 +41,18 @@
 .docs-post h3 { margin: 0 0 3px; font-size: 16px; }
 .docs-post small { color: var(--muted); }
 .docs-post p { margin: 8px 0 0; color: #4f5e69; }
+.moderation-bots { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+.moderation-bots article { padding: 15px; background: var(--soft); border: 1px solid var(--line); border-radius: 6px; }
+.moderation-bots strong,.moderation-bots span { display: block; }
+.moderation-bots strong { font-size: 13px; }
+.moderation-bots span,.moderation-note { margin-top: 4px; color: var(--muted); font-size: 12px; }
+.wiki-post-form { margin-top: 24px; padding: 22px; background: #fff; border: 1px solid var(--line); border-radius: 7px; }
+.wiki-post-form label { display: block; margin-bottom: 15px; color: #3e4b56; font-size: 12px; font-weight: 750; }
+.wiki-post-form textarea { display: block; width: 100%; min-height: 150px; margin-top: 6px; padding: 11px; resize: vertical; border: 1px solid #bdc9d2; border-radius: 6px; font: inherit; }
+.wiki-post-form select { display: block; width: 100%; min-height: 42px; margin-top: 6px; padding: 0 10px; background: #fff; border: 1px solid #bdc9d2; border-radius: 6px; }
+.wiki-post-form .wiki-rule-check { display: flex; gap: 9px; align-items: center; font-weight: 500; }
+.wiki-rule-check input { width: auto; margin: 0; }
+#wiki-post-status { color: var(--muted); font-size: 13px; }
+.post-state { display: inline-block; margin-left: 7px; padding: 2px 6px; color: #815c0b; background: #fff2c7; border-radius: 20px; font-size: 10px; font-weight: 800; text-transform: uppercase; }
 @media (max-width: 850px) { .docs-hero { grid-template-columns: 1fr; gap: 28px; } .docs-layout { grid-template-columns: 1fr; gap: 28px; } .docs-sidebar { display: none; } }
-@media (max-width: 640px) { .docs-page { padding-block: 30px 60px; } .docs-hero { padding-bottom: 32px; } .docs-hero h1 { font-size: 42px; } .docs-cards,.rules-grid { grid-template-columns: 1fr; } .docs-section-head { display: block; } .docs-section-head > a { display: inline-block; margin-top: 8px; } }
+@media (max-width: 640px) { .docs-page { padding-block: 30px 60px; } .docs-hero { padding-bottom: 32px; } .docs-hero h1 { font-size: 42px; } .docs-cards,.rules-grid,.moderation-bots { grid-template-columns: 1fr; } .docs-section-head { display: block; } .docs-section-head > a { display: inline-block; margin-top: 8px; } }
