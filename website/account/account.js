@@ -19,6 +19,7 @@ let captchaToken = '';
 let recoveryMode = false;
 const providerAvailability = new Map();
 const secureContext = location.protocol === 'https:' || ['localhost', '127.0.0.1'].includes(location.hostname);
+const pendingEmailKey = 'csp_pending_verification_email';
 
 const reserved = new Set(['admin','administrator','moderator','staff','support','root','system','security','csp','cspfoundation','csp_foundation','official']);
 const normalizedUsername = value => value.trim().toLowerCase();
@@ -27,6 +28,24 @@ const message = (node, text, kind = '') => {
   node.textContent = text;
   node.className = `auth-status ${kind}`.trim();
 };
+
+const readableAuthError = error => {
+  const raw = error?.message || 'The authentication service did not complete the request.';
+  if (/email not confirmed/i.test(raw)) return 'Verify your email before signing in. Check your inbox and spam folder, or use Resend verification email.';
+  if (/invalid login credentials/i.test(raw)) return 'Incorrect email or password. If this is a new account, verify the email first.';
+  if (/user already registered/i.test(raw)) return 'An account already uses this email. Sign in or reset its password.';
+  if (/rate limit/i.test(raw)) return 'Too many email requests. Wait a few minutes, then try again.';
+  return raw;
+};
+
+async function withBusyButton(form, text, operation) {
+  const button = form.querySelector('[type="submit"]');
+  const original = button.textContent;
+  button.disabled = true;
+  button.textContent = text;
+  try { return await operation(); }
+  finally { button.disabled = false; button.textContent = original; }
+}
 
 function identicon(target, seed) {
   target.className = 'avatar';
@@ -93,9 +112,10 @@ signin.addEventListener('submit', async event => {
   event.preventDefault();
   if (!secureContext) return message(status, 'Sign-in requires HTTPS.', 'error');
   const values = Object.fromEntries(new FormData(signin));
-  message(status, 'Signing in…');
-  const { error } = await supabase.auth.signInWithPassword({ email: values.email.trim(), password: values.password });
-  if (error) message(status, error.message, 'error');
+  message(status, 'Signing in...');
+  const { error } = await withBusyButton(signin, 'Signing in...', () => supabase.auth.signInWithPassword({ email: values.email.trim(), password: values.password }));
+  if (error) message(status, readableAuthError(error), 'error');
+  else sessionStorage.removeItem(pendingEmailKey);
 });
 
 signup.addEventListener('submit', async event => {
@@ -107,19 +127,20 @@ signup.addEventListener('submit', async event => {
   if (!values.birth_date || values.birth_date > new Date().toISOString().slice(0, 10)) return message(status, 'Enter a valid birth date.', 'error');
   if (!/^[a-z0-9_]{3,30}$/.test(username) || reserved.has(username)) return message(status, 'Choose a valid, non-reserved username.', 'error');
   if (config.turnstileSiteKey && !captchaToken) return message(status, 'Complete the security challenge.', 'error');
-  message(status, 'Checking username…');
+  message(status, 'Checking username...');
   const { data: available, error: usernameError } = await supabase.rpc('username_available', { candidate: username });
   if (usernameError || !available) return message(status, usernameError ? 'Unable to verify that username.' : 'That username is unavailable.', 'error');
-  const { error } = await supabase.auth.signUp({
+  const { error } = await withBusyButton(signup, 'Creating account...', () => supabase.auth.signUp({
     email: values.email.trim(), password: values.password,
     options: { ...(captchaToken ? { captchaToken } : {}), emailRedirectTo: `${location.origin}/account/`, data: {
       username, first_name: values.first_name.trim(), last_name: values.last_name.trim(),
       birth_date: values.birth_date, bio: values.bio.trim()
     }}
-  });
+  }));
   captchaToken = '';
   window.turnstile?.reset();
-  if (error) return message(status, error.message, 'error');
+  if (error) return message(status, readableAuthError(error), 'error');
+  sessionStorage.setItem(pendingEmailKey, values.email.trim());
   signup.reset();
   message(status, 'Account created. Check your email to verify it before signing in.', 'success');
 });
@@ -129,14 +150,23 @@ $('#forgot-password').addEventListener('click', async () => {
   const email = signin.elements.email.value.trim();
   if (!email) return message(status, 'Enter your email address first.', 'error');
   const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: `${location.origin}/account/` });
-  message(status, error ? error.message : 'If the account exists, a recovery email has been sent.', error ? 'error' : 'success');
+  message(status, error ? readableAuthError(error) : 'If the account exists, a recovery email has been sent.', error ? 'error' : 'success');
+});
+
+$('#resend-verification').addEventListener('click', async () => {
+  if (!secureContext) return message(status, 'Email verification requires HTTPS.', 'error');
+  const email = signin.elements.email.value.trim() || sessionStorage.getItem(pendingEmailKey) || '';
+  if (!email) return message(status, 'Enter your email address first.', 'error');
+  message(status, 'Sending verification email...');
+  const { error } = await supabase.auth.resend({ type: 'signup', email, options: { emailRedirectTo: `${location.origin}/account/` } });
+  message(status, error ? readableAuthError(error) : 'Verification email sent. Check your inbox and spam folder.', error ? 'error' : 'success');
 });
 
 document.querySelectorAll('[data-provider]').forEach(button => button.addEventListener('click', async () => {
   if (!secureContext) return message(status, 'Social sign-in requires HTTPS.', 'error');
   if (!providerAvailability.get(button.dataset.provider)) return message(status, `${button.textContent} sign-in must be enabled by the site administrator in Supabase first.`, 'error');
   const { error } = await supabase.auth.signInWithOAuth({ provider: button.dataset.provider, options: { redirectTo: `${location.origin}/account/` } });
-  if (error) message(status, error.message, 'error');
+  if (error) message(status, readableAuthError(error), 'error');
 }));
 
 async function renderSession(session) {
