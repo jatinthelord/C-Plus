@@ -1,0 +1,10 @@
+// CSP-CODEGEN: name=matrix-2160-string target=host kind=string
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+int csp_test_matrix_2160_string(const char *text) {
+    int checksum = 0;
+    for (int index = 0; text[index] != '\0'; ++index) checksum += text[index];
+    return checksum;
+}
+
+int main() { return csp_test_matrix_2160_string("CSP-codegen") == 0; }

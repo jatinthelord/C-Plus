@@ -1,0 +1,27 @@
+#include <csp>
+#include <cpstream> // this make it to self host it means it compiles it self
+
+__hopa__ void p(int parser, int *bin){
+    struct parser{
+        SEMICOLON;
+        COLON;
+        ASTERISK;
+        QUESTION_MARK;
+        GREATER_THAN;
+        BIGGER_THAN;
+        LESS_THAN;
+        PERCENT;
+        FULL_STOP;
+        BRACKETS;
+        CURLY_BRACES;
+        SQUARE_BRACKETS;
+    };
+    error_t error((ERR!!!)WG!!!);
+}
+ int main(int x, int y)
+ {
+    x = 12;
+    y = 3983;
+  printc("hello world from csp itself, it answer two things without printc");
+  return x + y;
+ }

@@ -1,0 +1,11 @@
+// CSP-CODEGEN: name=category-auxiliary target=host kind=integer
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+unsigned long long csp_test_category_auxiliary(unsigned long long value) {
+    value ^= value >> 17;
+    value *= 0xff51afd7ed558ccdULL;
+    value ^= value >> 22;
+    return value;
+}
+
+int main() { return csp_test_category_auxiliary(0x12345678ULL) == 0; }

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "CP ASM",
+  "scopeName": "source.cpasm",
+  "patterns": [
+    {"include": "#comments"},
+    {"include": "#strings"},
+    {"include": "#directives"},
+    {"include": "#labels"},
+    {"include": "#registers"},
+    {"include": "#numbers"},
+    {"include": "#instructions"}
+  ],
+  "repository": {
+    "comments": {"patterns": [{"name": "comment.line.semicolon.cpasm", "match": ";.*$"}, {"name": "comment.line.double-slash.cpasm", "match": "//.*$"}]},
+    "strings": {"patterns": [{"name": "string.quoted.double.cpasm", "begin": "\"", "end": "\"", "patterns": [{"name": "constant.character.escape.cpasm", "match": "\\\\."}]}]},
+    "directives": {"patterns": [{"name": "keyword.control.directive.cpasm", "match": "\\.(?:target|section|global|extern|align|byte|word|dword|qword|ascii|asciz|const|proc|end)\\b"}]},
+    "labels": {"patterns": [{"name": "entity.name.label.cpasm", "match": "^[ \\t]*([A-Za-z_.$][A-Za-z0-9_.$@]*)(?=:)"}]},
+    "registers": {"patterns": [{"name": "variable.language.register.cpasm", "match": "\\b(?:r(?:ax|bx|cx|dx|si|di|bp|sp|8|9|1[0-5])|e(?:ax|bx|cx|dx|si|di|bp|sp)|[abcd][lh]|xmm(?:[0-9]|[12][0-9]|3[01])|x(?:[0-9]|[12][0-9]|30)|w(?:[0-9]|[12][0-9]|30)|sp|lr)\\b"}]},
+    "numbers": {"patterns": [{"name": "constant.numeric.cpasm", "match": "(?<![A-Za-z_])(?:0[xX][0-9A-Fa-f]+|0[bB][01]+|[0-9]+)\\b"}]},
+    "instructions": {"patterns": [{"name": "keyword.operator.instruction.cpasm", "match": "^[ \\t]*(?:mov|lea|push|pop|add|sub|imul|mul|idiv|div|inc|dec|and|or|xor|not|shl|shr|sar|cmp|test|call|ret|jmp|je|jne|jg|jge|jl|jle|nop|syscall|ldr|str|adr|bl|br|b|cbz|cbnz)\\b"}]}
+  }
+}

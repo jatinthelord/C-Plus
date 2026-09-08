@@ -1,0 +1,22 @@
+#include <cstdio>
+#include <cstdlib>
+
+unsigned long long mix_value(unsigned long long value) {
+    value ^= value >> 12;
+    value ^= value << 25;
+    value ^= value >> 27;
+    return value * 2685821657736338717ULL;
+}
+
+int main(int argc, char **argv) {
+    unsigned long long rounds = 25000000ULL;
+    if (argc > 1) rounds = strtoull(argv[1], nullptr, 10);
+    unsigned long long state = 88172645463325252ULL;
+    unsigned long long checksum = 0;
+    for (unsigned long long index = 0; index < rounds; ++index) {
+        state = mix_value(state + index);
+        checksum ^= state;
+    }
+    std::printf("%llu\n", checksum);
+    return 0;
+}

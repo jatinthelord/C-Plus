@@ -1,0 +1,13 @@
+// CSP-CODEGEN: name=sparc-struct-abi target=sparc64-unknown-linux-gnu kind=structure
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+struct csp_test_sparc_struct_abi_pair { double left; double right; };
+
+csp_test_sparc_struct_abi_pair csp_test_sparc_struct_abi(csp_test_sparc_struct_abi_pair value) {
+    return {value.right + 1.0, value.left - 1.0};
+}
+
+int main() {
+    csp_test_sparc_struct_abi_pair value = csp_test_sparc_struct_abi({4.0, 9.0});
+    return value.left > value.right ? 0 : 1;
+}

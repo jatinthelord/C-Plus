@@ -1,0 +1,20 @@
+# NovaGit Native Ignore Rules
+#   _   _                 ____ _ _
+#  | \ | | _____   ____ _ / ___(_) |_
+#  |  \| |/ _ \ \ / / _` | |  _| | __|
+#  | |\  | (_) \ V / (_| | |_| | | |_
+#  |_| \_|\___/ \_/ \__,_|\____|_|\__|
+
+[Bb]in/
+[Oo]bj/
+.vs/
+*.log
+*.tmp
+*.bak
+.env
+.env.*
+!.env.example
+secrets.json
+Thumbs.db
+Desktop.ini
+.DS_Store

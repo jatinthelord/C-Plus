@@ -1,0 +1,17 @@
+mir.module "tests/semantic/valid_match.csp"
+  function "int describe" {
+    bb0.entry:
+      switch color ::red:bb2 ::green:bb3 ::blue:bb4 exit:bb1 at 4:3
+    bb1.switch.exit:
+      return 0 at 9:3
+    bb2.switch.case:
+      return 1 at 5:20
+    bb3.switch.case:
+      return 2 at 6:22
+    bb4.switch.case:
+      return 3 at 7:21
+  }
+  function "int main" {
+    bb0.entry:
+      return ConditionalExpression at 12:14
+  }

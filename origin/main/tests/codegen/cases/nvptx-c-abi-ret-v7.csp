@@ -1,0 +1,13 @@
+// CSP-CODEGEN: name=nvptx-c-abi-ret-v7 target=nvptx64-nvidia-cuda kind=structure
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+struct csp_test_nvptx_c_abi_ret_v7_pair { double left; double right; };
+
+csp_test_nvptx_c_abi_ret_v7_pair csp_test_nvptx_c_abi_ret_v7(csp_test_nvptx_c_abi_ret_v7_pair value) {
+    return {value.right + 1.0, value.left - 1.0};
+}
+
+int main() {
+    csp_test_nvptx_c_abi_ret_v7_pair value = csp_test_nvptx_c_abi_ret_v7({4.0, 9.0});
+    return value.left > value.right ? 0 : 1;
+}

@@ -1,0 +1,186 @@
+{
+  "name": "csx",
+  "version": "0.3.0",
+  "description": "The C+ package manager and official systems library registry",
+  "packages": [
+    {
+      "name": "csp",
+      "version": "0.2.0",
+      "description": "C+ compiler, standard library and native toolchain",
+      "headers": [],
+      "depends": ["csp-stdlib", "csx-studio"]
+    },
+    {
+      "name": "cp-core",
+      "version": "0.3.0",
+      "description": "Types, memory, algorithms, math, atomics, scopes and vectors",
+      "headers": [
+        "cp/algorithm.h",
+        "cp/atomic.h",
+        "cp/hardware.h",
+        "cp/math.h",
+        "cp/memory.h",
+        "cp/result.h",
+        "cp/scope.h",
+        "cp/types.h",
+        "cp/vector.h",
+        "cp/new.h",
+        "memory.h",
+        "new.h"
+      ]
+    },
+    {
+      "name": "cp-platform",
+      "version": "0.3.0",
+      "description": "Kernel, Linux and GNU platform primitives",
+      "headers": [
+        "cp/kernel.h",
+        "cp/linux.h",
+        "cp/gnu.h"
+      ],
+      "depends": [
+        "cp-core"
+      ]
+    },
+    {
+      "name": "cp-network",
+      "version": "0.3.0",
+      "description": "Portable sockets, HTTP request helpers and site URL parsing",
+      "headers": [
+        "cp/socket.h",
+        "cp/http.h",
+        "cp/site.h"
+      ],
+      "depends": [
+        "cp-platform"
+      ]
+    },
+    {
+      "name": "cp-color",
+      "version": "0.1.0",
+      "description": "ANSI, 16-color, true-color RGB, decoration and CSP palettes",
+      "headers": ["cp/color.h", "color.h"],
+      "depends": ["cp-core"]
+    },
+    {
+      "name": "cp-database",
+      "version": "0.1.0",
+      "description": "Typed database values, rows, drivers, transactions and embedded tables",
+      "headers": ["cp/database.h", "database.h"],
+      "depends": ["cp-core"]
+    },
+    {
+      "name": "cp-safety",
+      "version": "0.1.0",
+      "description": "SG contracts, non-null pointers, checked casts and BG bounds guards",
+      "headers": ["cp/safety.h", "safety.h"],
+      "depends": ["cp-core"]
+    },
+    {
+      "name": "cp-bugemoan",
+      "version": "0.1.0",
+      "description": "Nightmare-level capability-gated void pointers, allocation and checked recovery",
+      "headers": ["cp/bugemoan.h", "buge.h"],
+      "depends": ["cp-safety"]
+    },
+    {
+      "name": "cp-cuda",
+      "version": "0.3.0",
+      "description": "CUDA runtime and device memory helpers",
+      "headers": [
+        "cp/cuda.h"
+      ],
+      "depends": [
+        "cp-core"
+      ]
+    },
+    {
+      "name": "cpstream",
+      "version": "0.3.0",
+      "description": "Formatted output and stream primitives",
+      "headers": [
+        "cpstream"
+      ],
+      "depends": [
+        "cp-core"
+      ]
+    },
+    {
+      "name": "cp-vectors",
+      "version": "0.3.0",
+      "description": "Fixed, dynamic, PMR, and non-owning vector containers",
+      "headers": [
+        "vectors.h"
+      ],
+      "depends": [
+        "cp-core"
+      ]
+    },
+    {
+      "name": "cp-containers",
+      "version": "0.5.0",
+      "description": "Ordered and hashed maps, sets, lists, and fixed arrays",
+      "headers": [
+        "cp/array.h",
+        "cp/list.h",
+        "cp/map.h",
+        "cp/set.h",
+        "array.h",
+        "list.h",
+        "map.h",
+        "set.h"
+      ],
+      "depends": [
+        "cp-core"
+      ]
+    },
+    {
+      "name": "cp-system",
+      "version": "0.4.0",
+      "description": "Handwritten filesystem, networking, process, time, and serialization APIs",
+      "headers": [
+        "cp/filesystem.h",
+        "cp/networking.h",
+        "cp/process.h",
+        "cp/serialization.h",
+        "cp/time.h"
+      ],
+      "depends": [
+        "cp-core"
+      ]
+    },
+    {
+      "name": "csp-stdlib",
+      "version": "0.5.0",
+      "description": "Complete aggregate CSP standard library header",
+      "headers": [
+        "cp/stdlib.h"
+      ],
+      "depends": [
+        "cp-core",
+        "cp-containers",
+        "cp-platform",
+        "cp-network",
+        "cp-color",
+        "cp-database",
+        "cp-safety",
+        "cp-bugemoan",
+        "cp-cuda",
+        "cpstream",
+        "cp-vectors",
+        "cp-system"
+      ]
+    },
+    {
+      "name": "csx-studio",
+      "version": "0.5.0",
+      "description": "Project models, build targets and command generation for CSP tooling",
+      "headers": [
+        "csxStudio.h"
+      ],
+      "depends": [
+        "csp-stdlib"
+      ]
+    }
+  ]
+}

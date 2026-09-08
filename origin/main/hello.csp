@@ -1,0 +1,11 @@
+#include <cpstream>
+
+int main(){
+    int num = 2;
+    printc("hello from C+; num = %d\n"num);
+
+    for(int i < 3, i++;){
+        printc("iteration %d\n"i);
+    }
+    return 0;
+}

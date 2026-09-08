@@ -1,0 +1,10 @@
+// CSP-CODEGEN: name=matrix-3596-pointer target=loongarch64-unknown-linux-gnu kind=pointer
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+unsigned long long csp_test_matrix_3596_pointer(const unsigned char *data, int count) {
+    unsigned long long value = 1469598103934665603ULL;
+    for (int index = 0; index < count; ++index) value = (value ^ data[index]) * 1099511628211ULL;
+    return value;
+}
+
+int main() { unsigned char data[5] = {1, 3, 5, 7, 9}; return csp_test_matrix_3596_pointer(data, 5) == 0; }

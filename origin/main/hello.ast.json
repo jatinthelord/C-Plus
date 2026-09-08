@@ -1,0 +1,130 @@
+{
+  "kind": "Program",
+  "value": "",
+  "location": {"file": "hello.csp", "line": 1, "column": 1},
+  "children": [
+    {
+      "kind": "Preprocessor",
+      "value": "#include <cpstream>",
+      "location": {"file": "hello.csp", "line": 1, "column": 1},
+      "children": [      ]
+    },
+    {
+      "kind": "Function",
+      "value": "int main",
+      "location": {"file": "hello.csp", "line": 3, "column": 1},
+      "children": [
+        {
+          "kind": "Parameter",
+          "value": "",
+          "location": {"file": "hello.csp", "line": 3, "column": 1},
+          "children": [          ]
+        },
+        {
+          "kind": "Block",
+          "value": "",
+          "location": {"file": "hello.csp", "line": 3, "column": 11},
+          "children": [
+            {
+              "kind": "Declaration",
+              "value": "int num = 2",
+              "location": {"file": "hello.csp", "line": 4, "column": 5},
+              "children": [              ]
+            },
+            {
+              "kind": "ExpressionStatement",
+              "value": "",
+              "location": {"file": "hello.csp", "line": 5, "column": 5},
+              "children": [
+                {
+                  "kind": "CallExpression",
+                  "value": "",
+                  "location": {"file": "hello.csp", "line": 5, "column": 11},
+                  "children": [
+                    {
+                      "kind": "Identifier",
+                      "value": "printc",
+                      "location": {"file": "hello.csp", "line": 5, "column": 5},
+                      "children": [                      ]
+                    },
+                    {
+                      "kind": "Literal",
+                      "value": "\"hello from C+; num = %d\\n\"",
+                      "location": {"file": "hello.csp", "line": 5, "column": 12},
+                      "children": [                      ]
+                    },
+                    {
+                      "kind": "Identifier",
+                      "value": "num",
+                      "location": {"file": "hello.csp", "line": 5, "column": 39},
+                      "children": [                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "For",
+              "value": "int i < 3 , i ++",
+              "location": {"file": "hello.csp", "line": 7, "column": 5},
+              "children": [
+                {
+                  "kind": "Block",
+                  "value": "",
+                  "location": {"file": "hello.csp", "line": 7, "column": 25},
+                  "children": [
+                    {
+                      "kind": "ExpressionStatement",
+                      "value": "",
+                      "location": {"file": "hello.csp", "line": 8, "column": 9},
+                      "children": [
+                        {
+                          "kind": "CallExpression",
+                          "value": "",
+                          "location": {"file": "hello.csp", "line": 8, "column": 15},
+                          "children": [
+                            {
+                              "kind": "Identifier",
+                              "value": "printc",
+                              "location": {"file": "hello.csp", "line": 8, "column": 9},
+                              "children": [                              ]
+                            },
+                            {
+                              "kind": "Literal",
+                              "value": "\"iteration %d\\n\"",
+                              "location": {"file": "hello.csp", "line": 8, "column": 16},
+                              "children": [                              ]
+                            },
+                            {
+                              "kind": "Identifier",
+                              "value": "i",
+                              "location": {"file": "hello.csp", "line": 8, "column": 32},
+                              "children": [                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "Return",
+              "value": "",
+              "location": {"file": "hello.csp", "line": 10, "column": 5},
+              "children": [
+                {
+                  "kind": "Literal",
+                  "value": "0",
+                  "location": {"file": "hello.csp", "line": 10, "column": 12},
+                  "children": [                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

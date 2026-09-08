@@ -1,0 +1,11 @@
+// CSP-CODEGEN: name=matrix-1715-integer target=wasm32-unknown-unknown kind=integer
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+unsigned long long csp_test_matrix_1715_integer(unsigned long long value) {
+    value ^= value >> 19;
+    value *= 0xff51afd7ed558ccdULL;
+    value ^= value >> 20;
+    return value;
+}
+
+int main() { return csp_test_matrix_1715_integer(0x12345678ULL) == 0; }

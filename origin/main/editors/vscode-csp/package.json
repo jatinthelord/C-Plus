@@ -1,0 +1,68 @@
+{
+  "name": "csp-language",
+  "displayName": "C+ Language Support",
+  "description": "Language support, diagnostics, formatting, build and run tools for C+ (.csp) and CP ASM (.cpsm)",
+  "version": "0.2.0",
+  "publisher": "csp-foundation",
+  "license": "MIT",
+  "main": "./extension.js",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": ["Programming Languages", "Linters", "Formatters"],
+  "activationEvents": ["onLanguage:csp", "onLanguage:cpasm"],
+  "contributes": {
+    "languages": [
+      {
+        "id": "csp",
+        "aliases": ["C+", "csp"],
+        "extensions": [".csp"],
+        "configuration": "./language-configuration.json",
+        "icon": {"light": "./csp-file-icon.svg", "dark": "./csp-file-icon.svg"}
+      },
+      {
+        "id": "cpasm",
+        "aliases": ["CP ASM", "cpasm"],
+        "extensions": [".cpsm"],
+        "configuration": "./cpasm-language-configuration.json",
+        "icon": {"light": "./csp-file-icon.svg", "dark": "./csp-file-icon.svg"}
+      }
+    ],
+    "grammars": [
+      {
+        "language": "csp",
+        "scopeName": "source.csp",
+        "path": "./syntaxes/cplus.tmLanguage.json"
+      },
+      {
+        "language": "cpasm",
+        "scopeName": "source.cpasm",
+        "path": "./syntaxes/cpasm.tmLanguage.json"
+      }
+    ],
+    "snippets": [{"language": "csp", "path": "./snippets/csp.json"}],
+    "iconThemes": [{"id": "csp-file-icons", "label": "C+ File Icons", "path": "./csp-icon-theme.json"}],
+    "commands": [
+      {"command": "csp.check", "title": "C+: Check Current File"},
+      {"command": "csp.build", "title": "C+: Build Current File"},
+      {"command": "csp.run", "title": "C+: Run Current File"},
+      {"command": "csp.format", "title": "C+: Format Current File"},
+      {"command": "csp.showAst", "title": "C+: Show AST"},
+      {"command": "csp.showMir", "title": "C+: Show MIR"}
+    ],
+    "menus": {
+      "editor/title": [
+        {"command": "csp.run", "when": "editorLangId == csp || editorLangId == cpasm", "group": "navigation@1"},
+        {"command": "csp.build", "when": "editorLangId == csp || editorLangId == cpasm", "group": "navigation@2"}
+      ]
+    },
+    "configuration": {
+      "title": "C+",
+      "properties": {
+        "csp.compilerPath": {"type": "string", "default": "cspc", "description": "Path to the C+ compiler."},
+        "csp.buildArguments": {"type": "array", "items": {"type": "string"}, "default": ["-O2"], "description": "Extra arguments used by C+ build and run commands."},
+        "csp.diagnostics.onSave": {"type": "boolean", "default": true, "description": "Run the C+ frontend when a .csp file is saved."}
+      }
+    }
+  }
+}

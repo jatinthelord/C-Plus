@@ -1,0 +1,3 @@
+constexpr int computed_answer(int value) { return value * 2; }
+static_assert(computed_answer(2) == 5, "arithmetic must remain correct");
+int main() { return 0; }

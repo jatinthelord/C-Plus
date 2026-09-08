@@ -1,0 +1,8 @@
+{
+  "iconDefinitions": {
+    "_csp": { "iconPath": "./csp-file-icon.svg" }
+  },
+  "languageIds": {
+    "csp": "_csp"
+  }
+}

@@ -1,0 +1,10 @@
+#include <cpstream>
+#include <vectors.h>
+
+int main() {
+    cp::float3 position = {1.0f, 2.0f, 3.0f};
+    cp::float3 velocity = {0.5f, 1.0f, -1.0f};
+    cp::float3 result = position + velocity;
+    printc("vector = (%f, %f, %f)\n", result[0], result[1], result[2]);
+    return 0;
+}

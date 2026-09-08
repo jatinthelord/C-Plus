@@ -1,0 +1,11 @@
+// CSP-CODEGEN: name=matrix-3220-integer target=bpfel-unknown-none kind=integer
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+unsigned long long csp_test_matrix_3220_integer(unsigned long long value) {
+    value ^= value >> 11;
+    value *= 0xff51afd7ed558ccdULL;
+    value ^= value >> 30;
+    return value;
+}
+
+int main() { return csp_test_matrix_3220_integer(0x12345678ULL) == 0; }

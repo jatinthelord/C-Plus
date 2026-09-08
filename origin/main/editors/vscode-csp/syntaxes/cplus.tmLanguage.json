@@ -1,0 +1,352 @@
+{
+  "name": "C+",
+  "scopeName": "source.csp",
+  "fileTypes": ["csp"],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#preprocessor"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#types"
+    },
+    {
+      "include": "#literals"
+    },
+    {
+      "include": "#operators"
+    },
+    {
+      "include": "#functions"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#punctuation"
+    },
+    {
+      "include": "#cuda"
+    },
+    {
+      "include": "#attributes"
+    },
+    {
+      "include": "#storage"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.csp",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.csp",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "preprocessor": {
+      "patterns": [
+        {
+          "name": "meta.preprocessor.include.csp",
+          "begin": "^\\s*(#include)\\s*",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.control.include.csp"
+            }
+          },
+          "end": "$",
+          "patterns": [
+            {
+              "name": "string.quoted.other.lt-gt.include.csp",
+              "match": "<[^>]*>"
+            },
+            {
+              "name": "string.quoted.double.include.csp",
+              "match": "\"[^\"]*\""
+            }
+          ]
+        },
+        {
+          "name": "meta.preprocessor.macro.csp",
+          "match": "^\\s*(#define|#undef|#if|#ifdef|#ifndef|#elif|#else|#endif|#error|#pragma|#line)\\b"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.csp",
+          "match": "\\b(if|else|switch|case|default|break|continue|return|goto|do|while|for|match|let|mut)\\b"
+        },
+        {
+          "name": "keyword.control.loop.csp",
+          "match": "\\b(for|while|do)\\b"
+        },
+        {
+          "name": "keyword.other.csp",
+          "match": "\\b(using|namespace|template|typename|class|struct|enum|union|typedef|sizeof|alignof|offsetof|static_assert)\\b"
+        },
+        {
+          "name": "keyword.control.condition.csp",
+          "match": "\\b(if|else|switch|case|default)\\b"
+        },
+        {
+          "name": "keyword.control.flow.csp",
+          "match": "\\b(break|continue|return|goto)\\b"
+        },
+        {
+          "name": "keyword.other.special.csp",
+          "match": "\\b(match|let|mut|const|consteval|constexpr|volatile|mutable|explicit)\\b"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "storage.type.primitive.csp",
+          "match": "\\b(int|void|char|float|double|bool|auto|signed|unsigned|long|short|size_t|ptrdiff_t|nullptr_t)\\b"
+        },
+        {
+          "name": "storage.type.fixed.csp",
+          "match": "\\b(u8|u16|u32|u64|u128|unichar)\\b"
+        },
+        {
+          "name": "storage.type.cpp.csp",
+          "match": "\\b(cp::[a-zA-Z_][a-zA-Z0-9_]*|csp::ui::[a-zA-Z_][a-zA-Z0-9_]*|application|window|widget|check_box|progress_bar|window_config|palette|color|rect)\\b"
+        },
+        {
+          "name": "storage.type.user.csp",
+          "match": "\\b([A-Z][a-zA-Z0-9_]*)\\b"
+        },
+        {
+          "name": "storage.type.template.csp",
+          "match": "\\b(template|typename)\\b"
+        },
+        {
+          "name": "storage.type.enum.csp",
+          "match": "\\b(enum|enum class)\\b"
+        },
+        {
+          "name": "storage.type.struct.csp",
+          "match": "\\b(struct|class|union)\\b"
+        }
+      ]
+    },
+    "literals": {
+      "patterns": [
+        {
+          "name": "constant.language.csp",
+          "match": "\\b(true|false|nullptr|NULL|__LINE__|__FILE__|__DATE__|__TIME__|__STDC__|__cplusplus)\\b"
+        },
+        {
+          "name": "constant.numeric.csp",
+          "match": "\\b(0[xX][0-9a-fA-F]+|0[bB][01]+|0[0-7]*|[0-9]+(\\.[0-9]+)?([eE][+-]?[0-9]+)?[fFlL]?)\\b"
+        },
+        {
+          "name": "constant.character.csp",
+          "match": "'([^'\\\\]|\\\\([abfnrtv'\"?\\\\]|[0-7]{1,3}|x[0-9a-fA-F]+))'"
+        },
+        {
+          "name": "string.quoted.double.csp",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.csp",
+              "match": "\\\\([abfnrtv'\"?\\\\]|[0-7]{1,3}|x[0-9a-fA-F]+)"
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.raw.csp",
+          "begin": "R\"([^()\\s]{0,16})\\(",
+          "end": "\\)\\1\"",
+          "patterns": []
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.csp",
+          "match": "\\b(sizeof|alignof|offsetof|typeid|new|delete)\\b"
+        },
+        {
+          "name": "keyword.operator.arithmetic.csp",
+          "match": "[+\\-*/%]=?|\\+\\+|--"
+        },
+        {
+          "name": "keyword.operator.comparison.csp",
+          "match": "==|!=|<=|>=|<|>"
+        },
+        {
+          "name": "keyword.operator.bitwise.csp",
+          "match": "&|\\||\\^|~|<<|>>"
+        },
+        {
+          "name": "keyword.operator.logical.csp",
+          "match": "&&|\\|\\|"
+        },
+        {
+          "name": "keyword.operator.assignment.csp",
+          "match": "=|\\+=|\\-=|\\*=|/=|%=|&=|\\|=|\\^=|<<=|>>="
+        },
+        {
+          "name": "keyword.operator.ternary.csp",
+          "match": "\\?|:"
+        },
+        {
+          "name": "keyword.operator.member.csp",
+          "match": "\\.|->|::"
+        },
+        {
+          "name": "keyword.operator.address.csp",
+          "match": "&|\\*"
+        },
+        {
+          "name": "keyword.operator.ellipsis.csp",
+          "match": "\\.\\.\\."
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "entity.name.function.csp",
+          "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=\\()"
+        },
+        {
+          "name": "entity.name.function.definition.csp",
+          "match": "^\\s*([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=\\()"
+        },
+        {
+          "name": "support.function.builtin.csp",
+          "match": "\\b(printc|printf|scanf|fopen|fclose|fread|fwrite|malloc|free|memcpy|memset|strlen|strcpy|strcat|strcmp|show|run|button|label|text_box|checkbox|progress|on_resize|on_close|on_key|message|set_text|bounds|checked)\\b"
+        },
+        {
+          "name": "support.function.cuda.csp",
+          "match": "\\b(threadIdx|blockIdx|blockDim|gridDim|__global__|__device__|__host__|cudaMalloc|cudaFree|cudaMemcpy)\\b"
+        },
+        {
+          "name": "support.function.container.csp",
+          "match": "\\b(cp::find_value|cp::value_copy|cp::contains|cp::set_union|cp::set_intersection|cp::prepend|cp::append|cp::erase_if|cp::make_array|cp::filled_array|cp::in_bounds|cp::make_owner|cp::make_shared_owner|cp::make_array_owner|cp::view|cp::copy_bytes|cp::zero_bytes|cp::equal_bytes|cp::align_up|cp::construct|cp::destroy)\\b"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.csp",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.csp",
+              "match": "\\\\([abfnrtv'\"?\\\\]|[0-7]{1,3}|x[0-9a-fA-F]+)"
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.csp",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "name": "constant.character.escape.csp",
+              "match": "\\\\([abfnrtv'\"?\\\\]|[0-7]{1,3}|x[0-9a-fA-F]+)"
+            }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.csp",
+          "match": "\\b(0[xX][0-9a-fA-F]+|0[bB][01]+|0[0-7]*|[0-9]+(\\.[0-9]+)?([eE][+-]?[0-9]+)?[fFlL]?)\\b"
+        },
+        {
+          "name": "constant.numeric.float.csp",
+          "match": "\\b[0-9]+\\.[0-9]+([eE][+-]?[0-9]+)?[fFlL]?\\b"
+        },
+        {
+          "name": "constant.numeric.integer.csp",
+          "match": "\\b[0-9]+[uUlL]?\\b"
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.section.scope.csp",
+          "match": "\\{|\\}|;|:|,"
+        },
+        {
+          "name": "punctuation.section.parens.csp",
+          "match": "\\(|\\)"
+        },
+        {
+          "name": "punctuation.section.brackets.csp",
+          "match": "\\[|\\]"
+        },
+        {
+          "name": "punctuation.section.angle.csp",
+          "match": "<|>"
+        }
+      ]
+    },
+    "cuda": {
+      "patterns": [
+        {
+          "name": "keyword.other.cuda.csp",
+          "match": "\\b(__global__|__device__|__host__|__shared__|__constant__|__managed__)\\b"
+        },
+        {
+          "name": "keyword.operator.cuda.csp",
+          "match": "<<<|>>>"
+        },
+        {
+          "name": "entity.name.function.cuda.csp",
+          "match": "\\b(threadIdx|blockIdx|blockDim|gridDim)\\b"
+        }
+      ]
+    },
+    "attributes": {
+      "patterns": [
+        {
+          "name": "keyword.other.attribute.csp",
+          "match": "\\b(CSP_FORCE_INLINE|CSP_ALIGN|CSP_PACKED|CSP_EXTERN_C|CSP_RESTRICT|CSP_BITFIELD|CSP_VA_LIST|CSP_VA_START|CSP_VA_ARG|CSP_VA_END|CP_LIKELY|CP_UNLIKELY|CP_ASSUME|__hopa__)\\b"
+        },
+        {
+          "name": "keyword.other.decorator.csp",
+          "match": "\\b(noexcept|override|final|virtual|abstract|static|inline|constexpr|consteval)\\b"
+        }
+      ]
+    },
+    "storage": {
+      "patterns": [
+        {
+          "name": "storage.modifier.csp",
+          "match": "\\b(static|extern|register|thread_local|local|global)\\b"
+        },
+        {
+          "name": "storage.type.qualifier.csp",
+          "match": "\\b(const|volatile|mutable|restrict|_Atomic)\\b"
+        }
+      ]
+    }
+  }
+}

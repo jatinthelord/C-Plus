@@ -1,0 +1,10 @@
+// CSP-CODEGEN: name=x86_64-windows-float-abi target=host kind=floating
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+double csp_test_x86_64_windows_float_abi(double value, double low, double high) {
+    if (value < low) return low;
+    if (value > high) return high;
+    return value * 2.0;
+}
+
+int main() { return csp_test_x86_64_windows_float_abi(4.0, 0.0, 10.0) > 0.0 ? 0 : 1; }

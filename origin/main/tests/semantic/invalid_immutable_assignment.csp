@@ -1,0 +1,5 @@
+int main() {
+  let answer = 42;
+  answer = 43;
+  return answer;
+}

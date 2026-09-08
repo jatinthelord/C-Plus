@@ -1,0 +1,8 @@
+int main() {
+  let answer = 42;
+  let mut total = 0;
+  total += answer;
+  int? maybe = 7;
+  if (maybe.has_value()) total += maybe.value();
+  return total == 49 ? 0 : 1;
+}

@@ -1,0 +1,57 @@
+name: Deploy CSP Foundation website
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "website/**"
+      - "packages/csx/index.json"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Prepare website and package registry
+        run: |
+          mkdir -p _site/data _site/code
+          cp -a website/. _site/
+          cp packages/csx/index.json _site/data/csx-index.json
+          git ls-files | grep -E '(^|/)(CMakeLists\.txt|[^/]+\.(csp|cpsm|c|cc|cpp|h|hpp|s|asm|rs|go|zig|py|ps1|sh|md|txt|json|toml|ya?ml|cmake))$' | grep -Ev '^(website|build|build-release|install-test|\.edge[^/]*)/' | sort > /tmp/csp-source-files
+          while IFS= read -r file; do
+            mkdir -p "_site/code/$(dirname "$file")"
+            cp -- "$file" "_site/code/$file"
+          done < /tmp/csp-source-files
+          jq -Rn --arg generated "$(date -u +%FT%TZ)" '{generated:$generated,files:[inputs]}' < /tmp/csp-source-files > _site/data/source-manifest.json
+          if curl --fail --silent --show-error 'https://zaanoqtzttbbtjgbwhch.supabase.co/rest/v1/public_bans?select=username,public_reason,banned_at,expires_at&order=banned_at.desc' \
+            -H 'apikey: sb_publishable_NYVWw_7AeIlhzwyjWqnF4g_hVG5Qlok' > /tmp/csp-public-bans; then
+            jq '{schema:1,notice:"Public moderation transparency record; private identity data is never included.",banned:.}' /tmp/csp-public-bans > _site/banned.json
+          else
+            cp website/banned.json _site/banned.json
+          fi
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy website
+        id: deployment
+        uses: actions/deploy-pages@v4

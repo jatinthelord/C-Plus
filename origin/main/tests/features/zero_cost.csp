@@ -1,0 +1,26 @@
+#include <abi.h>
+#include <memory.h>
+
+template <class T>
+CSP_FORCE_INLINE T twice(T value) { return value + value; }
+
+struct CSP_ALIGN(32) Packet {
+  int values[8];
+};
+
+CSP_EXTERN_C int csp_ffi_add(int left, int right) { return left + right; }
+
+consteval int configured_size() { return 8 * 4; }
+static_assert(configured_size() == sizeof(Packet));
+static_assert(cp::abi::c_compatible_layout<Packet>);
+
+int main() {
+  auto integer = twice<int>(21);
+  auto floating = twice<double>(1.5);
+  cp::owner<Packet> packet = cp::make_owner<Packet>();
+  packet->values[0] = integer;
+  return packet->values[0] == 42 && floating == 3.0 &&
+                 csp_ffi_add(2, 3) == 5
+             ? 0
+             : 1;
+}

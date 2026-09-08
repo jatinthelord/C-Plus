@@ -1,0 +1,11 @@
+// CSP-CODEGEN: name=matrix-1960-integer target=s390x-unknown-linux-gnu kind=integer
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+unsigned long long csp_test_matrix_1960_integer(unsigned long long value) {
+    value ^= value >> 9;
+    value *= 0xff51afd7ed558ccdULL;
+    value ^= value >> 35;
+    return value;
+}
+
+int main() { return csp_test_matrix_1960_integer(0x12345678ULL) == 0; }

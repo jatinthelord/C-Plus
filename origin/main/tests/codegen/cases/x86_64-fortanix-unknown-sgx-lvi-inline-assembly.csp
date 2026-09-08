@@ -1,0 +1,11 @@
+// CSP-CODEGEN: name=x86_64-fortanix-unknown-sgx-lvi-inline-assembly target=host kind=integer
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+unsigned long long csp_test_x86_64_fortanix_unknown_sgx_lvi_inline_assembly(unsigned long long value) {
+    value ^= value >> 7;
+    value *= 0xff51afd7ed558ccdULL;
+    value ^= value >> 19;
+    return value;
+}
+
+int main() { return csp_test_x86_64_fortanix_unknown_sgx_lvi_inline_assembly(0x12345678ULL) == 0; }

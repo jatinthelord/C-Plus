@@ -1,0 +1,17 @@
+#include <cp/stdlib.h>
+
+cp::result<int, const char*> divide(int a, int b) {
+    if (b == 0) return cp::unexpected<const char*>{"division by zero"};
+    return a / b;
+}
+
+int main() {
+    cp::dynamic_vector<int> values = {1, 2, 3, 4};
+    auto answer = divide(cp::sum(values), 2);
+    if (!answer) {
+        printc("error: %s\n", answer.error());
+        return 1;
+    }
+    printc("answer = %d\n", answer.value());
+    return 0;
+}

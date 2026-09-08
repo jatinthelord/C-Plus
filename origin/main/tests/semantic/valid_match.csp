@@ -1,0 +1,12 @@
+enum class Color { red, green, blue };
+
+int describe(Color color) {
+  match (color) {
+  case Color::red: return 1;
+  case Color::green: return 2;
+  case Color::blue: return 3;
+  }
+  return 0;
+}
+
+int main() { return describe(Color::green) == 2 ? 0 : 1; }

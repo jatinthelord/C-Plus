@@ -1,0 +1,32 @@
+# Maintainer: CSP Foundation <packages@csp-lang.org>
+pkgname=csp
+pkgver=0.2.0
+pkgrel=1
+pkgdesc='Configuration Senior Programming compiler and standard library'
+arch=('x86_64')
+url='https://csp-lang.org'
+license=('MIT')
+install=csp.install
+depends=('gcc-libs')
+makedepends=('cmake' 'ninja' 'gcc' 'go')
+optdepends=('clang: LLVM IR and cross-target assembly output'
+            'cuda: NVIDIA CUDA compilation backend'
+            'rust: compile generated Rust sources')
+source=("$pkgname-$pkgver.tar.gz")
+sha256sums=('43d48e22f57c77cc4fbe8aca124e376b0718c203f57bcc58cb7f9b96f253b440')
+
+build() {
+  cmake -S "$pkgname-$pkgver" -B build -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTING=ON
+  cmake --build build
+}
+
+check() {
+  ctest --test-dir build --output-on-failure
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

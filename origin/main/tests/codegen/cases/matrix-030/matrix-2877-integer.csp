@@ -1,0 +1,11 @@
+// CSP-CODEGEN: name=matrix-2877-integer target=powerpc64le-unknown-linux-gnu kind=integer
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+unsigned long long csp_test_matrix_2877_integer(unsigned long long value) {
+    value ^= value >> 8;
+    value *= 0xff51afd7ed558ccdULL;
+    value ^= value >> 32;
+    return value;
+}
+
+int main() { return csp_test_matrix_2877_integer(0x12345678ULL) == 0; }

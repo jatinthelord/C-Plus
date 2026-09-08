@@ -1,0 +1,11 @@
+// CSP-CODEGEN: name=matrix-3997-integer target=nvptx64-nvidia-cuda kind=integer
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+unsigned long long csp_test_matrix_3997_integer(unsigned long long value) {
+    value ^= value >> 23;
+    value *= 0xff51afd7ed558ccdULL;
+    value ^= value >> 25;
+    return value;
+}
+
+int main() { return csp_test_matrix_3997_integer(0x12345678ULL) == 0; }

@@ -1,0 +1,19 @@
+thir.module "tests/features/inference.csp" inferred 3
+  %0 = Function : unknown "int main" at 1:1
+    %1 = Block : unknown at 1:12
+      %2 = Declaration : int "auto answer = 42" at 2:3
+      %3 = Declaration : double "auto ratio = 2.5" at 3:3
+      %4 = Declaration : bool "auto enabled = true" at 4:3
+      %5 = Return : int const at 5:3
+        %6 = ConditionalExpression : int const at 5:52
+          %7 = BinaryExpression : bool "&&" at 5:39
+            %8 = BinaryExpression : bool "&&" at 5:23
+              %9 = BinaryExpression : bool "==" at 5:17
+                %10 = Identifier : int "answer" at 5:10
+                %11 = Literal : int const "42" at 5:20
+              %12 = BinaryExpression : bool "==" at 5:32
+                %13 = Identifier : double "ratio" at 5:26
+                %14 = Literal : double const "2.5" at 5:35
+            %15 = Identifier : bool "enabled" at 5:42
+          %16 = Literal : int const "0" at 5:52
+          %17 = Literal : int const "1" at 5:56

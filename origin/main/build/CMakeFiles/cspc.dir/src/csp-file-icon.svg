@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title>C+ source file icon</title>
+  <desc>Blue document tile with a gold C plus symbol for C+ source files.</desc>
+  <rect width="256" height="256" rx="28" fill="#1793d1"/>
+  <path d="M176 24h28l28 28v152a28 28 0 0 1-28 28H52a28 28 0 0 1-28-28V52a28 28 0 0 1 28-28h124Z" fill="#116d9f"/>
+  <path d="M176 24v28h28" fill="none" stroke="#dff3fc" stroke-width="8" stroke-linejoin="round"/>
+  <text x="128" y="151" fill="#fff" font-family="Georgia,serif" font-size="92" font-weight="700" text-anchor="middle">C</text>
+  <path d="M151 181h54M178 154v54" stroke="#f4b942" stroke-width="13" stroke-linecap="square"/>
+  <path d="M48 213h160" stroke="#f4b942" stroke-width="5" opacity=".9"/>
+</svg>

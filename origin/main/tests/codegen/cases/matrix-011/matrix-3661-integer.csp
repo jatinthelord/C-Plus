@@ -1,0 +1,11 @@
+// CSP-CODEGEN: name=matrix-3661-integer target=sparc64-unknown-linux-gnu kind=integer
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+unsigned long long csp_test_matrix_3661_integer(unsigned long long value) {
+    value ^= value >> 10;
+    value *= 0xff51afd7ed558ccdULL;
+    value ^= value >> 34;
+    return value;
+}
+
+int main() { return csp_test_matrix_3661_integer(0x12345678ULL) == 0; }

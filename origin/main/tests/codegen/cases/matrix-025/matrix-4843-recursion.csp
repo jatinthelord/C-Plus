@@ -1,0 +1,9 @@
+// CSP-CODEGEN: name=matrix-4843-recursion target=bpfel-unknown-none kind=recursion
+// Generated from the CSP code-generation manifest; edit the generator, not this file.
+
+int csp_test_matrix_4843_recursion(int value, int accumulator) {
+    if (value <= 0) return accumulator;
+    return csp_test_matrix_4843_recursion(value - 1, accumulator + value);
+}
+
+int main() { return csp_test_matrix_4843_recursion(10, 0) == 55 ? 0 : 1; }

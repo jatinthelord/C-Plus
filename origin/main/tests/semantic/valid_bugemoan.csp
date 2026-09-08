@@ -1,0 +1,12 @@
+#include <buge.h>
+
+int main() {
+  bugemoan {
+    auto access = bugemoan::enter_nightmare();
+    auto erased = bugemoan::void_pointer::allocate(access, sizeof(int), alignof(int));
+    int *value = bugemoan::construct<int>(access, erased, 42);
+    if (*value != 42) return 1;
+    bugemoan::destroy(access, value);
+  }
+  return 0;
+}

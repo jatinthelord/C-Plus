@@ -1,0 +1,15 @@
+# NovaGit Native Attributes
+# Syntax: pattern attribute, -attribute, or attribute=value
+*.cs text diff=csharp
+*.csproj text
+*.json text
+*.md text
+*.html text
+*.css text
+*.js text
+*.txt text
+*.png binary
+*.ico binary
+*.exe binary
+*.dll binary
+*.zip binary

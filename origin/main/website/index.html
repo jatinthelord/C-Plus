@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#111820">
+  <meta name="description" content="C+ is a systems programming language and compiler project maintained by the CSP Foundation.">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta property="og:title" content="CSP Foundation — The C+ programming language">
+  <meta property="og:description" content="Compiler, packages, libraries, documentation, and reproducible benchmarks for C+.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cspfoundations.org/">
+  <link rel="canonical" href="https://cspfoundations.org/">
+  <link rel="icon" type="image/svg+xml" href="assets/csp-logo.svg">
+  <title>CSP Foundation — C+ Programming Language</title>
+  <link rel="stylesheet" href="assets/site.css?v=20260907-2">
+  <link rel="stylesheet" href="assets/home.css?v=20260908-1">
+  <script defer src="assets/releases.js?v=20260907-2"></script>
+  <script defer src="assets/site.js?v=20260907-2"></script>
+</head>
+<body data-page="home" data-base="">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Main navigation">
+      <a class="brand" href="./" aria-label="CSP Foundation home"><span class="brand-mark">C<span>+</span></span><span><strong>CSP</strong><small>Foundation</small></span></a>
+      <button class="menu-button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <div class="nav-links" id="nav-links">
+        <a href="./" aria-current="page">Home</a><a href="packages/">Packages</a><a href="libraries/">Libraries</a><a href="source/">Source</a><a href="benchmarks/">Benchmarks</a><a href="wiki/">Wiki</a><a href="releases/">Releases</a><a href="account/">Account</a><a class="nav-download" href="download/">Download</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-grid shell">
+        <div>
+          <p class="eyebrow">Configuration Senior Programming</p>
+          <h1>Build close to the hardware. <span>Stay in control.</span></h1>
+          <p class="hero-lead">C+ is an independent systems-language project focused on direct code generation, explicit memory, practical tooling, and a growing standard library.</p>
+          <div class="hero-actions"><a class="button primary" href="download/">Download CSP <span data-current-version></span></a><a class="button ghost" href="wiki/">Read the guide</a></div>
+        </div>
+        <div class="hero-code" aria-label="C+ code example">
+          <div class="terminal-bar"><i></i><i></i><i></i></div>
+          <pre><code><span class="token-muted">// hello.csp</span>
+#include <span class="token-green">&lt;cpstream&gt;</span>
+
+int main(void) {
+    printc(<span class="token-green">"Hello from C+\n"</span>);
+    return 0;
+}
+
+<span class="token-muted">$ cspc hello.csp -o hello</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Project summary"><div class="stats-grid shell">
+      <div class="stat"><strong>.csp</strong><span>Source format</span></div>
+      <div class="stat"><strong data-current-version>0.2.0</strong><span>Current release</span></div>
+      <div class="stat"><strong>CSX</strong><span>Package manager</span></div>
+      <div class="stat"><strong>MIT</strong><span>Open source</span></div>
+    </div></section>
+
+    <section class="section shell">
+      <header class="section-heading"><p class="eyebrow">One connected toolchain</p><h2>Everything needed to explore C+</h2><p>Compiler releases, verified artifacts, package metadata, libraries, and honest performance data—organized as a real project, not a single landing page.</p></header>
+      <div class="feature-grid">
+        <article class="feature-card"><div class="feature-icon">01</div><h3>Compiler & toolchain</h3><p>Parse, check, compile, inspect generated output, and work across supported targets.</p><a href="releases/">Release history →</a></article>
+        <article class="feature-card"><div class="feature-icon">02</div><h3>Package repository</h3><p>Search packages, inspect dependencies and files, and verify download hashes.</p><a href="packages/">Browse packages →</a></article>
+        <article class="feature-card"><div class="feature-icon">03</div><h3>Standard library</h3><p>Containers, memory, networking, HTTP, platform support, GUI, and low-level tools.</p><a href="libraries/">Explore libraries →</a></article>
+        <article class="feature-card"><div class="feature-icon">04</div><h3>CP ASM</h3><p>Write validated <code>.cpsm</code> assembly with a dedicated lexer, parser, AST, and native emitter.</p><a href="wiki/#cpasm">Learn CP ASM →</a></article>
+        <article class="feature-card"><div class="feature-icon">05</div><h3>Measured performance</h3><p>See reproducible results, machine details, commands, and limits—without fake claims.</p><a href="benchmarks/">View benchmarks →</a></article>
+        <article class="feature-card"><div class="feature-icon">06</div><h3>Language reference</h3><p>Learn syntax, compiler workflows, libraries, packaging, and project structure.</p><a href="wiki/">Open the wiki →</a></article>
+      </div>
+    </section>
+
+    <section class="section tint"><div class="quick-start shell">
+      <div><p class="eyebrow">Quick start</p><h2>From source to executable.</h2><p>Install CSP, create a <code>.csp</code> file, and compile it directly. Use CSX when the project needs additional packages.</p><a class="button primary" href="download/">Get the compiler</a></div>
+      <pre><code><span class="token-muted"># inspect available packages</span>
+csx list
+
+<span class="token-muted"># install a dependency locally</span>
+csx --prefix .csx install cp-network
+
+<span class="token-muted"># compile an optimized program</span>
+cspc main.csp -O3 -o app</code></pre>
+    </div></section>
+
+    <section class="section shell">
+      <header class="section-heading"><p class="eyebrow">Project updates</p><h2>Built in public</h2></header>
+      <div class="news-grid">
+        <a class="news-card" href="releases/"><time datetime="2026-09-07">7 September 2026</time><h3>CSP toolchain and ecosystem update</h3><p>New compiler capabilities, standard-library modules, package metadata, and editor tooling are available in the repository.</p></a>
+        <a class="news-card" href="benchmarks/"><time datetime="2026-09-07">7 September 2026</time><h3>Reproducible benchmark suite</h3><p>Compare C+ with C, C++, Rust, and assembly using published methodology and raw measurements.</p></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="footer-grid shell"><div><strong>CSP Foundation</strong><p>Configuration Senior Programming. An independent open-source project.</p></div><nav class="footer-links" aria-label="Footer"><a href="packages/">Packages</a><a href="source/">Source</a><a href="wiki/">Documentation</a><a href="https://github.com/jatinthelord/C-Plus">GitHub</a></nav></div></footer>
+</body>
+</html>
