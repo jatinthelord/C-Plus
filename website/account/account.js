@@ -12,8 +12,12 @@ const signin = $('#signin-form');
 const authPanel = $('#auth-panel');
 const profilePanel = $('#profile-panel');
 const configNotice = $('#auth-config-status');
+const passwordPanel = $('#password-panel');
+const passwordStatus = $('#password-status');
 let schemaReady = false;
 let captchaToken = '';
+let recoveryMode = false;
+const providerAvailability = new Map();
 const secureContext = location.protocol === 'https:' || ['localhost', '127.0.0.1'].includes(location.hostname);
 
 const reserved = new Set(['admin','administrator','moderator','staff','support','root','system','security','csp','cspfoundation','csp_foundation','official']);
@@ -58,11 +62,13 @@ async function inspectBackend() {
     const settings = await response.json();
     document.querySelectorAll('[data-provider]').forEach(button => {
       const enabled = Boolean(settings.external?.[button.dataset.provider]);
-      button.disabled = !enabled;
+      providerAvailability.set(button.dataset.provider, enabled);
+      button.classList.toggle('unavailable', !enabled);
+      button.setAttribute('aria-disabled', String(!enabled));
       button.title = enabled ? `Continue with ${button.textContent}` : `${button.textContent} is not enabled in Supabase yet`;
     });
   } catch {
-    document.querySelectorAll('[data-provider]').forEach(button => { button.disabled = true; });
+    document.querySelectorAll('[data-provider]').forEach(button => providerAvailability.set(button.dataset.provider, false));
   }
 }
 
@@ -128,11 +134,14 @@ $('#forgot-password').addEventListener('click', async () => {
 
 document.querySelectorAll('[data-provider]').forEach(button => button.addEventListener('click', async () => {
   if (!secureContext) return message(status, 'Social sign-in requires HTTPS.', 'error');
+  if (!providerAvailability.get(button.dataset.provider)) return message(status, `${button.textContent} sign-in must be enabled by the site administrator in Supabase first.`, 'error');
   const { error } = await supabase.auth.signInWithOAuth({ provider: button.dataset.provider, options: { redirectTo: `${location.origin}/account/` } });
   if (error) message(status, error.message, 'error');
 }));
 
 async function renderSession(session) {
+  if (recoveryMode) return;
+  passwordPanel.hidden = true;
   if (!session?.user) {
     authPanel.hidden = false;
     profilePanel.hidden = true;
@@ -143,12 +152,15 @@ async function renderSession(session) {
   const user = session.user;
   $('#profile-email').textContent = user.email || '';
   identicon($('#profile-avatar'), user.id);
-  const { data: profile } = await supabase.from('profiles').select('username,display_name,bio,avatar_path').eq('id', user.id).maybeSingle();
+  const { data: profile } = await supabase.from('profiles').select('username,display_name,bio,avatar_path,moderation_status').eq('id', user.id).maybeSingle();
   if (profile) {
     $('#profile-heading').textContent = profile.display_name || profile.username;
     $('#profile-form').elements.username.value = profile.username || '';
     $('#profile-form').elements.display_name.value = profile.display_name || '';
     $('#profile-form').elements.bio.value = profile.bio || '';
+    const suspended = profile.moderation_status === 'suspended';
+    [...$('#profile-form').elements].forEach(control => { control.disabled = suspended; });
+    if (suspended) message(profileStatus, 'This account is suspended. The public decision is available in banned.json.', 'error');
     if (profile.avatar_path) {
       const { data } = supabase.storage.from('avatars').getPublicUrl(profile.avatar_path);
       const avatar = $('#profile-avatar');
@@ -181,6 +193,24 @@ $('#profile-form').addEventListener('submit', async event => {
 });
 
 $('#sign-out').addEventListener('click', () => supabase.auth.signOut());
-supabase.auth.onAuthStateChange((_event, session) => setTimeout(() => renderSession(session), 0));
+$('#password-form').addEventListener('submit', async event => {
+  event.preventDefault();
+  const values = Object.fromEntries(new FormData(event.currentTarget));
+  if (values.password !== values.confirm_password) return message(passwordStatus, 'Passwords do not match.', 'error');
+  const { error } = await supabase.auth.updateUser({ password: values.password });
+  if (error) return message(passwordStatus, error.message, 'error');
+  event.currentTarget.reset();
+  recoveryMode = false;
+  message(passwordStatus, 'Password updated. You can continue using your account.', 'success');
+  renderSession((await supabase.auth.getSession()).data.session);
+});
+supabase.auth.onAuthStateChange((event, session) => setTimeout(() => {
+  if (event === 'PASSWORD_RECOVERY') {
+    recoveryMode = true;
+    authPanel.hidden = true;
+    profilePanel.hidden = true;
+    passwordPanel.hidden = false;
+  } else renderSession(session);
+}, 0));
 inspectBackend().then(() => { const timer = setInterval(() => { if (window.turnstile) { clearInterval(timer); renderTurnstile(); } }, 100); setTimeout(() => clearInterval(timer), 10000); });
 supabase.auth.getSession().then(({ data }) => renderSession(data.session));

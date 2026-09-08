@@ -515,7 +515,7 @@ build csp_header_smoke.exe: CXX_EXECUTABLE_LINKER__csp_header_smoke_Debug CMakeF
 # Utility command for package
 
 build CMakeFiles/package.util: CUSTOM_COMMAND all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\cpack.exe --config ./CPackConfig.cmake"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\cpack.exe --config ./CPackConfig.cmake"
   DESC = Run CPack packaging tool...
   pool = console
   restat = 1
@@ -527,7 +527,7 @@ build package: phony CMakeFiles/package.util
 # Utility command for package_source
 
 build CMakeFiles/package_source.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\cpack.exe --config ./CPackSourceConfig.cmake"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\cpack.exe --config ./CPackSourceConfig.cmake"
   DESC = Run CPack packaging tool for source...
   pool = console
   restat = 1
@@ -539,7 +539,7 @@ build package_source: phony CMakeFiles/package_source.util
 # Utility command for test
 
 build CMakeFiles/test.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe "
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe "
   DESC = Running tests...
   pool = console
   restat = 1
@@ -551,7 +551,7 @@ build test: phony CMakeFiles/test.util
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\cmake.exe -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\cmake.exe -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -562,7 +562,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\cmake.exe --regenerate-during-build -SC:\Users\DeLL\Desktop\C+ -BC:\Users\DeLL\Desktop\C+\build"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\cmake.exe --regenerate-during-build -SC:\Users\DeLL\Desktop\C+ -BC:\Users\DeLL\Desktop\C+\build"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -580,7 +580,7 @@ build list_install_components: phony
 # Utility command for install
 
 build CMakeFiles/install.util: CUSTOM_COMMAND all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\cmake.exe -P cmake_install.cmake"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\cmake.exe -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -592,7 +592,7 @@ build install: phony CMakeFiles/install.util
 # Utility command for install/local
 
 build CMakeFiles/install/local.util: CUSTOM_COMMAND all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -604,7 +604,7 @@ build install/local: phony CMakeFiles/install/local.util
 # Utility command for install/strip
 
 build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
   DESC = Installing the project stripped...
   pool = console
   restat = 1
@@ -676,7 +676,7 @@ build csp-bench.exe | ${cmake_ninja_workdir}csp-bench.exe: CUSTOM_COMMAND C$:/Us
 # Custom command for CMakeFiles\Experimental
 
 build CMakeFiles/Experimental | ${cmake_ninja_workdir}CMakeFiles/Experimental: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Experimental -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Experimental -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -684,7 +684,7 @@ build CMakeFiles/Experimental | ${cmake_ninja_workdir}CMakeFiles/Experimental: C
 # Custom command for CMakeFiles\Nightly
 
 build CMakeFiles/Nightly | ${cmake_ninja_workdir}CMakeFiles/Nightly: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Nightly -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Nightly -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -692,7 +692,7 @@ build CMakeFiles/Nightly | ${cmake_ninja_workdir}CMakeFiles/Nightly: CUSTOM_COMM
 # Custom command for CMakeFiles\Continuous
 
 build CMakeFiles/Continuous | ${cmake_ninja_workdir}CMakeFiles/Continuous: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Continuous -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Continuous -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -700,7 +700,7 @@ build CMakeFiles/Continuous | ${cmake_ninja_workdir}CMakeFiles/Continuous: CUSTO
 # Custom command for CMakeFiles\NightlyMemoryCheck
 
 build CMakeFiles/NightlyMemoryCheck | ${cmake_ninja_workdir}CMakeFiles/NightlyMemoryCheck: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=NightlyMemoryCheck -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=NightlyMemoryCheck -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -708,7 +708,7 @@ build CMakeFiles/NightlyMemoryCheck | ${cmake_ninja_workdir}CMakeFiles/NightlyMe
 # Custom command for CMakeFiles\NightlyStart
 
 build CMakeFiles/NightlyStart | ${cmake_ninja_workdir}CMakeFiles/NightlyStart: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Start -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Start -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -716,7 +716,7 @@ build CMakeFiles/NightlyStart | ${cmake_ninja_workdir}CMakeFiles/NightlyStart: C
 # Custom command for CMakeFiles\NightlyUpdate
 
 build CMakeFiles/NightlyUpdate | ${cmake_ninja_workdir}CMakeFiles/NightlyUpdate: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Update -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Update -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -724,7 +724,7 @@ build CMakeFiles/NightlyUpdate | ${cmake_ninja_workdir}CMakeFiles/NightlyUpdate:
 # Custom command for CMakeFiles\NightlyConfigure
 
 build CMakeFiles/NightlyConfigure | ${cmake_ninja_workdir}CMakeFiles/NightlyConfigure: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Configure -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Configure -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -732,7 +732,7 @@ build CMakeFiles/NightlyConfigure | ${cmake_ninja_workdir}CMakeFiles/NightlyConf
 # Custom command for CMakeFiles\NightlyBuild
 
 build CMakeFiles/NightlyBuild | ${cmake_ninja_workdir}CMakeFiles/NightlyBuild: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Build -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Build -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -740,7 +740,7 @@ build CMakeFiles/NightlyBuild | ${cmake_ninja_workdir}CMakeFiles/NightlyBuild: C
 # Custom command for CMakeFiles\NightlyTest
 
 build CMakeFiles/NightlyTest | ${cmake_ninja_workdir}CMakeFiles/NightlyTest: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Test -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Test -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -748,7 +748,7 @@ build CMakeFiles/NightlyTest | ${cmake_ninja_workdir}CMakeFiles/NightlyTest: CUS
 # Custom command for CMakeFiles\NightlyCoverage
 
 build CMakeFiles/NightlyCoverage | ${cmake_ninja_workdir}CMakeFiles/NightlyCoverage: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Coverage -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Coverage -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -756,7 +756,7 @@ build CMakeFiles/NightlyCoverage | ${cmake_ninja_workdir}CMakeFiles/NightlyCover
 # Custom command for CMakeFiles\NightlyMemCheck
 
 build CMakeFiles/NightlyMemCheck | ${cmake_ninja_workdir}CMakeFiles/NightlyMemCheck: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Nightly -DACTIONS=MemCheck -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Nightly -DACTIONS=MemCheck -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -764,7 +764,7 @@ build CMakeFiles/NightlyMemCheck | ${cmake_ninja_workdir}CMakeFiles/NightlyMemCh
 # Custom command for CMakeFiles\NightlySubmit
 
 build CMakeFiles/NightlySubmit | ${cmake_ninja_workdir}CMakeFiles/NightlySubmit: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Submit -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Submit -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -772,7 +772,7 @@ build CMakeFiles/NightlySubmit | ${cmake_ninja_workdir}CMakeFiles/NightlySubmit:
 # Custom command for CMakeFiles\ExperimentalStart
 
 build CMakeFiles/ExperimentalStart | ${cmake_ninja_workdir}CMakeFiles/ExperimentalStart: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Start -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Start -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -780,7 +780,7 @@ build CMakeFiles/ExperimentalStart | ${cmake_ninja_workdir}CMakeFiles/Experiment
 # Custom command for CMakeFiles\ExperimentalUpdate
 
 build CMakeFiles/ExperimentalUpdate | ${cmake_ninja_workdir}CMakeFiles/ExperimentalUpdate: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Update -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Update -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -788,7 +788,7 @@ build CMakeFiles/ExperimentalUpdate | ${cmake_ninja_workdir}CMakeFiles/Experimen
 # Custom command for CMakeFiles\ExperimentalConfigure
 
 build CMakeFiles/ExperimentalConfigure | ${cmake_ninja_workdir}CMakeFiles/ExperimentalConfigure: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Configure -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Configure -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -796,7 +796,7 @@ build CMakeFiles/ExperimentalConfigure | ${cmake_ninja_workdir}CMakeFiles/Experi
 # Custom command for CMakeFiles\ExperimentalBuild
 
 build CMakeFiles/ExperimentalBuild | ${cmake_ninja_workdir}CMakeFiles/ExperimentalBuild: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Build -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Build -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -804,7 +804,7 @@ build CMakeFiles/ExperimentalBuild | ${cmake_ninja_workdir}CMakeFiles/Experiment
 # Custom command for CMakeFiles\ExperimentalTest
 
 build CMakeFiles/ExperimentalTest | ${cmake_ninja_workdir}CMakeFiles/ExperimentalTest: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Test -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Test -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -812,7 +812,7 @@ build CMakeFiles/ExperimentalTest | ${cmake_ninja_workdir}CMakeFiles/Experimenta
 # Custom command for CMakeFiles\ExperimentalCoverage
 
 build CMakeFiles/ExperimentalCoverage | ${cmake_ninja_workdir}CMakeFiles/ExperimentalCoverage: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Coverage -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Coverage -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -820,7 +820,7 @@ build CMakeFiles/ExperimentalCoverage | ${cmake_ninja_workdir}CMakeFiles/Experim
 # Custom command for CMakeFiles\ExperimentalMemCheck
 
 build CMakeFiles/ExperimentalMemCheck | ${cmake_ninja_workdir}CMakeFiles/ExperimentalMemCheck: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Experimental -DACTIONS=MemCheck -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Experimental -DACTIONS=MemCheck -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -828,7 +828,7 @@ build CMakeFiles/ExperimentalMemCheck | ${cmake_ninja_workdir}CMakeFiles/Experim
 # Custom command for CMakeFiles\ExperimentalSubmit
 
 build CMakeFiles/ExperimentalSubmit | ${cmake_ninja_workdir}CMakeFiles/ExperimentalSubmit: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Submit -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Submit -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -836,7 +836,7 @@ build CMakeFiles/ExperimentalSubmit | ${cmake_ninja_workdir}CMakeFiles/Experimen
 # Custom command for CMakeFiles\ContinuousStart
 
 build CMakeFiles/ContinuousStart | ${cmake_ninja_workdir}CMakeFiles/ContinuousStart: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Start -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Start -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -844,7 +844,7 @@ build CMakeFiles/ContinuousStart | ${cmake_ninja_workdir}CMakeFiles/ContinuousSt
 # Custom command for CMakeFiles\ContinuousUpdate
 
 build CMakeFiles/ContinuousUpdate | ${cmake_ninja_workdir}CMakeFiles/ContinuousUpdate: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Update -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Update -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -852,7 +852,7 @@ build CMakeFiles/ContinuousUpdate | ${cmake_ninja_workdir}CMakeFiles/ContinuousU
 # Custom command for CMakeFiles\ContinuousConfigure
 
 build CMakeFiles/ContinuousConfigure | ${cmake_ninja_workdir}CMakeFiles/ContinuousConfigure: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Configure -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Configure -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -860,7 +860,7 @@ build CMakeFiles/ContinuousConfigure | ${cmake_ninja_workdir}CMakeFiles/Continuo
 # Custom command for CMakeFiles\ContinuousBuild
 
 build CMakeFiles/ContinuousBuild | ${cmake_ninja_workdir}CMakeFiles/ContinuousBuild: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Build -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Build -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -868,7 +868,7 @@ build CMakeFiles/ContinuousBuild | ${cmake_ninja_workdir}CMakeFiles/ContinuousBu
 # Custom command for CMakeFiles\ContinuousTest
 
 build CMakeFiles/ContinuousTest | ${cmake_ninja_workdir}CMakeFiles/ContinuousTest: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Test -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Test -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -876,7 +876,7 @@ build CMakeFiles/ContinuousTest | ${cmake_ninja_workdir}CMakeFiles/ContinuousTes
 # Custom command for CMakeFiles\ContinuousCoverage
 
 build CMakeFiles/ContinuousCoverage | ${cmake_ninja_workdir}CMakeFiles/ContinuousCoverage: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Coverage -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Coverage -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -884,7 +884,7 @@ build CMakeFiles/ContinuousCoverage | ${cmake_ninja_workdir}CMakeFiles/Continuou
 # Custom command for CMakeFiles\ContinuousMemCheck
 
 build CMakeFiles/ContinuousMemCheck | ${cmake_ninja_workdir}CMakeFiles/ContinuousMemCheck: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Continuous -DACTIONS=MemCheck -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Continuous -DACTIONS=MemCheck -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 
@@ -892,7 +892,7 @@ build CMakeFiles/ContinuousMemCheck | ${cmake_ninja_workdir}CMakeFiles/Continuou
 # Custom command for CMakeFiles\ContinuousSubmit
 
 build CMakeFiles/ContinuousSubmit | ${cmake_ninja_workdir}CMakeFiles/ContinuousSubmit: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\mingw64\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Submit -S CMakeFiles/CTestScript.cmake -V"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\DeLL\Desktop\C+\build && C:\msys64\ucrt64\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Submit -S CMakeFiles/CTestScript.cmake -V"
   pool = console
 
 # =============================================================================
@@ -921,14 +921,14 @@ build all: phony csx csp-codegen cspweb csp-bench cspc.exe csp_frontend_tests.ex
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja C$:/Users/DeLL/Desktop/C+/build/cmake_install.cmake C$:/Users/DeLL/Desktop/C+/build/CTestTestfile.cmake: RERUN_CMAKE | C$:/Users/DeLL/Desktop/C+/CMakeLists.txt C$:/msys64/mingw64/share/cmake/Modules/CMakeCXXInformation.cmake C$:/msys64/mingw64/share/cmake/Modules/CMakeCommonLanguageInclude.cmake C$:/msys64/mingw64/share/cmake/Modules/CMakeGenericSystem.cmake C$:/msys64/mingw64/share/cmake/Modules/CMakeInitializeConfigs.cmake C$:/msys64/mingw64/share/cmake/Modules/CMakeLanguageInformation.cmake C$:/msys64/mingw64/share/cmake/Modules/CMakeRCInformation.cmake C$:/msys64/mingw64/share/cmake/Modules/CMakeSystemSpecificInformation.cmake C$:/msys64/mingw64/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake C$:/msys64/mingw64/share/cmake/Modules/CPack.cmake C$:/msys64/mingw64/share/cmake/Modules/CPackComponent.cmake C$:/msys64/mingw64/share/cmake/Modules/CTest.cmake C$:/msys64/mingw64/share/cmake/Modules/CTestTargets.cmake C$:/msys64/mingw64/share/cmake/Modules/CTestUseLaunchers.cmake C$:/msys64/mingw64/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/msys64/mingw64/share/cmake/Modules/Compiler/GNU-CXX.cmake C$:/msys64/mingw64/share/cmake/Modules/Compiler/GNU.cmake C$:/msys64/mingw64/share/cmake/Modules/DartConfiguration.tcl.in C$:/msys64/mingw64/share/cmake/Modules/GNUInstallDirs.cmake C$:/msys64/mingw64/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake C$:/msys64/mingw64/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake C$:/msys64/mingw64/share/cmake/Modules/Linker/GNU-CXX.cmake C$:/msys64/mingw64/share/cmake/Modules/Linker/GNU.cmake C$:/msys64/mingw64/share/cmake/Modules/Platform/Linker/GNU.cmake C$:/msys64/mingw64/share/cmake/Modules/Platform/Linker/Windows-GNU-CXX.cmake C$:/msys64/mingw64/share/cmake/Modules/Platform/Linker/Windows-GNU.cmake C$:/msys64/mingw64/share/cmake/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/msys64/mingw64/share/cmake/Modules/Platform/Windows-GNU-CXX.cmake C$:/msys64/mingw64/share/cmake/Modules/Platform/Windows-GNU.cmake C$:/msys64/mingw64/share/cmake/Modules/Platform/Windows-Initialize.cmake C$:/msys64/mingw64/share/cmake/Modules/Platform/Windows-windres.cmake C$:/msys64/mingw64/share/cmake/Modules/Platform/Windows.cmake C$:/msys64/mingw64/share/cmake/Modules/Platform/WindowsPaths.cmake C$:/msys64/mingw64/share/cmake/Templates/CPackConfig.cmake.in C$:/msys64/mingw64/share/cmake/Templates/CTestScript.cmake.in CMakeCache.txt CMakeFiles/4.4.2/CMakeCXXCompiler.cmake CMakeFiles/4.4.2/CMakeRCCompiler.cmake CMakeFiles/4.4.2/CMakeSystem.cmake
+build build.ninja C$:/Users/DeLL/Desktop/C+/build/cmake_install.cmake C$:/Users/DeLL/Desktop/C+/build/CTestTestfile.cmake: RERUN_CMAKE | C$:/Users/DeLL/Desktop/C+/CMakeLists.txt C$:/msys64/ucrt64/share/cmake/Modules/CMakeCXXInformation.cmake C$:/msys64/ucrt64/share/cmake/Modules/CMakeCommonLanguageInclude.cmake C$:/msys64/ucrt64/share/cmake/Modules/CMakeGenericSystem.cmake C$:/msys64/ucrt64/share/cmake/Modules/CMakeInitializeConfigs.cmake C$:/msys64/ucrt64/share/cmake/Modules/CMakeLanguageInformation.cmake C$:/msys64/ucrt64/share/cmake/Modules/CMakeRCInformation.cmake C$:/msys64/ucrt64/share/cmake/Modules/CMakeSystemSpecificInformation.cmake C$:/msys64/ucrt64/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake C$:/msys64/ucrt64/share/cmake/Modules/CPack.cmake C$:/msys64/ucrt64/share/cmake/Modules/CPackComponent.cmake C$:/msys64/ucrt64/share/cmake/Modules/CTest.cmake C$:/msys64/ucrt64/share/cmake/Modules/CTestTargets.cmake C$:/msys64/ucrt64/share/cmake/Modules/CTestUseLaunchers.cmake C$:/msys64/ucrt64/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/msys64/ucrt64/share/cmake/Modules/Compiler/GNU-CXX.cmake C$:/msys64/ucrt64/share/cmake/Modules/Compiler/GNU.cmake C$:/msys64/ucrt64/share/cmake/Modules/DartConfiguration.tcl.in C$:/msys64/ucrt64/share/cmake/Modules/GNUInstallDirs.cmake C$:/msys64/ucrt64/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake C$:/msys64/ucrt64/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake C$:/msys64/ucrt64/share/cmake/Modules/Linker/GNU-CXX.cmake C$:/msys64/ucrt64/share/cmake/Modules/Linker/GNU.cmake C$:/msys64/ucrt64/share/cmake/Modules/Platform/Linker/GNU.cmake C$:/msys64/ucrt64/share/cmake/Modules/Platform/Linker/Windows-GNU-CXX.cmake C$:/msys64/ucrt64/share/cmake/Modules/Platform/Linker/Windows-GNU.cmake C$:/msys64/ucrt64/share/cmake/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/msys64/ucrt64/share/cmake/Modules/Platform/Windows-GNU-CXX.cmake C$:/msys64/ucrt64/share/cmake/Modules/Platform/Windows-GNU.cmake C$:/msys64/ucrt64/share/cmake/Modules/Platform/Windows-Initialize.cmake C$:/msys64/ucrt64/share/cmake/Modules/Platform/Windows-windres.cmake C$:/msys64/ucrt64/share/cmake/Modules/Platform/Windows.cmake C$:/msys64/ucrt64/share/cmake/Modules/Platform/WindowsPaths.cmake C$:/msys64/ucrt64/share/cmake/Templates/CPackConfig.cmake.in C$:/msys64/ucrt64/share/cmake/Templates/CTestScript.cmake.in CMakeCache.txt CMakeFiles/4.4.2/CMakeCXXCompiler.cmake CMakeFiles/4.4.2/CMakeRCCompiler.cmake CMakeFiles/4.4.2/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Users/DeLL/Desktop/C+/CMakeLists.txt C$:/msys64/mingw64/share/cmake/Modules/CMakeCXXInformation.cmake C$:/msys64/mingw64/share/cmake/Modules/CMakeCommonLanguageInclude.cmake C$:/msys64/mingw64/share/cmake/Modules/CMakeGenericSystem.cmake C$:/msys64/mingw64/share/cmake/Modules/CMakeInitializeConfigs.cmake C$:/msys64/mingw64/share/cmake/Modules/CMakeLanguageInformation.cmake C$:/msys64/mingw64/share/cmake/Modules/CMakeRCInformation.cmake C$:/msys64/mingw64/share/cmake/Modules/CMakeSystemSpecificInformation.cmake C$:/msys64/mingw64/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake C$:/msys64/mingw64/share/cmake/Modules/CPack.cmake C$:/msys64/mingw64/share/cmake/Modules/CPackComponent.cmake C$:/msys64/mingw64/share/cmake/Modules/CTest.cmake C$:/msys64/mingw64/share/cmake/Modules/CTestTargets.cmake C$:/msys64/mingw64/share/cmake/Modules/CTestUseLaunchers.cmake C$:/msys64/mingw64/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/msys64/mingw64/share/cmake/Modules/Compiler/GNU-CXX.cmake C$:/msys64/mingw64/share/cmake/Modules/Compiler/GNU.cmake C$:/msys64/mingw64/share/cmake/Modules/DartConfiguration.tcl.in C$:/msys64/mingw64/share/cmake/Modules/GNUInstallDirs.cmake C$:/msys64/mingw64/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake C$:/msys64/mingw64/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake C$:/msys64/mingw64/share/cmake/Modules/Linker/GNU-CXX.cmake C$:/msys64/mingw64/share/cmake/Modules/Linker/GNU.cmake C$:/msys64/mingw64/share/cmake/Modules/Platform/Linker/GNU.cmake C$:/msys64/mingw64/share/cmake/Modules/Platform/Linker/Windows-GNU-CXX.cmake C$:/msys64/mingw64/share/cmake/Modules/Platform/Linker/Windows-GNU.cmake C$:/msys64/mingw64/share/cmake/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/msys64/mingw64/share/cmake/Modules/Platform/Windows-GNU-CXX.cmake C$:/msys64/mingw64/share/cmake/Modules/Platform/Windows-GNU.cmake C$:/msys64/mingw64/share/cmake/Modules/Platform/Windows-Initialize.cmake C$:/msys64/mingw64/share/cmake/Modules/Platform/Windows-windres.cmake C$:/msys64/mingw64/share/cmake/Modules/Platform/Windows.cmake C$:/msys64/mingw64/share/cmake/Modules/Platform/WindowsPaths.cmake C$:/msys64/mingw64/share/cmake/Templates/CPackConfig.cmake.in C$:/msys64/mingw64/share/cmake/Templates/CTestScript.cmake.in CMakeCache.txt CMakeFiles/4.4.2/CMakeCXXCompiler.cmake CMakeFiles/4.4.2/CMakeRCCompiler.cmake CMakeFiles/4.4.2/CMakeSystem.cmake: phony
+build C$:/Users/DeLL/Desktop/C+/CMakeLists.txt C$:/msys64/ucrt64/share/cmake/Modules/CMakeCXXInformation.cmake C$:/msys64/ucrt64/share/cmake/Modules/CMakeCommonLanguageInclude.cmake C$:/msys64/ucrt64/share/cmake/Modules/CMakeGenericSystem.cmake C$:/msys64/ucrt64/share/cmake/Modules/CMakeInitializeConfigs.cmake C$:/msys64/ucrt64/share/cmake/Modules/CMakeLanguageInformation.cmake C$:/msys64/ucrt64/share/cmake/Modules/CMakeRCInformation.cmake C$:/msys64/ucrt64/share/cmake/Modules/CMakeSystemSpecificInformation.cmake C$:/msys64/ucrt64/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake C$:/msys64/ucrt64/share/cmake/Modules/CPack.cmake C$:/msys64/ucrt64/share/cmake/Modules/CPackComponent.cmake C$:/msys64/ucrt64/share/cmake/Modules/CTest.cmake C$:/msys64/ucrt64/share/cmake/Modules/CTestTargets.cmake C$:/msys64/ucrt64/share/cmake/Modules/CTestUseLaunchers.cmake C$:/msys64/ucrt64/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/msys64/ucrt64/share/cmake/Modules/Compiler/GNU-CXX.cmake C$:/msys64/ucrt64/share/cmake/Modules/Compiler/GNU.cmake C$:/msys64/ucrt64/share/cmake/Modules/DartConfiguration.tcl.in C$:/msys64/ucrt64/share/cmake/Modules/GNUInstallDirs.cmake C$:/msys64/ucrt64/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake C$:/msys64/ucrt64/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake C$:/msys64/ucrt64/share/cmake/Modules/Linker/GNU-CXX.cmake C$:/msys64/ucrt64/share/cmake/Modules/Linker/GNU.cmake C$:/msys64/ucrt64/share/cmake/Modules/Platform/Linker/GNU.cmake C$:/msys64/ucrt64/share/cmake/Modules/Platform/Linker/Windows-GNU-CXX.cmake C$:/msys64/ucrt64/share/cmake/Modules/Platform/Linker/Windows-GNU.cmake C$:/msys64/ucrt64/share/cmake/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/msys64/ucrt64/share/cmake/Modules/Platform/Windows-GNU-CXX.cmake C$:/msys64/ucrt64/share/cmake/Modules/Platform/Windows-GNU.cmake C$:/msys64/ucrt64/share/cmake/Modules/Platform/Windows-Initialize.cmake C$:/msys64/ucrt64/share/cmake/Modules/Platform/Windows-windres.cmake C$:/msys64/ucrt64/share/cmake/Modules/Platform/Windows.cmake C$:/msys64/ucrt64/share/cmake/Modules/Platform/WindowsPaths.cmake C$:/msys64/ucrt64/share/cmake/Templates/CPackConfig.cmake.in C$:/msys64/ucrt64/share/cmake/Templates/CTestScript.cmake.in CMakeCache.txt CMakeFiles/4.4.2/CMakeCXXCompiler.cmake CMakeFiles/4.4.2/CMakeRCCompiler.cmake CMakeFiles/4.4.2/CMakeSystem.cmake: phony
 
 
 #############################################

@@ -25,7 +25,7 @@ function h(string $value): string
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#1793d1">
+  <meta name="theme-color" content="#d1d4d5">
   <meta name="description" content="C+ compiler, packages, libraries and documentation.">
   <title>CSP Foundation</title>
   <link rel="icon" type="image/svg+xml" href="assets/csp-file-icon.svg">

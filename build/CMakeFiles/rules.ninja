@@ -24,7 +24,7 @@ rule CXX_SCAN__cspc_Debug
 # Rule to generate ninja dyndep files for CXX.
 
 rule CXX_DYNDEP__cspc_Debug
-  command = C:\msys64\mingw64\bin\cmake.exe -E cmake_ninja_dyndep --tdi=CMakeFiles\cspc.dir\CXXDependInfo.json --lang=CXX --modmapfmt=gcc --dd=$out @$out.rsp
+  command = C:\msys64\ucrt64\bin\cmake.exe -E cmake_ninja_dyndep --tdi=CMakeFiles\cspc.dir\CXXDependInfo.json --lang=CXX --modmapfmt=gcc --dd=$out @$out.rsp
   description = Generating CXX dyndep file $out
   rspfile = $out.rsp
   rspfile_content = $in
@@ -73,7 +73,7 @@ rule CXX_SCAN__csp_frontend_tests_Debug
 # Rule to generate ninja dyndep files for CXX.
 
 rule CXX_DYNDEP__csp_frontend_tests_Debug
-  command = C:\msys64\mingw64\bin\cmake.exe -E cmake_ninja_dyndep --tdi=CMakeFiles\csp_frontend_tests.dir\CXXDependInfo.json --lang=CXX --modmapfmt=gcc --dd=$out @$out.rsp
+  command = C:\msys64\ucrt64\bin\cmake.exe -E cmake_ninja_dyndep --tdi=CMakeFiles\csp_frontend_tests.dir\CXXDependInfo.json --lang=CXX --modmapfmt=gcc --dd=$out @$out.rsp
   description = Generating CXX dyndep file $out
   rspfile = $out.rsp
   rspfile_content = $in
@@ -122,7 +122,7 @@ rule CXX_SCAN__csp_header_smoke_Debug
 # Rule to generate ninja dyndep files for CXX.
 
 rule CXX_DYNDEP__csp_header_smoke_Debug
-  command = C:\msys64\mingw64\bin\cmake.exe -E cmake_ninja_dyndep --tdi=CMakeFiles\csp_header_smoke.dir\CXXDependInfo.json --lang=CXX --modmapfmt=gcc --dd=$out @$out.rsp
+  command = C:\msys64\ucrt64\bin\cmake.exe -E cmake_ninja_dyndep --tdi=CMakeFiles\csp_header_smoke.dir\CXXDependInfo.json --lang=CXX --modmapfmt=gcc --dd=$out @$out.rsp
   description = Generating CXX dyndep file $out
   rspfile = $out.rsp
   rspfile_content = $in
@@ -170,7 +170,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = C:\msys64\mingw64\bin\cmake.exe --regenerate-during-build -SC:\Users\DeLL\Desktop\C+ -BC:\Users\DeLL\Desktop\C+\build
+  command = C:\msys64\ucrt64\bin\cmake.exe --regenerate-during-build -SC:\Users\DeLL\Desktop\C+ -BC:\Users\DeLL\Desktop\C+\build
   description = Re-running CMake...
   generator = 1
 

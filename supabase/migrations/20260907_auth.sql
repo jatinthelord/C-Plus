@@ -78,6 +78,15 @@ create table if not exists public.moderation_events (
   created_at timestamptz not null default now()
 );
 
+create table if not exists public.public_bans (
+  user_id uuid primary key references public.profiles(id) on delete cascade,
+  username text not null,
+  public_reason text not null,
+  banned_at timestamptz not null default now(),
+  expires_at timestamptz,
+  constraint public_ban_reason_length check (char_length(public_reason) between 5 and 300)
+);
+
 alter table public.moderation_cases add column if not exists content_type text;
 alter table public.moderation_cases add column if not exists content_id uuid;
 
@@ -140,6 +149,39 @@ begin
   return new;
 end;
 $$;
+
+create or replace function public.apply_moderation_action(target_user uuid, new_status text, reason text)
+returns void
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  target_username text;
+begin
+  if new_status not in ('active', 'limited', 'suspended') then
+    raise exception 'Invalid moderation status';
+  end if;
+  if char_length(trim(reason)) not between 5 and 300 then
+    raise exception 'A public reason between 5 and 300 characters is required';
+  end if;
+  update public.profiles set moderation_status = new_status where id = target_user
+  returning username into target_username;
+  if target_username is null then raise exception 'Account not found'; end if;
+  if new_status = 'suspended' then
+    insert into public.public_bans (user_id, username, public_reason)
+    values (target_user, target_username, trim(reason))
+    on conflict (user_id) do update set username = excluded.username, public_reason = excluded.public_reason, banned_at = now();
+  else
+    delete from public.public_bans where user_id = target_user;
+  end if;
+  insert into public.moderation_events (actor_id, action, notes)
+  values (auth.uid(), 'account_' || new_status, trim(reason));
+end;
+$$;
+
+revoke all on function public.apply_moderation_action(uuid, text, text) from public, anon, authenticated;
+grant execute on function public.apply_moderation_action(uuid, text, text) to service_role;
 
 create or replace function public.username_available(candidate text)
 returns boolean
@@ -285,6 +327,7 @@ alter table public.account_private enable row level security;
 alter table public.reports enable row level security;
 alter table public.moderation_cases enable row level security;
 alter table public.moderation_events enable row level security;
+alter table public.public_bans enable row level security;
 alter table public.wiki_posts enable row level security;
 
 drop policy if exists "Public active profiles are readable" on public.profiles;
@@ -293,7 +336,8 @@ using (moderation_status = 'active' or id = auth.uid());
 
 drop policy if exists "Owners update public profile fields" on public.profiles;
 create policy "Owners update public profile fields" on public.profiles for update
-using (id = auth.uid()) with check (id = auth.uid());
+using (id = auth.uid() and moderation_status = 'active')
+with check (id = auth.uid() and moderation_status = 'active');
 
 drop policy if exists "Owners read private account data" on public.account_private;
 create policy "Owners read private account data" on public.account_private for select
@@ -322,6 +366,10 @@ with check (
   and exists (select 1 from public.profiles p where p.id = auth.uid() and p.moderation_status = 'active')
 );
 
+drop policy if exists "Public ban records are readable" on public.public_bans;
+create policy "Public ban records are readable" on public.public_bans for select
+using (true);
+
 revoke all on table public.reserved_usernames, public.profiles, public.account_private,
   public.reports, public.moderation_cases, public.moderation_events from anon, authenticated;
 grant select on table public.profiles to anon, authenticated;
@@ -330,6 +378,8 @@ grant select on table public.account_private to authenticated;
 grant update (first_name, last_name, birth_date, updated_at) on public.account_private to authenticated;
 grant select, insert on table public.reports to authenticated;
 grant execute on function public.username_available(text) to anon, authenticated;
+revoke all on table public.public_bans from anon, authenticated;
+grant select (username, public_reason, banned_at, expires_at) on public.public_bans to anon, authenticated;
 revoke all on table public.wiki_posts from anon, authenticated;
 grant select on table public.wiki_posts to anon, authenticated;
 grant insert (author_id, title, category, body) on public.wiki_posts to authenticated;

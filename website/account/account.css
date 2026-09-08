@@ -1,3 +1,18 @@
++:root { --ink:#18212a; --muted:#60707a; --line:#d1dce3; --soft:#f1f5f7; --blue:#1793d1; --blue-dark:#0877b0; --green:#287b52; --shadow:0 14px 36px rgba(24,43,58,.10); }
+html,body { min-width:0; }
+body { margin:0; color:var(--ink); background:#fff; font:14px/1.55 Arial,Helvetica,sans-serif; text-align:left; }
+*,*::before,*::after { box-sizing:border-box; }
+.shell { width:min(calc(100% - 36px),1180px); margin-inline:auto; }
+.site-header { position:sticky; top:0; z-index:50; color:#fff; background:#1b1f23; border-bottom:5px solid var(--blue); }
+.nav { min-height:64px; display:flex; align-items:center; gap:18px; }
+.brand { display:flex; align-items:center; gap:10px; margin-right:auto; color:#fff!important; }
+.brand-mark { width:40px; height:40px; display:flex; align-items:center; justify-content:center; color:#fff; background:var(--blue); font-weight:bold; }
+.brand strong,.brand small { display:block; }.brand small { color:#aab6bd; font-size:9px; text-transform:uppercase; }
+.nav-links { display:flex; }.nav-links a { padding:9px 8px; color:#d5dadd; font-size:12px; font-weight:bold; }.nav-links a:hover { color:#fff; background:#30363b; text-decoration:none; }
+.nav-download { background:var(--blue); }.menu-button { display:none; }
+.button { display:inline-flex; align-items:center; justify-content:center; min-height:40px; padding:0 14px; color:var(--ink); background:#fff; border:1px solid #afbdc6; }
+.footer { color:#c5cdd2; background:#1b1f23; border-top:5px solid var(--blue); }.footer-grid { display:grid; grid-template-columns:1fr auto; gap:30px; padding-block:32px; }.footer-links { display:flex; gap:18px; align-items:center; }
+@media(max-width:850px){.nav-links{display:none}.nav-links.open{position:absolute;top:64px;right:12px;display:grid;padding:8px;background:#1b1f23}.menu-button{display:block}}
 .account-page { min-height: calc(100vh - 218px); display: grid; grid-template-columns: minmax(0,.9fr) minmax(460px,.72fr); gap: 90px; align-items: start; padding-block: 72px 90px; }
 .account-intro { padding-top: 34px; }
 .account-intro h1 { margin: 0; font-size: clamp(44px,5vw,66px); line-height: 1.04; letter-spacing: -.05em; }
@@ -29,7 +44,7 @@
 .oauth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .oauth-grid button { min-height: 41px; color: var(--ink); background: #fff; border: 1px solid #bcc8d1; border-radius: 6px; font-weight: 700; }
 .oauth-grid button:hover:not(:disabled) { border-color: var(--blue); }
-.oauth-grid button:disabled { cursor: not-allowed; color: #9aa6ae; background: var(--soft); }
+.oauth-grid button.unavailable { color: #7b8790; background: var(--soft); border-style: dashed; }
 .auth-status { min-height: 22px; margin: 18px 0 0; color: #4e5d68; font-size: 13px; text-align: center; }
 .auth-status.error,.auth-notice.error { color: #a52c35; }
 .auth-notice.warning { color: #74530a; }

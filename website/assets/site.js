@@ -45,6 +45,20 @@
     menu.setAttribute('aria-expanded', String(open));
   });
 
+  if (!document.cookie.split('; ').some(value => value.startsWith('csp_cookie_choice='))) {
+    const banner = document.createElement('dialog');
+    banner.className = 'cookie-banner';
+    banner.open = true;
+    banner.setAttribute('aria-label', 'Cookie notice');
+    banner.innerHTML = '<strong>Essential storage only</strong><p>CSP uses one preference cookie and Supabase browser storage for sign-in. There are no advertising cookies.</p><button class="button primary" type="button">Accept essential</button> <a href="' + base + 'privacy/">Privacy details</a>';
+    banner.querySelector('button').addEventListener('click', () => {
+      const secure = location.protocol === 'https:' ? '; Secure' : '';
+      document.cookie = `csp_cookie_choice=essential; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
+      banner.remove();
+    });
+    document.body.append(banner);
+  }
+
   document.addEventListener('click', async event => {
     const button = event.target.closest('[data-copy]');
     if (!button) return;
