@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Arch-style CSP package, library, and source catalog backed by the C+ database.">
+  <link rel="icon" type="image/svg+xml" href="../assets/csp-logo.svg">
+  <title>Database — CSP Foundation</title>
+  <link rel="stylesheet" href="../assets/site.css?v=20260912-1">
+  <script defer src="../assets/site.js?v=20260912-1"></script>
+  <script defer src="../assets/catalog.js?v=20260912-1"></script>
+</head>
+<body data-page="database" data-base="../">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Main navigation">
+      <a class="brand" href="../"><span class="brand-mark">C<span>+</span></span><span><strong>CSP</strong><small>Foundation</small></span></a>
+      <button class="menu-button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <div class="nav-links" id="nav-links">
+        <a href="../">Home</a><a href="../packages/">Packages</a><a href="../libraries/">Libraries</a><a href="../source/">Source</a><a href="./" aria-current="page">Database</a><a href="../wiki/">Wiki</a><a href="../account/">Account</a><a class="nav-download" href="../download/">Download</a>
+      </div>
+    </nav>
+  </header>
+  <main class="page shell" id="main">
+    <div class="breadcrumb"><a href="../">Home</a> / Database</div>
+    <header class="page-title">
+      <p class="eyebrow">Arch-style catalog</p>
+      <h1>Every package, library, and source</h1>
+      <p>This page loads the saved JSON catalog generated from the real C+ tree. The C backend and SQLite schema use the same records. There are no cloned mill files.</p>
+    </header>
+    <section class="stats" aria-label="Catalog size">
+      <div class="stats-grid">
+        <div class="stat"><strong data-catalog-packages>—</strong><span>packages</span></div>
+        <div class="stat"><strong data-catalog-libraries>—</strong><span>libraries</span></div>
+        <div class="stat"><strong data-catalog-sources>—</strong><span>source files</span></div>
+      </div>
+      <p class="pkglist-stats" id="catalog-status">Loading catalog JSON…</p>
+    </section>
+    <section class="box">
+      <form action="./" method="get">
+        <fieldset>
+          <label for="catalog-kind">View
+            <select id="catalog-kind">
+              <option value="packages">Packages</option>
+              <option value="libraries">Libraries</option>
+              <option value="sources">Sources</option>
+            </select>
+          </label>
+          <label for="catalog-search">Filter<input id="catalog-search" type="search" placeholder="cp-network, lexer.cpp, hash.h"></label>
+        </fieldset>
+      </form>
+    </section>
+    <section>
+      <div class="table-scroll">
+        <table class="results">
+          <thead><tr><th>Name</th><th>Meta</th><th>Repo / size</th><th>Summary</th></tr></thead>
+          <tbody id="catalog-table"></tbody>
+        </table>
+      </div>
+    </section>
+    <section class="box">
+      <h2>Backends</h2>
+      <pre><code>python tools/build_site_catalog.py
+sqlite3 website/data/csp.db &lt; backend/schema.sql
+sqlite3 website/data/csp.db &lt; backend/seed.sql
+cc -o cspapi backend/c/cspapi.c
+./cspapi 8081
+dotnet run --project backend/csharp/CspOAuth
+cspweb</code></pre>
+    </section>
+  </main>
+  <footer class="footer"><div class="copyright shell">© 2026 CSP Foundation · Catalog database</div></footer>
+</body>
+</html>

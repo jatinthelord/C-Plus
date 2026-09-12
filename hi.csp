@@ -1,0 +1,30 @@
+#include <cpstream>
+#include <cp/array.h>
+
+
+int player(void)
+{
+    struct movement
+    {
+     int x;
+     int y;
+     int z;
+    };
+
+    struct Pos
+    {
+        int x;
+        int y;
+        int z;
+    };
+
+}
+int main(void)
+{
+    struct Pos player_pos;
+    struct movement player_movement;
+  printc("your Pos: (%d, %d, %d)\n", player_pos.x, player_pos.y, player_pos.z);
+  printc("your movement: (%d, %d, %d)\n", player_movement.x, player_movement.y, player_movement.z);
+
+  return 0;
+}

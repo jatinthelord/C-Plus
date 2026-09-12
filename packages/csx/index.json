@@ -190,7 +190,12 @@
         "cp-cuda",
         "cpstream",
         "cp-vectors",
-        "cp-system"
+        "cp-system",
+        "cp-crypto",
+        "cp-text",
+        "cp-runtime",
+        "cp-media",
+        "cp-surface"
       ]
     },
     {
@@ -203,6 +208,41 @@
       "depends": [
         "csp-stdlib"
       ]
+    },
+    {
+      "name": "cp-crypto",
+      "version": "0.1.0",
+      "description": "FNV, CRC, keyed hashes and XOR helpers",
+      "headers": ["cp/hash.h", "cp/crypto.h"],
+      "depends": ["cp-core"]
+    },
+    {
+      "name": "cp-text",
+      "version": "0.1.0",
+      "description": "Strings, JSON escaping, regular expressions and CLI flags",
+      "headers": ["cp/string.h", "cp/json.h", "cp/regex.h", "cp/cli.h"],
+      "depends": ["cp-core"]
+    },
+    {
+      "name": "cp-runtime",
+      "version": "0.1.0",
+      "description": "Threads, logging, I/O, random, UUID and tests",
+      "headers": ["cp/thread.h", "cp/log.h", "cp/io.h", "cp/random.h", "cp/uuid.h", "cp/test.h"],
+      "depends": ["cp-core"]
+    },
+    {
+      "name": "cp-media",
+      "version": "0.1.0",
+      "description": "Graphics blending, PCM audio and run-length compression",
+      "headers": ["cp/graphics.h", "cp/audio.h", "cp/compress.h"],
+      "depends": ["cp-core"]
+    },
+    {
+      "name": "cp-surface",
+      "version": "0.1.0",
+      "description": "Language-surface fingerprint used by the CSP website catalog",
+      "headers": ["cp/massive.h"],
+      "depends": ["cp-crypto", "cp-text"]
     }
   ]
 }

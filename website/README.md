@@ -8,6 +8,15 @@ the server and supports package search with `index.php?q=network`. Apache uses
 `.htaccess` to select this PHP page as the directory homepage:
 
 ```powershell
+python tools/build_site_catalog.py
+php -S localhost:8080 -t website
+cspweb
+cc -o cspapi backend/c/cspapi.c
+.\cspapi.exe 8081
+dotnet run --project backend/csharp/CspOAuth
+```
+
+```powershell
 php -S localhost:8080 -t website
 ```
 

@@ -1,12 +1,25 @@
+/*
+ * copyright (c) 2025, all reversed right
+ * This code is part of CSP Foundations
+ * the code is protected under mit and spdx licence
+ * the code officially written by team CSP
+ */
+
 +:root { --ink:#18212a; --muted:#60707a; --line:#d1dce3; --soft:#f1f5f7; --blue:#1793d1; --blue-dark:#0877b0; --green:#287b52; --shadow:0 14px 36px rgba(24,43,58,.10); }
 html,body { min-width:0; }
+/* */
 body { margin:0; color:var(--ink); background:#fff; font:14px/1.55 Arial,Helvetica,sans-serif; text-align:left; }
 *,*::before,*::after { box-sizing:border-box; }
+ /* */  /* shell and site header background and width of layout and page will all managed here*/
 .shell { width:min(calc(100% - 36px),1180px); margin-inline:auto; }
+  /* */
 .site-header { position:sticky; top:0; z-index:50; color:#fff; background:#1b1f23; border-bottom:5px solid var(--blue); }
 .nav { min-height:64px; display:flex; align-items:center; gap:18px; }
+   /* */
 .brand { display:flex; align-items:center; gap:10px; margin-right:auto; color:#fff!important; }
+    /* */
 .brand-mark { width:40px; height:40px; display:flex; align-items:center; justify-content:center; color:#fff; background:var(--blue); font-weight:bold; }
+     /*download page and --blue it uses JS or WASM, It's an Page.*/
 .brand strong,.brand small { display:block; }.brand small { color:#aab6bd; font-size:9px; text-transform:uppercase; }
 .nav-links { display:flex; }.nav-links a { padding:9px 8px; color:#d5dadd; font-size:12px; font-weight:bold; }.nav-links a:hover { color:#fff; background:#30363b; text-decoration:none; }
 .nav-download { background:var(--blue); }.menu-button { display:none; }
@@ -60,3 +73,4 @@ body { margin:0; color:var(--ink); background:#fff; font:14px/1.55 Arial,Helveti
 .avatar.has-image { display: block; background-position: center; background-size: cover; }
 @media (max-width: 900px) { .account-page { grid-template-columns: 1fr; gap: 30px; padding-top: 42px; } .account-intro { padding-top: 0; } }
 @media (max-width: 540px) { .account-page { padding-block: 30px 60px; } .account-intro h1 { font-size: 43px; } .auth-panel,.profile-panel { padding: 20px; } .field-pair { grid-template-columns: 1fr; gap: 0; } .profile-panel > header { grid-template-columns: auto 1fr; } .profile-panel > header .button { grid-column: 1/-1; } }
+/* end of the Account CSS */

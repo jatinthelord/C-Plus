@@ -1,0 +1,8 @@
+#include <cpstream>
+#include <cp/massive.h>
+
+int main(void) {
+    printc("%s", cp::describe_surface().c_str());
+    printc("surface fingerprint: %u\n", cp::surface_fingerprint());
+    return 0;
+}

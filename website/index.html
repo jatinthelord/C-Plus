@@ -1,5 +1,12 @@
 <!doctype html>
 <html lang="en">
+  
+    <style>
+:root {
+  --fontStack-monospace: "Monaspace Neon", ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace !important;
+}
+</style>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -26,7 +33,7 @@
       <a class="brand" href="./" aria-label="CSP Foundation home"><span class="brand-mark">C<span>+</span></span><span><strong>CSP</strong><small>Foundation</small></span></a>
       <button class="menu-button" aria-expanded="false" aria-controls="nav-links">Menu</button>
       <div class="nav-links" id="nav-links">
-        <a href="./" aria-current="page">Home</a><a href="packages/">Packages</a><a href="libraries/">Libraries</a><a href="source/">Source</a><a href="benchmarks/">Benchmarks</a><a href="wiki/">Wiki</a><a href="releases/">Releases</a><a href="account/">Account</a><a class="nav-download" href="download/">Download</a>
+        <a href="./" aria-current="page">Home</a><a href="packages/">Packages</a><a href="libraries/">Libraries</a><a href="source/">Source</a><a href="database/">Database</a><a href="benchmarks/">Benchmarks</a><a href="wiki/">Wiki</a><a href="releases/">Releases</a><a href="account/">Account</a><a class="nav-download" href="download/">Download</a>
       </div>
     </nav>
   </header>
@@ -42,15 +49,24 @@
         </div>
         <div class="hero-code" aria-label="C+ code example">
           <div class="terminal-bar"><i></i><i></i><i></i></div>
-          <pre><code><span class="token-muted">// hello.csp</span>
+          <pre><code><span class="token-muted">// i++.csp</span>
 #include <span class="token-green">&lt;cpstream&gt;</span>
 
-int main(void) {
-    printc(<span class="token-green">"Hello from C+\n"</span>);
+int func(int x, int y)
+{
+    x = 20;
+    y = 80;
+    return<span class="token-green"> x + y</span>;
     return 0;
 }
 
-<span class="token-muted">$ cspc hello.csp -o hello</span></code></pre>
+int main(void)
+{
+  int foo(0 , 0);
+ printc(<span class="token-green">"the result is %d\n", foo</span>);
+  return 0;
+}
+<span class="token-muted">$ cspc i++.csp -o i++</span></code></pre>
         </div>
       </div>
     </section>

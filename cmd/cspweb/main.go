@@ -61,6 +61,10 @@ func (s *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		s.createPost(w, r)
 		return
 	}
+	if r.Method == http.MethodPost && r.URL.Path == "/api/oauth/session" {
+		s.saveOAuth(w, r)
+		return
+	}
 	if r.Method != http.MethodGet {
 		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
 		return
@@ -68,6 +72,12 @@ func (s *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	switch r.URL.Path {
 	case "/api/packages":
 		s.fileJSON(w, filepath.Join(s.root, "packages", "csx", "index.json"))
+		return
+	case "/api/catalog":
+		s.fileJSON(w, filepath.Join(s.web, "data", "manifest.json"))
+		return
+	case "/api/sources":
+		s.fileJSON(w, filepath.Join(s.web, "data", "sources.json"))
 		return
 	case "/api/benchmarks":
 		s.fileJSON(w, filepath.Join(s.root, "benchmarks", "results.json"))
@@ -162,7 +172,31 @@ func (s *server) source(w http.ResponseWriter, r *http.Request) {
 	sendJSON(w, map[string]any{"file": filepath.ToSlash(requested), "content": string(data)}, 200)
 }
 
-func (s *server) createPost(w http.ResponseWriter, r *http.Request) {
+func (s *server) saveOAuth(w http.ResponseWriter, r *http.Request) {
+	defer r.Body.Close()
+	body, err := io.ReadAll(io.LimitReader(r.Body, 8000))
+	if err != nil || len(body) == 0 {
+		jsonError(w, "invalid OAuth session", 400)
+		return
+	}
+	var payload map[string]any
+	if json.Unmarshal(body, &payload) != nil {
+		jsonError(w, "invalid JSON", 400)
+		return
+	}
+	path := filepath.Join(s.web, "data", "oauth-sessions.jsonl")
+	file, err := os.OpenFile(path, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
+	if err != nil {
+		jsonError(w, "cannot store OAuth session", 500)
+		return
+	}
+	defer file.Close()
+	if _, err := file.Write(append(body, '\n')); err != nil {
+		jsonError(w, "cannot store OAuth session", 500)
+		return
+	}
+	sendJSON(w, map[string]any{"ok": true, "login": payload["login"]}, 200)
+}
 	defer r.Body.Close()
 	body, err := io.ReadAll(io.LimitReader(r.Body, 7000))
 	if err != nil {

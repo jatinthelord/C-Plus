@@ -41,7 +41,6 @@
       "Jatin"
     ],
     "category": "FAQ",
-    "body": "Use CSX to list packages, then install a package and its dependencies with: csx --prefix .csx install cp-system",
     "created": "2026-09-04T12:05:00Z"
   }
 ]

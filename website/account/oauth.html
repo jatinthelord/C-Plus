@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OAuth session — CSP Foundation</title>
+  <link rel="stylesheet" href="../assets/site.css">
+  <script defer src="../assets/site.js"></script>
+</head>
+<body data-page="oauth" data-base="../">
+  <header class="site-header">
+    <nav class="nav shell">
+      <a class="brand" href="../"><span class="brand-mark">C<span>+</span></span><span><strong>CSP</strong><small>Foundation</small></span></a>
+      <div class="nav-links" id="nav-links">
+        <a href="../">Home</a><a href="./">Account</a>
+      </div>
+    </nav>
+  </header>
+  <main class="page shell">
+    <header class="page-title">
+      <p class="eyebrow">C# OAuth gateway</p>
+      <h1 id="oauth-heading">Completing sign-in…</h1>
+      <p id="oauth-detail">The C# gateway exchanges the GitHub code, then tells this website and the C backend.</p>
+    </header>
+    <p><a class="button primary" href="./">Continue to account</a></p>
+  </main>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const login = params.get("login");
+    const provider = params.get("provider") || "github";
+    if (login) {
+      document.getElementById("oauth-heading").textContent = `Signed in as ${login}`;
+      document.getElementById("oauth-detail").textContent =
+        `Provider ${provider}. The C# service posted this session to /api/oauth/session.`;
+      sessionStorage.setItem("csp_oauth_login", login);
+    }
+  </script>
+</body>
+</html>

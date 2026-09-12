@@ -1,4 +1,4 @@
 csp=0.2.0
 source=C:\Users\DeLL\Desktop\C+\benchmarks\workload.csp
-compiler-stamp=-4648981811000000000
-command=C:\msys64\mingw64\bin\g++.exe -std=c++20 -I"C:\Users\DeLL\Desktop\C+\include" -O3 -march=native -flto
+compiler-stamp=-4648876241000000000
+command=C:\msys64\mingw64\bin\g++.exe -std=c++20 -I"C:\Users\DeLL\Desktop\C+\include" -O3

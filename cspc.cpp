@@ -25,7 +25,7 @@
 
 namespace fs = std::filesystem;
 
-static const char *VERSION = "0.2.0";
+static const char *VERSION = "1.0.0-massive";
 
 static const char *RUNTIME = R"CSP(
 #ifndef CSP_CPSTREAM_DEFINED
